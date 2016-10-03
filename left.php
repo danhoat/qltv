@@ -7,9 +7,9 @@
 					</ul>
 				</li>
 				<li>
-					<a href="index.php?act=cards">Quản lý thẻ</a>
+					<a href="index.php?act=cards">Quản lý độc giả</a>
 					<ul class="sub">
-						<li> <a href="">Thêm mơi thẻ</a></li>
+						<li> <a href="index.php?act=form-insert-user">Thêm mới độc giả</a></li>
 					</ul>
 
 				</li>

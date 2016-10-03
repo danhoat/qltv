@@ -4,7 +4,7 @@
 				<li> <a href="index.php?act=books"> Sách</a></li>
 				<li> <a href="index.php?act=cart"> Người dùng</a></li>
 				<li>
-					<a href="index.php?act=card">Quản lý thẻ</a>
+					<a href="index.php?act=cards">Quản lý thẻ</a>
 					<ul class="sub">
 						<li> <a href="">Thêm mơi thẻ</a></li>
 					</ul>

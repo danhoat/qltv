@@ -1,0 +1,81 @@
+body, ul, li, div, ol, td, span, p ,label, form,h1,h2,h3,h4,h5,h6{
+	margin: 0;
+	padding: 0;
+}
+ul.paging li{
+	float: left;
+	list-style: none;
+	padding: 3px 5px;
+}
+ul.paging li a{
+	list-style: none;
+	font-style: normal;
+	text-decoration:none;
+}
+.wrapper{
+	width: 1024px;
+	margin: 0 auto;
+}
+.left{
+	width: 20%;
+	float: left;
+	padding-top: 20px;
+
+}
+.left ul li{
+	display: block;
+	list-style: none;
+	padding: 5px 10px;
+}
+.left ul li a{
+	text-decoration: none;
+	font-size: 18px;
+	color: #000;
+}
+.main{
+	width: 79%;
+	float: left;
+}
+#header{
+	width: 100%;
+	height: 130px;
+	border: 1px solid #ccc;
+}
+div.row{
+	display: block;
+	width: 100%;
+	clear: both;
+	padding:5px;
+}
+form label{
+	width: 100px;
+	float: left;
+}
+form.add .txtinput{
+	height: 20px;
+}
+form.add .txtinput,
+form.add .txtarea{
+	width: 500px;
+}
+form.add .txtarea{
+	height: 120px;
+}
+.item{
+	width: 25%;
+	display: inline-block;
+	text-align: center;
+}
+.item .product-title{
+	text-align: center;
+}
+.btn-cart {
+    background: #ccc none repeat scroll 0 0;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    color: #000;
+    font-size: 15px;
+    font-style: unset;
+    padding: 5px 10px;
+    text-decoration: none;
+}

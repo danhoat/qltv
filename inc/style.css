@@ -1,0 +1,8 @@
+body, ul, li, div, ol, td, span, p ,label, form{
+	margin: 0;
+	padding: 0;
+}
+ul .paging li{
+	float: left;
+	list-style: none;
+}

@@ -2,7 +2,6 @@
 			<ul>
 				<li> <a href="index.php"> Tin tuc</a></li>
 				<li> <a href="index.php?act=books"> Sách</a></li>
-				<li> <a href="index.php?act=cart"> Người dùng</a></li>
 				<li>
 					<a href="index.php?act=cards">Quản lý thẻ</a>
 					<ul class="sub">

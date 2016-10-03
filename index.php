@@ -4,29 +4,7 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<meta charset ="utf-8"/>
-	<title></title>
-	<script type="text/javascript">
-		function confirm_del(){
-			var t = confirm('Co xoa khong ?');
-			if(t)
-				return true;
-			return false;
-		}
-		function check_form(){
-			var post_title 		= document.getElementById("post_tile");
-			var post_content 	= document.getElementById("post_content");
-			if(post_tile.value == ''){
-				alert('Tựa đề k được rỗng');
-				return false;
-			}
-
-			if( post_content.value == ''){
-				alert('noi dung k dc rỗng');
-				return false;
-			}
-			return true;
-		}
-	</script
+	<title> Đồ án quản lý thư viện</title>
 </head>
 <body>
 	<div class="wrapper">

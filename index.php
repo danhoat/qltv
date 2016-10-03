@@ -35,7 +35,6 @@
 		<?php require_once('left.php');?>
 		<div class="main">
 			<?php
-
 				require_once("inc/connect.php");
 				require_once("inc/main.php");
 				$view = isset($_GET['act']) ? $_GET['act']:'list';

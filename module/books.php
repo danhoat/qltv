@@ -1,5 +1,3 @@
-<h2> Danh sach tin tuc</h2>
-
 <?php
 
 	$page 			= isset($_GET['page']) ? $_GET['page'] :1;
@@ -16,6 +14,7 @@
 		echo '<div class="row">';
 		$i =1;
 		while( $row = mysql_fetch_assoc($result) ){
+			echo '<h3> Các sách hiện có </h3>';
 			$img = $row['img'];
 			$id = $row['id'];
 			echo "<div class='item'><img src='uploads/{$img}' width='150'  />";
@@ -30,6 +29,6 @@
 
 		phan_trang($total_pages, $posts_per_page, $page);
 	} else {
-		echo ' Danh sách bài viết rỗng';
+		echo 'Chưa có sách nào cả.';
 	}
 ?>

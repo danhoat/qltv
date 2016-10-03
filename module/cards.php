@@ -1,3 +1,5 @@
+<h2> Danh sach tin tuc</h2>
+
 <?php
 
 	$page 			= isset($_GET['page']) ? $_GET['page'] :1;

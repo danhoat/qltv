@@ -1,5 +1,3 @@
-<h2> Danh sach tin tuc</h2>
-
 <?php
 
 	$page 			= isset($_GET['page']) ? $_GET['page'] :1;
@@ -16,6 +14,7 @@
 		echo '<table><tr><th width="50">Thứ tự</th><th width="100">Hình ảnh</th><th width="200" align="left"> Tựa đề</th><th>Del</th><th> Edit </th></tr>';
 		$i =1;
 		while( $row = mysql_fetch_assoc($result) ){
+			echo '<h3> Danh sách người dùng </h3>';
 			$img = $row['img'];
 			echo '<tr>';
 			echo "<td>{$i} </td>";
@@ -31,6 +30,6 @@
 
 		phan_trang($total_pages, $posts_per_page, $page);
 	} else {
-		echo ' Danh sách bài viết rỗng';
+		echo ' Chưa có bất kỳ người dùng nào';
 	}
 ?>

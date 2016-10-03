@@ -20,6 +20,8 @@ ul.paging li a{
 	width: 20%;
 	float: left;
 	padding-top: 20px;
+	border: 1px solid #ccc;
+	min-height: 500px;
 
 }
 .left ul li{

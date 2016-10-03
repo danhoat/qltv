@@ -3,6 +3,8 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="assest/css/bootstrap.min.css">
+
 	<meta charset ="utf-8"/>
 	<title> Đồ án quản lý thư viện</title>
 </head>

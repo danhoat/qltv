@@ -1,6 +1,6 @@
 <div class="left">
 			<ul>
-				<li> <a href="index.php"> Tin tuc</a></li>
+				<h2> Quản lý thư viện </h2>
 				<li> <a href="index.php?act=books"> Sách</a>
 					<ul class="sub">
 						<li> <a href="">Thêm mơi sách</a></li>

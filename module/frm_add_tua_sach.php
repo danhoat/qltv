@@ -20,6 +20,11 @@
 		if(empty($error)){
 			$cTuasach = new Tua_Sach();
 			$kq = $cTuasach->them_tua_sach($tuasach, $tacgia, $tomtat);
+			if($kq == TRUE){
+				echo  'Thêm tựa sách thành công';
+			} else {
+				echo 'Thêm tựa sách lỗi';
+			}
 		}
 	}
 	?>

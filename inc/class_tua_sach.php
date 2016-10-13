@@ -14,12 +14,7 @@ Class Tua_Sach{
 	function them_tua_sach( $tuasach, $tacgia, $tomtat ) {
 		$sql ="INSERT INTO `{$this->table}` (`ma_tuasach`, `tuasach`, `tacgia`, `tomtat`) VALUES (NULL, '{$tuasach}', '{$tacgia}', '{$tomtat}')";
 
-		if ($this->conn->query($sql) === TRUE) {
-			    echo "New record created successfully";
-		} else {
-		    echo "Error: " . $sql . "<br>" . $conn->error;
-		}
-
+		return $this->conn->query($sql);
 	}
 	public static function list_tua_sach() {
 		global $conn;

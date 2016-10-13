@@ -33,8 +33,20 @@
 		    	<label class="control-label col-sm-2" for="email">Tựa sách</label>
 		    	<div class="col-sm-10">
 		      		<select class="form-control selectpicker" name="ma_tuasach" data-live-search="true">
-		      			<option value="0"> Chọn tựa sách</option>
-		      			<option value="1"> Cuốn sách 1</option>
+
+		      			<?php
+		      			$result = Tua_Sach::list_tua_sach();
+						if( !empty($result) ){
+							echo '<option value="0"> Chọn tựa sách</option>';
+							while( $row = $result->fetch_assoc() ) {
+								echo "<option value='".$row['ma_tuasach']."'> ".$row['tuasach']."</option>";
+							}
+						} else {
+							echo '<option value="0"> Đầu sách rỗng</option>';
+						}
+						?>
+
+
 		      			<option value="2"> Cuốn sách 2</option>
 		      		</select>
 		    	</div>
@@ -44,19 +56,18 @@
 		    	<label class="control-label col-sm-2" for="email">Ngôn ngữ</label>
 		    	<div class="col-sm-10">
 		      		<select class="form-control" name="ma_tuasach">
-		      			<option value="0"> Chọn tựa sách</option>
-		      			<option value="1"> Anh</option>
-		      			<option value="1"> Pháp </option>
-		      			<option value="1"> Việt</option>
+		      			<option value="0"> Chọn ngôn ngữ</option>
+		      			<option value="1" selected> Việt</option>
+		      			<option value="2"> Anh </option>
+		      			<option value="3"> Pháp</option>
 
 		      		</select>
 		    	</div>
 		  	</div>
-
 		  	<div class="form-group">
 			    <label class="control-label col-sm-2" for="pwd">Bìa </label>
 			    <div class="col-sm-10">
-			      <input type="text" class="form-control" id="tacgia" name="tacgia" placeholder="Tên tác giả">
+			      <input type="text" class="form-control" id="tacgia" name="tacgia" placeholder="Bìa cuốn sách">
 			    </div>
 		  	</div>
 		  	<div class="form-group">

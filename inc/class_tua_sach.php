@@ -20,6 +20,9 @@ Class Tua_Sach{
 		global $conn;
 		$sql ="SELECT * FROM tuasach";
 		$result = $conn->query($sql);
+		if(!$result)
+			return 0;
+
 		if ($result->num_rows > 0) {
 			return $result;
 		}

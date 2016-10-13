@@ -1,4 +1,5 @@
 <?php
+require('class_tua_sach.php');
 function phan_trang($total,$posts_per_page, $page){
 
 	if($total < 2 )

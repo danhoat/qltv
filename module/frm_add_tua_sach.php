@@ -17,6 +17,10 @@
 		if( empty($tomtat) ){
 			$error .= ' Vui lòng nhập tóm tắt cuốn sách <br />';
 		}
+		if(empty($error)){
+			$cTuasach = new Tua_Sach();
+			$kq = $cTuasach->them_tua_sach($tuasach, $tacgia, $tomtat);
+		}
 	}
 	?>
 		<form class="form-horizontal" action="" method="POST">

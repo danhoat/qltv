@@ -1,4 +1,4 @@
 <?php
-global $connect;
-mysql_close($connect);
+global $conn;
+$conn->close();
 ?>

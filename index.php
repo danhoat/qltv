@@ -45,6 +45,17 @@
 		  style: 'btn-info',
 		  size: 4
 		});
+	$(function() {
+	    $(".selectall").click(function(event){
+	    	var is_check = this.checked;
+
+	    	$( "input.checkbox" ).each(function( index, element ) {
+		    	// element == this
+		    	$( element ).prop('checked', is_check );
+
+		  	});
+	    })
+	});
 
 </script>
 </body>

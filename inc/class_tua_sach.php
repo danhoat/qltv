@@ -26,9 +26,8 @@ Class TuaSach{
 		return $this->conn->query($sql);
 	}
 	function capNhatTuaSach($ma_tuasach, $tuasach, $tacgia, $tomtat){
-		$sql = "UPDATE `{$this->table}` SET tuasach = '{$tuasach}',tacgia = '{$tacgia}', tomtat = '{$tomtat}'
-				WHERE ma_tuasach = {$ma_tuasach}";
-
+		$sql = "UPDATE `{$this->table}` SET tuasach = '{$tuasach}',tacgia = '{$tacgia}', tomtat = '{$tomtat}'WHERE ma_tuasach = {$ma_tuasach}";
+		echo $sql;
 		return $this->conn->query($sql);
 	}
 	function delete_tua_sach($ma_tuasach){
@@ -60,7 +59,7 @@ Class TuaSach{
 		$result = $this->kiemTraTuaSachTonTai($ma_tuasach);
 		if( $result ){
 			while( $row = $result->fetch_assoc() ) {
-				return $row['tuasach'];
+				return $row;
 			}
 		}
 		return 0;

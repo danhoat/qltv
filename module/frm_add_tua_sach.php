@@ -8,7 +8,7 @@
 	$ma_tuasach = 0;
 	$tomtat = '';
 
-	$ma_tuasach = isset($_GET['id']) ? $_GET['id'] : 0;
+	$_ma_tuasach = isset($_GET['id']) ? $_GET['id'] : 0;
 	$obt_tuasach =TuaSach::getInstance();
 
 	if( isset($_POST['submit']) ){
@@ -16,7 +16,6 @@
 		$c_tuasach 	= isset($_POST['tuasach']) ? $_POST['tuasach'] :'';
 		$c_tacgia 	= isset($_POST['tacgia']) ? $_POST['tacgia'] :'';
 		$c_tomtat 	= isset($_POST['tomtat']) ? $_POST['tomtat'] :'';
-		$is_update 	= isset($_POST['is_update']) ? $_POST['is_update'] :'';
 		$ma_tuasach = isset($_POST['ma_tuasach']) ? $_POST['ma_tuasach'] :'';
 
 		if( empty($c_tuasach) ){
@@ -51,9 +50,9 @@
 		}
 	}
 
-	if( $ma_tuasach ){
+	if( $_ma_tuasach ){
 
-		$record 		= $obt_tuasach->getTuaSach($_GET['id']);
+		$record 		= $obt_tuasach->getTuaSach($_ma_tuasach);
 		$tuasach 		= $record['tuasach'];
 		$tacgia 		= $record['tacgia'];
 		$tomtat 		= $record['tomtat'];
@@ -88,8 +87,7 @@
 			    <label class="control-label col-sm-2" for="pwd">Tóm tắt</label>
 			    <div class="col-sm-10">
 			      	<textarea name="tomtat" id="tomtat"> <?php echo $tomtat;?></textarea>
-			      	<input type="hidden" name="is_update" value="<?php echo $is_update;?>">
-			      	<input type="hidden" name="ma_tuasach" value="<?php echo $ma_tuasach;?>">
+			      	<input type="hidden" name="ma_tuasach" value="<?php echo $_ma_tuasach;?>">
 			    </div>
 		  	</div>
 		  	<div class="form-group">

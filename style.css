@@ -114,3 +114,7 @@ ul.pagination {
 	float: right;
 	text-align: right;
 }
+input.checkbox{
+	width: 20px;
+	height: 16px;
+}

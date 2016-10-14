@@ -54,7 +54,6 @@
 		    	<div class="col-sm-10">
 		      		<?php echo $error; ?>
 		    	</div>
-
 			</div>
 
 		  	<div class="form-group">

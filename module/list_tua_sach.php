@@ -21,11 +21,15 @@ if( !empty($total) ){
 	$result = TuaSach::list_tua_sach($select_all = 0, $posts_per_page, $current_page );
      echo "Hệ thống hiện có {$total_record} tựa sách";
 	echo '<table class="table ">';
-	echo '<thead><tr><th> Mã</th> <th> Tựa sách </th> <th> Tác giả </th><th> Tóm tắt </th><th> Tác vụ </th> </tr></thead>';
+	echo "<thead><tr><th><input class ='checkbox selectall' type='checkbox' name=''></th><th> Mã</th> <th> Tựa sách </th> <th> Tác giả </th><th> Tóm tắt </th><th> Tác vụ </th> </tr></thead>";
 	echo ' <tbody>';
 	while( $row = $result->fetch_assoc() ) {
+        $ma_tuasach = $row['ma_tuasach'];
 		echo '<tr>';
-        echo "<td> " . $row["ma_tuasach"]. " </td><td> <a class='' href= 'index.php?act=frm_add_tua_sach&id=".$row["ma_tuasach"]."'> " . limit_string($row["tuasach"],30). "</a> </td><td> " . $row["tacgia"]."</td><td>". limit_string($row["tomtat"],60). "</td><td><a  class='action'  href='index.php?act=frm_add_tua_sach&id=".$row["ma_tuasach"]."'>Cập nhật</a> &nbsp; <a href='{$url}page={$current_page}&del={$row["ma_tuasach"]}' onclick ='return remove_tua_sach()'> Xóa</a>  ";
+        echo "<td><input class ='checkbox' type='checkbox' name='remove[{$ma_tuasach}]'>";
+        echo "<td> " . $ma_tuasach. " </td>";
+        echo "<td> <a class='' href= 'index.php?act=frm_add_tua_sach&id=".$row["ma_tuasach"]."'> " . limit_string($row["tuasach"],25). "</a> </td><td> " . $row["tacgia"]."</td><td>". limit_string($row["tomtat"],60). "</td>";
+        echo "<td><a  class='action'  href='index.php?act=frm_add_tua_sach&id=".$ma_tuasach."'>Cập nhật</a> &nbsp; <a href='{$url}page={$current_page}&del={$ma_tuasach}' onclick ='return remove_tua_sach()'> Xóa</a>  ";
         echo '</tr>';
     }
     echo '</tbody>';

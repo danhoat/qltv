@@ -4,18 +4,26 @@
 	if( isset($_POST['submit']) ){
 
 		$request 	= $_POST;
-		$tuasach 	= isset($_POST['tuasach']) ? $_POST['tuasach'] :'';
-		$tacgia 	= isset($_POST['tacgia']) ? $_POST['tacgia'] :'';
-		$tomtat 	= isset($_POST['tomtat']) ? $_POST['tomtat'] :'';
+		$ma_tuasach = isset($_POST['ma_tuasach']) ? $_POST['ma_tuasach'] :'';
+		$ngonngu 	= isset($_POST['ngonngu']) ? $_POST['ngonngu'] :'';
+		$bia 		= isset($_POST['bia']) ? $_POST['bia'] :'';
+		$trangthai 	= isset($_POST['trangthai']) ? $_POST['trangthai'] :'';
 
-		if( empty($tuasach) ){
-			$error .= ' Vui lòng nhập tựa sách <br />';
+		if( empty($ma_tuasach) || $ma_tuasach == 0 ){
+			$error .= ' Vui lòng chọn tựa sách <br />';
 		}
-		if( empty($tacgia) ){
-			$error .= ' Vui lòng nhập tác giả <br />';
+		if( empty($ngonngu) ){
+			$error .= ' Vui lòng chọn ngôn ngữ <br />';
 		}
-		if( empty($tomtat) ){
-			$error .= ' Vui lòng nhập tóm tắt cuốn sách <br />';
+
+		if(empty($error)){
+			$cDausach = new Dau_Sach();
+			$kq = $cDausach->them_dau_sach($ma_tuasach, $ngonngu, $bia, $trangthai);
+			if($kq == TRUE){
+				echo  'Thêm đầu sách thành công';
+			} else {
+				echo 'Thêm đầu sách lỗi';
+			}
 		}
 	}
 	?>
@@ -55,13 +63,7 @@
 		  		<div class="form-group">
 		    	<label class="control-label col-sm-2" for="email">Ngôn ngữ</label>
 		    	<div class="col-sm-10">
-		      		<select class="form-control" name="ma_tuasach">
-		      			<option value="0"> Chọn ngôn ngữ</option>
-		      			<option value="1" selected> Việt</option>
-		      			<option value="2"> Anh </option>
-		      			<option value="3"> Pháp</option>
-
-		      		</select>
+		    	<?php list_ngon_ngu();?>
 		    	</div>
 		  	</div>
 		  	<div class="form-group">
@@ -73,8 +75,8 @@
 		  	<div class="form-group">
 			    <label class="control-label col-sm-2" for="pwd">Trạng thái</label>
 			    <div class="col-sm-10">
-			    	<input type="radio" value="0" checked name="trangthai" > đang mượn
-			    	<input type="radio" value="1" name="trangthai" > đang rãnh
+			    	<input type="radio" value="1" checked name="trangthai" > Đang rãnh
+			    	<input type="radio" value="0"  name="trangthai" > Đang mượn
 			    </div>
 		  	</div>
 		  	<div class="form-group">

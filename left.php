@@ -1,6 +1,6 @@
-<div class="left">
-	<ul>
-		<h2> Quản lý thư viện </h2>
+<div class="left ">
+	<ul class="nav navbar-nav">
+		<h2>Menu </h2>
 		<li> <a href="index.php?act=books"> Sách</a>
 			<ul class="sub">
 			<li> <a href="index.php?act=list_tua_sach">Các tựa sách</a></li>

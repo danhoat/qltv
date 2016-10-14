@@ -16,7 +16,16 @@ Class Tua_Sach{
 		$sql ="INSERT INTO `{$this->table}` (`ma_tuasach`, `tuasach`, `tacgia`, `tomtat`) VALUES (NULL, '{$tuasach}', '{$tacgia}', '{$tomtat}')";
 		return $this->conn->query($sql);
 	}
+	function update_tua_sach($ma_tuasach, $tuasach, $tacgia, $tomtat){
+		$sql = "UPDATE `{$this->table}` SET tuasach = '{$tuasach}',tacgia = '{$tacgia}', tomtat = '{$tomtat}'
+				WHERE ma_tuasach = {$ma_tuasach}";
 
+		return $this->conn->query($sql);
+	}
+	function delete_tua_sach($ma_tuasach){
+		$sql = "DELETE FROM {$this->table} WHERE ma_tuasach= {$ma_tuasach}";
+		return $this->conn->query($sql);
+	}
 	public static function list_tua_sach($select_all = 0, $posts_per_age = 10, $current_page = 1) {
 		global $conn;
 		if($select_all){
@@ -38,6 +47,15 @@ Class Tua_Sach{
 			return 0;
 		}
 	}
+	function get_tua_sach($ma_tuasach){
+		$result = $this->check_tua_sach($ma_tuasach);
+		if( $result ){
+			while( $row = $result->fetch_assoc() ) {
+				return $row;
+			}
+		}
+		return 0;
+	}
 	public static function 	show_tua_sach($ma_tuasach){
 		global $conn;
 		$sql ="SELECT tuasach FROM tuasach WHERE ma_tuasach = {$ma_tuasach}";
@@ -49,6 +67,15 @@ Class Tua_Sach{
 				return $row['tuasach'];
 			}
 		return 'Empty';
+	}
+
+	function check_tua_sach($ma_tuasach){
+		$sql ="SELECT * FROM {$this->table} WHERE ma_tuasach = {$ma_tuasach} ";
+		$result = $this->conn->query($sql);
+		if ($result->num_rows > 0) {
+			return $result;
+		}
+		return 0;
 	}
 
 }

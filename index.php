@@ -13,6 +13,12 @@
 
 	<meta charset ="utf-8"/>
 	<title> Đồ án quản lý thư viện</title>
+	<script type="text/javascript">
+		function remove_tua_sach(){
+			return confirm("Bạn muốn xóa tựa sách này ?");
+		}
+
+	</script>
 </head>
 <body>
 	<div class="wrapper">

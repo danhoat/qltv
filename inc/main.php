@@ -47,6 +47,8 @@
 	}
 	require('class_tua_sach.php');
 	require('class_dau_sach.php');
+	require('class_books.php');
+
 	function show_tua_sach($ma_tuasach){
 		return Tua_Sach::show_tua_sach($ma_tuasach);
 	}

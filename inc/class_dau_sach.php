@@ -17,7 +17,10 @@ Class Dau_Sach{
 			return 0;
 		}
 		$sql ="INSERT INTO `{$this->table}` (`isbn`, `ma_tuasach`, `ngonngu`, `bia`, `trangthai`) VALUES (NULL, '{$ma_tuasach}', '{$ngonngu}', '{$bia}', '{$trangthai}')";
-		return $this->conn->query($sql);
+		if($this->conn->query($sql)){
+			return $this->conn->insert_id;
+		}
+		return 0;
 	}
 	function check_tua_sach($ma_tuasach){
 		$sql ="SELECT * FROM tuasach WHERE ma_tuasach = {$ma_tuasach} ";
@@ -26,6 +29,13 @@ Class Dau_Sach{
 			return 1;
 		}
 		return 0;
+	}
+
+	function count_so_luong($isbn){
+		$sql = "SELECT count(isbn) FROM cuonsach WHERE isbn = {$isbn}";
+		$result = $this->conn->query($sql);
+		$row = mysqli_fetch_row($result);
+		return $row[0];
 	}
 
 	public static function list_dau_sach() {

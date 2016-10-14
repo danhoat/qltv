@@ -8,6 +8,7 @@
 		$ngonngu 	= isset($_POST['ngonngu']) ? $_POST['ngonngu'] :'';
 		$bia 		= isset($_POST['bia']) ? $_POST['bia'] :'';
 		$trangthai 	= isset($_POST['trangthai']) ? $_POST['trangthai'] :'';
+		$soluong 	= isset($_POST['soluong']) ? $_POST['soluong'] :'';
 
 		if( empty($ma_tuasach) || $ma_tuasach == 0 ){
 			$error .= ' Vui lòng chọn tựa sách <br />';
@@ -18,8 +19,14 @@
 
 		if(empty($error)){
 			$cDausach = new Dau_Sach();
-			$kq = $cDausach->them_dau_sach($ma_tuasach, $ngonngu, $bia, $trangthai);
-			if($kq == TRUE){
+			$isbn = $cDausach->them_dau_sach($ma_tuasach, $ngonngu, $bia, $trangthai);
+			if($soluong > 0 && $isbn){
+				$cuon_sach = new Cuon_Sach();
+				for($i =0; $i < $soluong; $i++) {
+					$cuon_sach->them_cuon_sach($isbn, $trangthai = 1);
+				}
+			}
+			if( $isbn ){
 				echo  'Thêm đầu sách thành công';
 			} else {
 				echo 'Thêm đầu sách lỗi';
@@ -74,6 +81,13 @@
 			    <div class="col-sm-10">
 			    	<input type="radio" value="1" checked name="trangthai" > Đang rãnh
 			    	<input type="radio" value="0"  name="trangthai" > Đang mượn
+			    </div>
+		  	</div>
+		  	<div class="form-group">
+			    <label class="control-label col-sm-2" for="pwd"> Số lượng sách</label>
+			    <div class="col-sm-10">
+			    	<input type="number" value="1" checked name="soluong" />
+
 			    </div>
 		  	</div>
 		  	<div class="form-group">

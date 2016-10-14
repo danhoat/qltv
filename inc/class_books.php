@@ -55,28 +55,6 @@ Class CuonSach{
 			return 0;
 		}
 	}
-	function get_ma_tuasach_by_isbn($isbn){
-		$sql 	= "SELECT ma_tuasach FROM dausach WHERE isbn = {$isbn}";
-		$result = $this->conn->query($sql);
-		if ( $result->num_rows > 0 ) {
-			while( $row = $result->fetch_assoc() ) {
-				return $row['ma_tuasach'];
-			}
-		}
-		return 0;
-	}
-
-	function get_tuasach_by_isbn($isbn){
-		$ma_tuasach = $this->get_ma_tuasach_by_isbn($isbn);
-		$sql 	= "SELECT tuasach FROM tuasach WHERE ma_tuasach = {$ma_tuasach}";
-		$result = $this->conn->query($sql);
-		if ( $result->num_rows > 0 ) {
-			while( $row = $result->fetch_assoc() ) {
-				return $row['tuasach'];
-			}
-		}
-		return 0;
-	}
 	function get_tua_sach($ma_tuasach){
 		$result = $this->check_tua_sach($ma_tuasach);
 		if( $result ){

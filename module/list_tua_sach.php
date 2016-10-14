@@ -1,10 +1,11 @@
 <?php
 $del_id = isset($_GET['del']) ? $_GET['del'] : '';
+$tua_sach = TuaSach::getInstance();
 if( !empty($del_id)){
-$obt_tua_sach = new Tua_Sach();
-$obt_tua_sach->delete_tua_sach($del_id);
+
+$tua_sach->delete_tua_sach($del_id);
 }
-$total = Tua_Sach::list_tua_sach($select_all = 1);
+$total = TuaSach::list_tua_sach($select_all = 1);
 if( !empty($total) ){
 
 	$url = 'act=list_tua_sach&';
@@ -18,7 +19,7 @@ if( !empty($total) ){
     if($current_page > $max_page){
     	$current_page = $max_page;
     }
-	$result = Tua_Sach::list_tua_sach($select_all = 0, $posts_per_page, $current_page );
+	$result = TuaSach::list_tua_sach($select_all = 0, $posts_per_page, $current_page );
 	echo '<table class="table ">';
 	echo '<thead><tr><th> Mã</th> <th> Tựa sách </th> <th> Tác giả </th><th> Tóm tắt </th><th> Tác vụ </th> </tr></thead>';
 	echo ' <tbody>';

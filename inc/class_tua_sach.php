@@ -1,16 +1,25 @@
 <?php
-Class Tua_Sach{
+Class TuaSach{
 	protected $conn;
 	protected $ma_tuasach;
 	protected $tuasach;
 	protected $taggia;
 	protected $tomtat;
 	protected $table;
+	static $instance;
 	function __construct(){
 		global $conn;
 		$this->conn = $conn;
 		$this->table = 'tuasach';
 	}
+	static function getInstance(){
+        if(self::$instance !== null){
+            return self::$instance;
+        }
+        self::$instance = new TuaSach();
+        return self::$instance;
+    }
+
 	function them_tua_sach( $tuasach, $tacgia, $tomtat ) {
 
 		$sql ="INSERT INTO `{$this->table}` (`ma_tuasach`, `tuasach`, `tacgia`, `tomtat`) VALUES (NULL, '{$tuasach}', '{$tacgia}', '{$tomtat}')";
@@ -47,11 +56,11 @@ Class Tua_Sach{
 			return 0;
 		}
 	}
-	function get_tua_sach($ma_tuasach){
+	function getTuaSach($ma_tuasach){
 		$result = $this->check_tua_sach($ma_tuasach);
 		if( $result ){
 			while( $row = $result->fetch_assoc() ) {
-				return $row;
+				return $row['tuasach'];
 			}
 		}
 		return 0;

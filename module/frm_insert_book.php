@@ -7,7 +7,6 @@
 		if( empty($isbn) || $isbn == 0 ){
 			$error .= ' Vui lòng chọn đầu sách <br />';
 		}
-
 		if( empty($error) ){
 			$obtCuonSach = CuonSach::getInstance();
 			$isbn = $obtCuonSach->themCuonSach($isbn);
@@ -34,7 +33,7 @@
 		    	<div class="col-sm-9">
 		      		<select class="form-control selectpicker" required name="isbn" data-live-search="true">
 		      			<?php
-			      			$result = Dau_Sach::list_dau_sach();
+			      			$result = DauSach::list_DauSach();
 							if( !empty($result) ){
 								echo '<option value="0"> Chọn đầu sách</option>';
 								while( $row = $result->fetch_assoc() ) {

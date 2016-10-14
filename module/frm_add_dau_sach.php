@@ -9,7 +9,7 @@
 		$bia 		= isset($_POST['bia']) ? $_POST['bia'] :'';
 		$trangthai 	= isset($_POST['trangthai']) ? $_POST['trangthai'] :'';
 		$soluong 	= isset($_POST['soluong']) ? $_POST['soluong'] :'';
-
+		$soluong 	= max($soluong, 1);
 		if( empty($ma_tuasach) || $ma_tuasach == 0 ){
 			$error .= ' Vui lòng chọn tựa sách <br />';
 		}
@@ -17,19 +17,20 @@
 			$error .= ' Vui lòng chọn ngôn ngữ <br />';
 		}
 
-		if(empty($error)){
-			$cDausach = new Dau_Sach();
-			$isbn = $cDausach->them_dau_sach($ma_tuasach, $ngonngu, $bia, $trangthai);
-			if($soluong > 0 && $isbn){
-				$CuonSach = CuonSach::getInstance();
+		if( empty($error) ){
+
+			$cDausach = DauSach::getInstance();
+			$isbn = $cDausach->themDauSach($ma_tuasach, $ngonngu, $bia, $trangthai);
+			if( $isbn  ){
+				$cuonSach = CuonSach::getInstance();
 				for($i =0; $i < $soluong; $i++) {
-					$CuonSach->themCuonSach($isbn);
+					$cuonSach->themCuonSach($isbn);
 				}
 			}
 			if( $isbn ){
-				echo  'Thêm đầu sách thành công';
+				$result_text =   'Thêm đầu sách thành công';
 			} else {
-				echo 'Thêm đầu sách lỗi';
+				$result_text =  'Thêm đầu sách lỗi';
 			}
 		}
 	}
@@ -86,7 +87,7 @@
 		  	<div class="form-group">
 			    <label class="control-label col-sm-2" for="pwd"> Số lượng sách</label>
 			    <div class="col-sm-10">
-			    	<input type="number" value="1" checked name="soluong" />
+			    	<input type="number" value="1" min="1" checked name="soluong" />
 
 			    </div>
 		  	</div>

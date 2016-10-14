@@ -1,24 +1,63 @@
 <?php
-Class Dau_Sach{
+Class DauSach{
 	protected $conn;
 	protected $isbn;
 	protected $ma_tuasach;
 	protected $ngonngu;
 	protected $bia;
 	protected $trangthai;
-	function __construct(){
+	static $instance;
+	function __construct() {
 		global $conn;
-		$this->conn = $conn;
-		$this->table = 'dausach';
+		$this->conn 	= $conn;
+		$this->table 	= 'dausach';
 	}
-	function them_dau_sach($ma_tuasach, $ngonngu, $bia, $trangthai = 1 ) {
+	static function getInstance(){
+        if(self::$instance !== null){
+            return self::$instance;
+        }
+        self::$instance = new DauSach();
+        return self::$instance;
+    }
 
-		if(! $this->check_tua_sach($ma_tuasach) ){
-			return 0;
+	function themDauSach($ma_tuasach, $ngonngu, $bia, $trangthai = 1 ) {
+		$isbn =  $this->kiemTraDauSach( $ma_tuasach, $ngonngu);
+		if ($isbn){
+			// skip add new dau sach
+			return $isbn;
 		}
-		$sql ="INSERT INTO `{$this->table}` (`isbn`, `ma_tuasach`, `ngonngu`, `bia`, `trangthai`) VALUES (NULL, '{$ma_tuasach}', '{$ngonngu}', '{$bia}', '{$trangthai}')";
-		if($this->conn->query($sql)){
-			return $this->conn->insert_id;
+		if ( $isbn == 0 ){
+			// chua ton tai dau dau sach nay
+			// Add new dau sach
+			$sql ="INSERT INTO `{$this->table}` (`isbn`, `ma_tuasach`, `ngonngu`, `bia`, `trangthai`) VALUES (NULL, '{$ma_tuasach}', '{$ngonngu}', '{$bia}', '{$trangthai}')";
+			if($this->conn->query($sql)){
+				return $this->conn->insert_id;
+			}
+		}
+
+	}
+	function getMaTuaSachByISBN($isbn){
+		$sql 	= "SELECT ma_tuasach FROM $this->table WHERE isbn = {$isbn}";
+		$result = $this->conn->query($sql);
+		if ( $result->num_rows > 0 ) {
+			while( $row = $result->fetch_assoc() ) {
+				return $row['ma_tuasach'];
+			}
+		}
+		return 0;
+	}
+	function getTuaSachByISBN($isbn){
+		$ma_tuasach = $this->getMaTuaSachByISBN($isbn);
+		$tuasach 	=  TuaSach::getInstance();
+		return $tuasach->getTuaSach($ma_tuasach);
+	}
+	function kiemTraDauSach($ma_tuasach, $ngonngu){
+		$sql ="SELECT * FROM $this->table WHERE ma_tuasach = {$ma_tuasach} AND ngonngu = '{$ngonngu}' LIMIT 1 ";
+		$result = $this->conn->query($sql);
+		if ( $result->num_rows > 0 ) {
+			while( $row = $result->fetch_assoc() ) {
+				return $row['isbn'];
+			}
 		}
 		return 0;
 	}
@@ -38,7 +77,7 @@ Class Dau_Sach{
 		return $row[0];
 	}
 
-	public static function list_dau_sach() {
+	public static function listDauSach() {
 		global $conn;
 		$sql ="SELECT * FROM dausach";
 		$result = $conn->query($sql);

@@ -50,10 +50,11 @@
 	function show_tua_sach($ma_tuasach){
 		return Tua_Sach::show_tua_sach($ma_tuasach);
 	}
-	function get_tuasach_by_isbn($isbn){
-		$CuonSach = CuonSach::getInstance();
-		return $CuonSach->get_tuasach_by_isbn($isbn);
+	function getTuaSachByISBN($isbn){
+		$dausach = DauSach::getInstance();
+		return $dausach->getTuaSachByISBN($isbn);
 	}
+
 	function phan_trang($total, $posts_per_page = 10, $page = 1, $url = ''){
 		if($total < 2 )
 			return '';

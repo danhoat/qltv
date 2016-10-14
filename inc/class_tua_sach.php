@@ -57,7 +57,7 @@ Class TuaSach{
 		}
 	}
 	function getTuaSach($ma_tuasach){
-		$result = $this->check_tua_sach($ma_tuasach);
+		$result = $this->kiemTraTuaSachTonTai($ma_tuasach);
 		if( $result ){
 			while( $row = $result->fetch_assoc() ) {
 				return $row['tuasach'];
@@ -78,7 +78,7 @@ Class TuaSach{
 		return 'Empty';
 	}
 
-	function check_tua_sach($ma_tuasach){
+	function kiemTraTuaSachTonTai($ma_tuasach){
 		$sql ="SELECT * FROM {$this->table} WHERE ma_tuasach = {$ma_tuasach} ";
 		$result = $this->conn->query($sql);
 		if ($result->num_rows > 0) {

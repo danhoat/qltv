@@ -61,16 +61,8 @@ Class DauSach{
 		}
 		return 0;
 	}
-	function check_tua_sach($ma_tuasach){
-		$sql ="SELECT * FROM tuasach WHERE ma_tuasach = {$ma_tuasach} ";
-		$result = $this->conn->query($sql);
-		if ($result->num_rows > 0) {
-			return 1;
-		}
-		return 0;
-	}
 
-	function count_so_luong($isbn){
+	function demSoLuong($isbn){
 		$sql = "SELECT count(isbn) FROM cuonsach WHERE isbn = {$isbn}";
 		$result = $this->conn->query($sql);
 		$row = mysqli_fetch_row($result);

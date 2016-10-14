@@ -53,10 +53,10 @@
 
 	if( $ma_tuasach ){
 
-		$obt_tuasach 	= $obt_tuasach->getTuaSach($_GET['id']);
-		$tuasach 		= $obt_tuasach['tuasach'];
-		$tacgia 		= $obt_tuasach['tacgia'];
-		$tomtat 		= $obt_tuasach['tomtat'];
+		$record 		= $obt_tuasach->getTuaSach($_GET['id']);
+		$tuasach 		= $record['tuasach'];
+		$tacgia 		= $record['tacgia'];
+		$tomtat 		= $record['tomtat'];
 		$button_text 	= 'Cập nhật';
 		$label_text 	= 'Cập nhật tựa sách';
 		$is_update 		= 1;

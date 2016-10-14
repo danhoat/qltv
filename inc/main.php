@@ -90,8 +90,19 @@
 	}
 
 	function limit_string($string,$len) {
-	    if($len > strlen($string)){$len=strlen($string);};
+		$t_len = $len;
+		$string_len = strlen($string);
+
+	    if($len >  $string_len){
+	    	$len = $string_len;
+	    }
 	    $pos = strpos($string, ' ', $len);
-	    if($pos){$string = substr($string,0,$pos);}else{$string = substr($string,0,$len);}
-	    return $string;
+	    if($pos){
+	    	$string = substr($string,0,$pos);
+	    } else {
+	    	$string = substr($string,0,$len);
+	    }
+	     if($t_len < $string_len)
+	     	$string .= ' ...';
+	    return $string ;
 	}

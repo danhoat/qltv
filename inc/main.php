@@ -24,6 +24,34 @@
 			</select>
 	    <?php
 	}
+	function danhSachQuan($selected = 1){
+		if(empty($selected)){
+			$selected = 1;
+		}
+	?>
+		<select class="form-control" name="quan" required>
+				<option value="0" <?php add_selected($selected, 0);?> >Chọn quận </option>
+				<option value="1" <?php add_selected($selected, 1);?>> Quận 1</option>
+				<option value="2" <?php add_selected($selected, 2);?>> Quận 2 </option>
+				<option value="3" <?php add_selected($selected, 3);?>> Quận 3</option>
+				<option value="4" <?php add_selected($selected, 4);?>> Quận 4</option>
+				<option value="5" <?php add_selected($selected, 5);?>> Quận 5</option>
+				<option value="6" <?php add_selected($selected, 6);?>> Quận 6</option>
+				<option value="7" <?php add_selected($selected, 7);?>> Quận 7</option>
+				<option value="8" <?php add_selected($selected, 8);?>> Quận 8</option>
+				<option value="9" <?php add_selected($selected, 9);?>> Quận 9</option>
+				<option value="10" <?php add_selected($selected, 10);?>> Quận 10</option>
+				<option value="11" <?php add_selected($selected, 11);?>> Quận 11</option>
+				<option value="11" <?php add_selected($selected, 12);?>> Quận 12</option>
+				<option value="11" <?php add_selected($selected, 13);?>> Quận Bình Thạnh</option>
+				<option value="11" <?php add_selected($selected, 14);?>> Quận Tân Bình</option><option value="11" <?php add_selected($selected, 15);?>> Quận Tân Phú</option>
+
+				<option value="11" <?php add_selected($selected, 16);?>> Quận Cần giờ</option>
+				<option value="11" <?php add_selected($selected, 17);?>> Quận Tân Phú</option>
+
+			</select>
+	    <?php
+	}
 	function get_ngon_ngu($ma_ngon_ngu){
 		switch ($ma_ngon_ngu) {
 			case '2':
@@ -54,6 +82,7 @@
 	require('class_tua_sach.php');
 	require('class_dau_sach.php');
 	require('class_books.php');
+	require('class_doc_gia.php');
 
 	function show_tua_sach($ma_tuasach){
 		return Tua_Sach::show_tua_sach($ma_tuasach);

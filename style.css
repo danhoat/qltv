@@ -90,3 +90,18 @@ textarea{
 	font-size: 13px;
 	color: red;
 }
+.sidebar ul li a {
+    font-size: 14px;
+    /* font-weight: bold; */
+    //1text-transform: uppercase;
+}
+ul.sub{
+	padding-left: 10px;
+}
+.sidebar  .navbar-nav>li>a{
+	padding-top: 0;
+	padding-bottom: 0;
+}
+.sidebar li a.heading  {
+	font-size: 16px;
+}

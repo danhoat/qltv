@@ -1,7 +1,7 @@
-<div class="left ">
+<div class="left sidebar">
 	<ul class="nav navbar-nav">
 		<h2>Menu </h2>
-		<li> <a href="index.php?act=books"> Sách</a>
+		<li> <a href="index.php?act=books"  class="heading"> Sách</a>
 			<ul class="sub">
 			<li> <a href="index.php?act=list_tua_sach">Các tựa sách</a></li>
 				<li> <a href="index.php?act=frm_add_tua_sach">Thêm tựa sách</a></li>
@@ -10,7 +10,7 @@
 			</ul>
 		</li>
 		<li>
-			<a href="index.php?act=cards">Quản lý độc giả</a>
+			<a class="heading" href="index.php?act=cards">Độc giả</a>
 			<ul class="sub">
 				<li> <a href="index.php?act=form-insert-user">Thêm mới độc giả</a></li>
 			</ul>

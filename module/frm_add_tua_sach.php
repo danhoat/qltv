@@ -30,7 +30,7 @@
 			$cTuasach = new Tua_Sach();
 			if( $ma_tuasach){
 				// update tua sach
-				$kq = $cTuasach->update_tua_sach($ma_tuasach, $tuasach, $tacgia, $tomtat);
+				$kq = $cTuasach->update_tua_sach($ma_tuasach, $c_tuasach, $c_tacgia, $c_tomtat);
 				if($kq == TRUE){
 					echo  'Cập nhật tựa sách thành công';
 				} else {
@@ -38,7 +38,7 @@
 				}
 			} else {
 				// them moi tua sach
-				$kq = $cTuasach->them_tua_sach($tuasach, $tacgia, $tomtat);
+				$kq = $cTuasach->them_tua_sach($c_tuasach, $c_tacgia, $c_tomtat);
 				if($kq == TRUE){
 					echo  'Thêm tựa sách thành công';
 

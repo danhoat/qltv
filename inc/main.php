@@ -5,7 +5,11 @@
 			echo ' selected';
 		}
 	}
-	function list_ngon_ngu($selected = 1){ ?>
+	function list_ngon_ngu($selected = 1){
+		if(empty($selected)){
+			$selected = 1;
+		}
+	?>
 		<select class="form-control" name="ngonngu" required>
 				<option value="0" <?php add_selected($selected, 0);?> > Chọn ngôn ngữ</option>
 				<option value="1" <?php add_selected($selected, 1);?>> Việt</option>
@@ -58,6 +62,9 @@
 		$dausach = DauSach::getInstance();
 		return $dausach->getTuaSachByISBN($isbn);
 	}
+	function getTuaSachByMaTuaSach($ma_tuasach){
+		return TuaSach::getInstance()->getTuaSachByMaTuaSach($ma_tuasach);
+	}
 
 	function upload_file($file){
 		$size 			= $file['size'];
@@ -78,8 +85,10 @@
 		return false;
 	}
 
-	function limit_string($string,$len) {
-		$t_len = $len;
+	function limit_string($string, $len) {
+		if(empty($string) )
+			return $string;
+		$t_len 		= $len;
 		$string_len = strlen($string);
 
 	    if($len >  $string_len){

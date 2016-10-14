@@ -64,6 +64,26 @@ Class TuaSach{
 		}
 		return 0;
 	}
+
+	function getTitleTuaSach($ma_tuasach){
+		$result = $this->kiemTraTuaSachTonTai($ma_tuasach);
+		if( $result ){
+			while( $row = $result->fetch_assoc() ) {
+				return $row['tuasach'];
+			}
+		}
+		return 0;
+	}
+	
+	function getTuaSachByMaTuaSach($ma_tuasach){
+		$result = $this->kiemTraTuaSachTonTai($ma_tuasach);
+		if( $result ){
+			while( $row = $result->fetch_assoc() ) {
+				return $row['tuasach'];
+			}
+		}
+		return 0;
+	}
 	public static function 	show_tua_sach($ma_tuasach){
 		global $conn;
 		$sql ="SELECT tuasach FROM tuasach WHERE ma_tuasach = {$ma_tuasach}";

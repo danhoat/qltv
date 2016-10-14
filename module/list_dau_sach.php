@@ -30,7 +30,6 @@ if( !empty($total) ){
         $ngonngu = $row['ngonngu'];
 		$trangthai 	= ($row['trangthai'] == 1)  ?  'Kho' :'Đang mượn';
 		echo '<tr>';
-
         echo "<td> " . $isbn. " </td><td> <a class='' href= 'index.php?act=frm_add_dau_sach&id=".$isbn."'> " . limit_string( getTuaSachByISBN($isbn),30). "</a> </td>";
         echo '<td>'.get_ngon_ngu($ngonngu).'</td>';
         echo '<td>'.demSoLuongDauSach($isbn).'</td>';
@@ -44,4 +43,9 @@ if( !empty($total) ){
     echo '</table>';
 
     echo paginate( $posts_per_page, $current_page, $total_record,  $max_page, $url = 'index.php?act=list_dau_sach');
+} else {
+    echo 'Chưa có đầu sách nào trong hệ thống';
+    ?>
+    <a href="index.php?act=frm_add_dau_sach"> Thêm mới một đầu sách</a>
+    <?php
 }

@@ -25,6 +25,7 @@ if( !empty($total) ){
 	echo ' <tbody>';
 	while( $row = $result->fetch_assoc() ) {
 		$isbn 		= $row['isbn'];
+
 		$tinhtrang 	= ($row['tinhtrang'] == 1)  ?  'Kho' :'Đang mượn';
 		echo '<tr>';
         echo "<td> " . $row["ma_cuonsach"]. " </td><td> <a class='' href= 'index.php?act=chi_tiet_sach&id=".$row["ma_cuonsach"]."'> " . limit_string( getTuaSachByISBN($isbn),30). "</a> </td><td>". $tinhtrang. "</td>";

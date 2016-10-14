@@ -38,11 +38,7 @@ Class DauSach{
 	}
 	function themDauSach($ma_tuasach, $ngonngu, $bia, $trangthai = 1 ) {
 		$isbn =  $this->kiemTraDauSach( $ma_tuasach, $ngonngu);
-		if ($isbn){
-			// skip add new dau sach
-			return $isbn;
-		}
-		if ( $isbn == 0 ){
+		if ( !$isbn ){
 			// chua ton tai dau dau sach nay
 			// Add new dau sach
 			$sql ="INSERT INTO `{$this->table}` (`isbn`, `ma_tuasach`, `ngonngu`, `bia`, `trangthai`) VALUES (NULL, '{$ma_tuasach}', '{$ngonngu}', '{$bia}', '{$trangthai}')";
@@ -50,10 +46,12 @@ Class DauSach{
 				return $this->conn->insert_id;
 			}
 		}
+		return $isbn;;
 
 	}
 	function getMaTuaSachByISBN($isbn){
 		$sql 	= "SELECT ma_tuasach FROM $this->table WHERE isbn = {$isbn}";
+
 		$result = $this->conn->query($sql);
 		if ( $result->num_rows > 0 ) {
 			while( $row = $result->fetch_assoc() ) {
@@ -65,7 +63,7 @@ Class DauSach{
 	function getTuaSachByISBN($isbn){
 		$ma_tuasach = $this->getMaTuaSachByISBN($isbn);
 		$tuasach 	=  TuaSach::getInstance();
-		return $tuasach->getTuaSach($ma_tuasach);
+		return $tuasach->getTitleTuaSach($ma_tuasach);
 	}
 	function kiemTraDauSach($ma_tuasach, $ngonngu){
 		$sql ="SELECT * FROM $this->table WHERE ma_tuasach = {$ma_tuasach} AND ngonngu = '{$ngonngu}' LIMIT 1 ";

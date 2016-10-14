@@ -25,9 +25,11 @@
 			$cDausach = DauSach::getInstance();
 			$isbn = $cDausach->themDauSach($ma_tuasach, $ngonngu, $bia, $trangthai);
 			if( $isbn  ){
+
 				$cuonSach = CuonSach::getInstance();
 				for($i =0; $i < $soluong; $i++) {
 					$cuonSach->themCuonSach($isbn);
+					echo ' them sach thanhcong';
 				}
 			}
 			if( $isbn ){
@@ -63,12 +65,13 @@
 
 		      			<?php
 			      			$result = TuaSach::list_tua_sach();
-							if( !empty($result) ){
-								echo '<option value="0"> Chọn tựa sách</option>';
+							if( !empty($result) ){ ?>
+								<option value="0" <?php add_selected(0, $ma_tuasach);?> > Chọn tựa sách</option>';
+								<?php
 								while( $row = $result->fetch_assoc() ) {
 									$_ma_tuasach = $row['ma_tuasach'];
 									$selected = '';
-									if($ma_tuasach == $ma_tuasach){
+									if($ma_tuasach == $_ma_tuasach){
 										$selected = 'selected';
 									}
 									echo "<option {$selected} value='".$_ma_tuasach."'> ".$row['tuasach']."</option>";

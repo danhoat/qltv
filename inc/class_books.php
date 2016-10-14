@@ -21,7 +21,6 @@ Class CuonSach{
 	function themCuonSach( $isbn, $ma_cuonsach = 0, $tinhtrang = 1 ) {
 
 		$sql ="INSERT INTO `{$this->table}` (`isbn`, `ma_cuonsach`, `tinhtrang`) VALUES ({$isbn}, NULL, '{$tinhtrang}' )";
-		echo $sql;
 		return $this->conn->query($sql);
 	}
 	function capNhatCuonSach($ma_tuasach, $tuasach, $tacgia, $tomtat){

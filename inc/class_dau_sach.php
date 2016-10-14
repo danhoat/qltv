@@ -19,7 +19,23 @@ Class DauSach{
         self::$instance = new DauSach();
         return self::$instance;
     }
-
+    function getDauSach($isbn){
+		$result = $this->kiemTraDauSachTonTai($isbn);
+		if( $result ){
+			while( $row = $result->fetch_assoc() ) {
+				return $row;
+			}
+		}
+		return 0;
+	}
+	function kiemTraDauSachTonTai($isbn){
+		$sql ="SELECT * FROM {$this->table} WHERE isbn = {$isbn} ";
+		$result = $this->conn->query($sql);
+		if ($result->num_rows > 0) {
+			return $result;
+		}
+		return 0;
+	}
 	function themDauSach($ma_tuasach, $ngonngu, $bia, $trangthai = 1 ) {
 		$isbn =  $this->kiemTraDauSach( $ma_tuasach, $ngonngu);
 		if ($isbn){

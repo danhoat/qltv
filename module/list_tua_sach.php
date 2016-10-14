@@ -7,7 +7,7 @@ if( !empty($del_id)){
 $total = TuaSach::list_tua_sach($select_all = 1);
 if( !empty($total) ){
 
-	$url = 'act=list_tua_sach&';
+	$url = 'index.php?act=list_tua_sach&';
 	$total_record = $total->num_rows;
     $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
     if(! is_numeric($current_page) || $current_page < 1){
@@ -25,11 +25,12 @@ if( !empty($total) ){
 	echo ' <tbody>';
 	while( $row = $result->fetch_assoc() ) {
 		echo '<tr>';
-        echo "<td> " . $row["ma_tuasach"]. " </td><td> <a class='' href= 'index.php?act=frm_add_tua_sach&id=".$row["ma_tuasach"]."'> " . limit_string($row["tuasach"],30). "</a> </td><td> " . $row["tacgia"]."</td><td>". limit_string($row["tomtat"],60). "</td><td><a  class='action'  href='index.php?act=frm_add_tua_sach&id=".$row["ma_tuasach"]."'>Cập nhật</a> &nbsp; <a href='index.php?{$url}page={$current_page}&del={$row["ma_tuasach"]}' onclick ='return remove_tua_sach()'> Xóa</a>  ";
+        echo "<td> " . $row["ma_tuasach"]. " </td><td> <a class='' href= 'index.php?act=frm_add_tua_sach&id=".$row["ma_tuasach"]."'> " . limit_string($row["tuasach"],30). "</a> </td><td> " . $row["tacgia"]."</td><td>". limit_string($row["tomtat"],60). "</td><td><a  class='action'  href='index.php?act=frm_add_tua_sach&id=".$row["ma_tuasach"]."'>Cập nhật</a> &nbsp; <a href='{$url}page={$current_page}&del={$row["ma_tuasach"]}' onclick ='return remove_tua_sach()'> Xóa</a>  ";
         echo '</tr>';
     }
     echo '</tbody>';
     echo '</table>';
 
-    phan_trang($max_page, $posts_per_page = 10, $current_page, $url = 'act=list_tua_sach&');
+    echo paginate( $posts_per_page, $current_page, $total_record,  $max_page, $url );
+
 }

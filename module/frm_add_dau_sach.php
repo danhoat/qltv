@@ -1,6 +1,9 @@
 <?php
 	$error = '';
-
+	$ma_tuasach = 0;
+	$ngonngu = 0;
+	$_isbn = isset($_GET['id']) ? $_GET['id'] : 0;
+	$cDausach = DauSach::getInstance();
 	if( isset($_POST['submit']) ){
 
 		$request 	= $_POST;
@@ -34,6 +37,15 @@
 			}
 		}
 	}
+	if( $_isbn ){
+		$record 		= $cDausach->getDauSach($_isbn);
+		$ma_tuasach 	= $record['ma_tuasach'];
+		$ngonngu 		= $record['ngonngu'];
+		$bia 			= $record['bia'];
+		$button_text 	= 'Cập nhật';
+		$label_text 	= 'Cập nhật tựa sách';
+		$is_update 		= 1;
+	}
 	?>
 		<form class="form-horizontal" action="" method="POST">
 			<h3> Thêm đầu sách</h3>
@@ -55,7 +67,12 @@
 							if( !empty($result) ){
 								echo '<option value="0"> Chọn tựa sách</option>';
 								while( $row = $result->fetch_assoc() ) {
-									echo "<option value='".$row['ma_tuasach']."'> ".$row['tuasach']."</option>";
+									$_ma_tuasach = $row['ma_tuasach'];
+									$selected = '';
+									if($ma_tuasach == $ma_tuasach){
+										$selected = 'selected';
+									}
+									echo "<option {$selected} value='".$_ma_tuasach."'> ".$row['tuasach']."</option>";
 								}
 							} else {
 								echo '<option value="0"> Đầu sách rỗng</option>';
@@ -68,7 +85,7 @@
 		  		<div class="form-group">
 		    	<label class="control-label col-sm-2" for="email">Ngôn ngữ</label>
 		    	<div class="col-sm-10">
-		    	<?php list_ngon_ngu();?>
+		    	<?php list_ngon_ngu($ngonngu );?>
 		    	</div>
 		  	</div>
 		  	<div class="form-group">
@@ -84,6 +101,8 @@
 			    	<input type="radio" value="0"  name="trangthai" > Chưa sẵn sàng
 			    </div>
 		  	</div>
+		  	<?php
+		  	if( !$_isbn ){?>
 		  	<div class="form-group">
 			    <label class="control-label col-sm-2" for="pwd"> Số lượng sách</label>
 			    <div class="col-sm-10">
@@ -91,6 +110,7 @@
 
 			    </div>
 		  	</div>
+		  	<?php } ?>
 		  	<div class="form-group">
 		    <div class="col-sm-10">
 		    &nbsp;

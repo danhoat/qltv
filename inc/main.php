@@ -1,16 +1,20 @@
 <?php
+	function add_selected($input, $default){
 
-	function list_ngon_ngu(){
-		?>
+		if($input == $default){
+			echo ' selected';
+		}
+	}
+	function list_ngon_ngu($selected = 1){ ?>
 		<select class="form-control" name="ngonngu" required>
-				<option value="0"> Chọn ngôn ngữ</option>
-				<option value="1" selected> Việt</option>
-				<option value="2"> Anh </option>
-				<option value="3"> Pháp</option>
-				<option value="4"> Đức</option>
-				<option value="5"> Trung Quốc</option>
-				<option value="6"> Nhật</option>
-				<option value="7"> Hàn Quốc</option>
+				<option value="0" <?php add_selected($selected, 0);?> > Chọn ngôn ngữ</option>
+				<option value="1" <?php add_selected($selected, 1);?>> Việt</option>
+				<option value="2" <?php add_selected($selected, 2);?>> Anh </option>
+				<option value="3" <?php add_selected($selected, 3);?>> Pháp</option>
+				<option value="4" <?php add_selected($selected, 4);?>> Đức</option>
+				<option value="5" <?php add_selected($selected, 5);?>> Trung Quốc</option>
+				<option value="6" <?php add_selected($selected, 6);?>> Nhật</option>
+				<option value="7" <?php add_selected($selected, 7);?>> Hàn Quốc</option>
 
 
 			</select>
@@ -55,25 +59,6 @@
 		return $dausach->getTuaSachByISBN($isbn);
 	}
 
-	function phan_trang($total, $posts_per_page = 10, $page = 1, $url = ''){
-		if($total < 2 )
-			return '';
-
-		$html ='<ul class="paging pagination">';
-
-		for( $i = 1; $i <= $total; $i++){
-			if ($i == $total) {
-				$html.= "<li><a href='index.php?{$url}page={$total}'>Cuối</a></li>";
-			}else if($i == $page){
-				$html.= "<li class='current active'><a href='#'>{$i}</a></li>";
-			} else if ($i < $total) {
-				$html.= "<li><a href='index.php?{$url}page={$i}'>{$i}</a></li>";
-			}
-
-		}
-		$html.='</ul>';
-		echo $html;
-	}
 	function upload_file($file){
 		$size 			= $file['size'];
 		$tmp_name 		= $file['tmp_name'];
@@ -185,4 +170,8 @@ function get_site_title(){
 		$title .= " | {$page} ";
 	}
 	return $title;
+}
+function demSoLuongDauSach($isbn){
+	$dausach = DauSach::getInstance();
+	return $dausach->demSoLuong($isbn);
 }

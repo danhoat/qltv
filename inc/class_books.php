@@ -1,5 +1,5 @@
 <?php
-Class Cuon_Sach{
+Class CuonSach{
 	protected $conn;
 	protected $isbn;
 	protected $ma_cuonsach;
@@ -15,10 +15,10 @@ Class Cuon_Sach{
         if(self::$instance !== null){
             return self::$instance;
         }
-        self::$instance = new Cuon_Sach();
+        self::$instance = new CuonSach();
         return self::$instance;
     }
-	function them_cuon_sach( $isbn, $ma_cuonsach, $tinhtrang = 1 ) {
+	function themCuonSach( $isbn, $ma_cuonsach = 0, $tinhtrang = 1 ) {
 
 		$sql ="INSERT INTO `{$this->table}` (`isbn`, `ma_cuonsach`, `tinhtrang`) VALUES ({$isbn}, NULL, '{$tinhtrang}' )";
 		echo $sql;

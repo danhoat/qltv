@@ -21,9 +21,9 @@
 			$cDausach = new Dau_Sach();
 			$isbn = $cDausach->them_dau_sach($ma_tuasach, $ngonngu, $bia, $trangthai);
 			if($soluong > 0 && $isbn){
-				$cuon_sach = new Cuon_Sach();
+				$CuonSach = CuonSach::getInstance();
 				for($i =0; $i < $soluong; $i++) {
-					$cuon_sach->them_cuon_sach($isbn, $trangthai = 1);
+					$CuonSach->themCuonSach($isbn);
 				}
 			}
 			if( $isbn ){

@@ -51,8 +51,8 @@
 		return Tua_Sach::show_tua_sach($ma_tuasach);
 	}
 	function get_tuasach_by_isbn($isbn){
-		$cuon_sach = Cuon_Sach::getInstance();
-		return $cuon_sach->get_tuasach_by_isbn($isbn);
+		$CuonSach = CuonSach::getInstance();
+		return $CuonSach->get_tuasach_by_isbn($isbn);
 	}
 	function phan_trang($total, $posts_per_page = 10, $page = 1, $url = ''){
 		if($total < 2 )

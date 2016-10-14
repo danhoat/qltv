@@ -64,7 +64,7 @@ Class Tua_Sach{
 
 		if ($result->num_rows > 0)
 			while( $row = $result->fetch_assoc() ) {
-				return $row['tuasach'];
+				return limit_string($row['tuasach'], 50);
 			}
 		return 'Empty';
 	}

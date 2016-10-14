@@ -24,7 +24,7 @@ if( !empty($total) ){
 	echo ' <tbody>';
 	while( $row = $result->fetch_assoc() ) {
 		echo '<tr>';
-        echo "<td> " . $row["ma_tuasach"]. " </td><td> <a class='' href= 'index.php?act=frm_add_tua_sach&id=".$row["ma_tuasach"]."'> " . $row["tuasach"]. "</a> </td><td> " . $row["tacgia"]."</td><td>". $row["tomtat"]. "</td><td><a  class='action'  href='index.php?act=frm_add_tua_sach&id=".$row["ma_tuasach"]."'>Cập nhật</a> &nbsp; <a href='index.php?{$url}page={$current_page}&del={$row["ma_tuasach"]}' onclick ='return remove_tua_sach()'> Xóa</a>  ";
+        echo "<td> " . $row["ma_tuasach"]. " </td><td> <a class='' href= 'index.php?act=frm_add_tua_sach&id=".$row["ma_tuasach"]."'> " . limit_string($row["tuasach"],50). "</a> </td><td> " . $row["tacgia"]."</td><td>". limit_string($row["tomtat"],100). "</td><td><a  class='action'  href='index.php?act=frm_add_tua_sach&id=".$row["ma_tuasach"]."'>Cập nhật</a> &nbsp; <a href='index.php?{$url}page={$current_page}&del={$row["ma_tuasach"]}' onclick ='return remove_tua_sach()'> Xóa</a>  ";
         echo '</tr>';
     }
     echo '</tbody>';

@@ -88,3 +88,10 @@
 		}
 		return false;
 	}
+
+	function limit_string($string,$len) {
+	    if($len > strlen($string)){$len=strlen($string);};
+	    $pos = strpos($string, ' ', $len);
+	    if($pos){$string = substr($string,0,$pos);}else{$string = substr($string,0,$len);}
+	    return $string;
+	}

@@ -51,7 +51,7 @@
 		      		<select class="form-control selectpicker" required name="ma_tuasach" data-live-search="true">
 
 		      			<?php
-			      			$result = Tua_Sach::list_tua_sach();
+			      			$result = TuaSach::list_tua_sach();
 							if( !empty($result) ){
 								echo '<option value="0"> Chọn tựa sách</option>';
 								while( $row = $result->fetch_assoc() ) {

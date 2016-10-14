@@ -77,16 +77,26 @@ Class DauSach{
 		return $row[0];
 	}
 
-	public static function listDauSach() {
+	public static function listDauSach($select_all = 0, $posts_per_age = 10, $current_page = 1) {
 		global $conn;
-		$sql ="SELECT * FROM dausach";
-		$result = $conn->query($sql);
-		if( !$result )
+		if($select_all){
+			$sql ="SELECT * FROM dausach";
+			$result = $conn->query($sql);
+
+			if ($result->num_rows > 0) {
+				return $result;
+			}
 			return 0;
-		if ($result->num_rows > 0) {
-			return $result;
+		} else {
+			$offset = $posts_per_age * ($current_page - 1);
+			$sql ="SELECT * FROM dausach LIMIT {$posts_per_age} OFFSET {$offset}";
+
+			$result = $conn->query($sql);
+			if ($result->num_rows > 0) {
+				return $result;
+			}
+			return 0;
 		}
-		return 0;
 	}
 	function show_tua_sach($ma_tuasach){
 

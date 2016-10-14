@@ -156,3 +156,33 @@
     }
     return $pagination; //return pagination links
 }
+function get_site_title(){
+	$act 	= isset( $_GET['act'] ) ? $_GET['act'] : '';
+	$page 	= isset($_GET['page']) ?  $_GET['page'] : 1;
+	$title 	= '';
+	switch ($act) {
+		case 'list_dau_sach':
+			$title .=  "Danh sách đầu sách";
+			break;
+		case 'frm_add_dau_sach':
+			$title .=  "Thêm mới đầu sách";
+			break;
+		case 'list_sach':
+			$title .=  "List sách";
+			break;
+		case 'list_tua_sach':
+			$title .=  "List tựa sách";
+			break;
+		case 'frm_add_tua_sach':
+			$title .=  "Thêm mới tựa sách";
+			break;
+
+		default:
+			$title = 'Đồ án quản lý thư viện';
+			break;
+	}
+	if( is_numeric($page) && $page > 1 ){
+		$title .= " | {$page} ";
+	}
+	return $title;
+}

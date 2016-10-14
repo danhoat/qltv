@@ -5,7 +5,6 @@ body, ul, li, div, ol, td, span, p ,label, form,h1,h2,h3,h4,h5,h6{
 ul.paging li{
 	float: left;
 	list-style: none;
-	padding: 3px 5px;
 }
 ul.paging li a{
 	list-style: none;
@@ -110,4 +109,8 @@ a.action{
 }
 a.action:hover{
 	text-decoration: none;
+}
+ul.pagination {
+	float: right;
+	text-align: right;
 }

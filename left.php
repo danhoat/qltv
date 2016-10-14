@@ -7,7 +7,7 @@
 				<li> <a href="index.php?act=frm_add_tua_sach">Thêm tựa sách</a></li>
 				<li> <a href="index.php?act=list_dau_sach">Các đầu sách</a></li>
 				<li> <a href="index.php?act=frm_add_dau_sach">Thêm đầu sách</a></li>
-				<li> <a href="index.php?act=list_sach">Cuốn sách</a></li>
+				<li> <a href="index.php?act=list_sach">Tất cả sách</a></li>
 				<li> <a href="index.php?act=frm_add_cuon_sach">Thêm Cuốn sách</a></li>
 			</ul>
 		</li>

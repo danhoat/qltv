@@ -15,7 +15,7 @@
 	<title> Đồ án quản lý thư viện</title>
 	<script type="text/javascript">
 		function remove_tua_sach(){
-			return confirm("Bạn muốn xóa tựa sách này ?");
+			return confirm("Bạn thực sự muốn xóa?");
 		}
 
 	</script>

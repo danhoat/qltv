@@ -29,7 +29,7 @@ if( !empty($total) ){
 		$ma_tuasach = $row['ma_tuasach'];
 		$trangthai 	= ($row['trangthai'] == 1)  ?  'Kho' :'Đang mượn';
 		echo '<tr>';
-        echo "<td> " . $isbn. " </td><td> <a class='' href= 'index.php?act=frm_add_dau_sach.php&id=".$isbn."'> " . limit_string( getTuaSachByISBN($isbn),30). "</a> </td><td>". $trangthai. "</td>";
+        echo "<td> " . $isbn. " </td><td> <a class='' href= 'index.php?act=frm_add_dau_sach&id=".$isbn."'> " . limit_string( getTuaSachByISBN($isbn),30). "</a> </td><td>". $trangthai. "</td>";
 
         echo "<td><a  class='action'  href='index.php?act=frm_add_dau_sach&id=".$isbn."'>Cập nhật</a> &nbsp; <a href='index.php?{$url}page={$current_page}&del={$isbn}' onclick ='return remove_tua_sach()'> Xóa</a>  ";
         echo '</tr>';

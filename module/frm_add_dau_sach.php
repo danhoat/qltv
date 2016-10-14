@@ -40,22 +40,19 @@
 		  	<div class="form-group">
 		    	<label class="control-label col-sm-2" for="email">Tựa sách</label>
 		    	<div class="col-sm-10">
-		      		<select class="form-control selectpicker" name="ma_tuasach" data-live-search="true">
+		      		<select class="form-control selectpicker" required name="ma_tuasach" data-live-search="true">
 
 		      			<?php
-		      			$result = Tua_Sach::list_tua_sach();
-						if( !empty($result) ){
-							echo '<option value="0"> Chọn tựa sách</option>';
-							while( $row = $result->fetch_assoc() ) {
-								echo "<option value='".$row['ma_tuasach']."'> ".$row['tuasach']."</option>";
+			      			$result = Tua_Sach::list_tua_sach();
+							if( !empty($result) ){
+								echo '<option value="0"> Chọn tựa sách</option>';
+								while( $row = $result->fetch_assoc() ) {
+									echo "<option value='".$row['ma_tuasach']."'> ".$row['tuasach']."</option>";
+								}
+							} else {
+								echo '<option value="0"> Đầu sách rỗng</option>';
 							}
-						} else {
-							echo '<option value="0"> Đầu sách rỗng</option>';
-						}
 						?>
-
-
-		      			<option value="2"> Cuốn sách 2</option>
 		      		</select>
 		    	</div>
 		  	</div>

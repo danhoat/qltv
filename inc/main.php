@@ -2,7 +2,7 @@
 
 	function list_ngon_ngu(){
 		?>
-		<select class="form-control" name="ngonngu">
+		<select class="form-control" name="ngonngu" required>
 				<option value="0"> Chọn ngôn ngữ</option>
 				<option value="1" selected> Việt</option>
 				<option value="2"> Anh </option>

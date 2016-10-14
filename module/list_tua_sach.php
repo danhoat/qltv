@@ -8,7 +8,9 @@ if( !empty($total) ){
     }
     $posts_per_page = 10;
     $max_page = ceil($total_record/$posts_per_page);
-
+    if($current_page > $max_page){
+    	$current_page = $max_page;
+    }
 	$result = Tua_Sach::list_tua_sach($select_all = 0, $posts_per_page, $current_page );
 	echo '<table class="table ">';
 	echo '<thead><tr><th> Mã</th> <th> Tựa sách </th> <th> Tác giả </th><th> Tóm tắt </th> </tr></thead>';

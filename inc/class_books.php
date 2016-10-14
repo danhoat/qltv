@@ -24,14 +24,14 @@ Class CuonSach{
 		echo $sql;
 		return $this->conn->query($sql);
 	}
-	function update_tua_sach($ma_tuasach, $tuasach, $tacgia, $tomtat){
+	function capNhatCuonSach($ma_tuasach, $tuasach, $tacgia, $tomtat){
 		$sql = "UPDATE `{$this->table}` SET tuasach = '{$tuasach}',tacgia = '{$tacgia}', tomtat = '{$tomtat}'
 				WHERE ma_tuasach = {$ma_tuasach}";
 
 		return $this->conn->query($sql);
 	}
-	function delete_tua_sach($ma_tuasach){
-		$sql = "DELETE FROM {$this->table} WHERE ma_tuasach= {$ma_tuasach}";
+	function xoaCuonSach($ma_cuonsach){
+		$sql = "DELETE FROM {$this->table} WHERE ma_cuonsach= {$ma_cuonsach}";
 		return $this->conn->query($sql);
 	}
 	public static function list_books($select_all = 0, $posts_per_age = 10, $current_page = 1) {
@@ -55,7 +55,7 @@ Class CuonSach{
 			return 0;
 		}
 	}
-	function get_tua_sach($ma_tuasach){
+	function getTuaSach($ma_tuasach){
 		$result = $this->check_tua_sach($ma_tuasach);
 		if( $result ){
 			while( $row = $result->fetch_assoc() ) {

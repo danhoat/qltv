@@ -98,7 +98,8 @@ Class DauSach{
 			return 0;
 		}
 	}
-	function show_tua_sach($ma_tuasach){
-
+	function xoaDauSach($isbn){
+		$sql = "DELETE FROM {$this->table} WHERE isbn= {$isbn}";
+		return $this->conn->query($sql);
 	}
 }

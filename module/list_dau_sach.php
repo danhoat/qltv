@@ -1,10 +1,14 @@
 <?php
-$del_id = isset($_GET['del']) ? $_GET['del'] : '';
+$isbn = isset($_GET['del']) ? $_GET['del'] : '';
+$dausach   = DauSach::getInstance();
+if( !empty($isbn)){
+    $dausach->xoaDauSach($isbn);
+}
 
 $total = DauSach::listDauSach($select_all = 1);
 if( !empty($total) ){
 
-	$url = 'act=list_tua_sach&';
+	$url = 'act=list_dau_sach&';
 	$total_record = $total->num_rows;
     $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
     if(! is_numeric($current_page) || $current_page < 1){
@@ -16,17 +20,18 @@ if( !empty($total) ){
     	$current_page = $max_page;
     }
 	$result = DauSach::listDauSach($select_all = 0, $posts_per_page, $current_page );
+	echo "Hệ thống hiện có {$total_record} đầu sách";
 	echo '<table class="table ">';
-	echo '<thead><tr><th> Mã</th> <th> Tựa sách </th><th> Tình trạng </td> <th> Tác vụ </th> </tr></thead>';
+	echo '<thead><tr><th> ISBN</th> <th> Tựa sách </th><th> Tình trạng </td> <th> Tác vụ </th> </tr></thead>';
 	echo ' <tbody>';
 	while( $row = $result->fetch_assoc() ) {
 		$isbn 		= $row['isbn'];
 		$ma_tuasach = $row['ma_tuasach'];
 		$trangthai 	= ($row['trangthai'] == 1)  ?  'Kho' :'Đang mượn';
 		echo '<tr>';
-        echo "<td> " . $ma_tuasach. " </td><td> <a class='' href= 'index.php?act=frm_add_dau_sach.php&id=".$ma_tuasach."'> " . limit_string( getTuaSachByISBN($isbn),30). "</a> </td><td>". $trangthai. "</td>";
+        echo "<td> " . $isbn. " </td><td> <a class='' href= 'index.php?act=frm_add_dau_sach.php&id=".$isbn."'> " . limit_string( getTuaSachByISBN($isbn),30). "</a> </td><td>". $trangthai. "</td>";
 
-        echo "<td><a  class='action'  href='index.php?act=frm_add_dau_sach&id=".$ma_tuasach."'>Cập nhật</a> &nbsp; <a href='index.php?{$url}page={$current_page}&del={$ma_tuasach}' onclick ='return remove_tua_sach()'> Xóa</a>  ";
+        echo "<td><a  class='action'  href='index.php?act=frm_add_dau_sach&id=".$isbn."'>Cập nhật</a> &nbsp; <a href='index.php?{$url}page={$current_page}&del={$isbn}' onclick ='return remove_tua_sach()'> Xóa</a>  ";
         echo '</tr>';
     }
     echo '</tbody>';

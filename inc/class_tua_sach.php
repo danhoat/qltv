@@ -20,12 +20,12 @@ Class TuaSach{
         return self::$instance;
     }
 
-	function them_tua_sach( $tuasach, $tacgia, $tomtat ) {
+	function themTuaSach( $tuasach, $tacgia, $tomtat ) {
 
 		$sql ="INSERT INTO `{$this->table}` (`ma_tuasach`, `tuasach`, `tacgia`, `tomtat`) VALUES (NULL, '{$tuasach}', '{$tacgia}', '{$tomtat}')";
 		return $this->conn->query($sql);
 	}
-	function update_tua_sach($ma_tuasach, $tuasach, $tacgia, $tomtat){
+	function capNhatTuaSach($ma_tuasach, $tuasach, $tacgia, $tomtat){
 		$sql = "UPDATE `{$this->table}` SET tuasach = '{$tuasach}',tacgia = '{$tacgia}', tomtat = '{$tomtat}'
 				WHERE ma_tuasach = {$ma_tuasach}";
 

@@ -7,6 +7,10 @@
 	$tacgia = '';
 	$ma_tuasach = 0;
 	$tomtat = '';
+
+	$ma_tuasach = isset($_GET['id']) ? $_GET['id'] : 0;
+	$obt_tuasach =TuaSach::getInstance();
+
 	if( isset($_POST['submit']) ){
 		$request 	= $_POST;
 		$c_tuasach 	= isset($_POST['tuasach']) ? $_POST['tuasach'] :'';
@@ -14,8 +18,6 @@
 		$c_tomtat 	= isset($_POST['tomtat']) ? $_POST['tomtat'] :'';
 		$is_update 	= isset($_POST['is_update']) ? $_POST['is_update'] :'';
 		$ma_tuasach = isset($_POST['ma_tuasach']) ? $_POST['ma_tuasach'] :'';
-
-
 
 		if( empty($c_tuasach) ){
 			$error .= ' Vui lòng nhập tựa sách <br />';
@@ -27,10 +29,10 @@
 			$error .= ' Vui lòng nhập tóm tắt cuốn sách <br />';
 		}
 		if( empty($error) ){
-			$cTuasach = new Tua_Sach();
+
 			if( $ma_tuasach){
 				// update tua sach
-				$kq = $cTuasach->update_tua_sach($ma_tuasach, $c_tuasach, $c_tacgia, $c_tomtat);
+				$kq = $obt_tuasach->capNhatTuaSach($ma_tuasach, $c_tuasach, $c_tacgia, $c_tomtat);
 				if($kq == TRUE){
 					echo  'Cập nhật tựa sách thành công';
 				} else {
@@ -38,7 +40,7 @@
 				}
 			} else {
 				// them moi tua sach
-				$kq = $cTuasach->them_tua_sach($c_tuasach, $c_tacgia, $c_tomtat);
+				$kq = $obt_tuasach->themTuaSach($c_tuasach, $c_tacgia, $c_tomtat);
 				if($kq == TRUE){
 					echo  'Thêm tựa sách thành công';
 
@@ -48,11 +50,10 @@
 			}
 		}
 	}
-	$ma_tuasach = isset($_GET['id']) ? $_GET['id'] : 0;
+
 	if( $ma_tuasach ){
 
-		$cTuaSach 		= new Tua_Sach();
-		$obt_tuasach 	= $cTuaSach->get_tua_sach($_GET['id']);
+		$obt_tuasach 	= $obt_tuasach->getTuaSach($_GET['id']);
 		$tuasach 		= $obt_tuasach['tuasach'];
 		$tacgia 		= $obt_tuasach['tacgia'];
 		$tomtat 		= $obt_tuasach['tomtat'];

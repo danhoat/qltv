@@ -80,8 +80,8 @@
 		  	<div class="form-group">
 			    <label class="control-label col-sm-2" for="pwd">Trạng thái</label>
 			    <div class="col-sm-10">
-			    	<input type="radio" value="1" checked name="trangthai" > Đang rãnh
-			    	<input type="radio" value="0"  name="trangthai" > Đang mượn
+			    	<input type="radio" value="1" checked name="trangthai" > Có sẵn
+			    	<input type="radio" value="0"  name="trangthai" > Chưa sẵn sàng
 			    </div>
 		  	</div>
 		  	<div class="form-group">

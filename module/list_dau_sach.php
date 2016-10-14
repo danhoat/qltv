@@ -9,7 +9,7 @@ if( !empty($result) ){
 		$isbn = $row["isbn"];
 		$soluong = $dausach->count_so_luong($isbn);
 		echo '<tr>';
-        echo "<td> " .show_tua_sach($row["ma_tuasach"]). " </td><td> " . show_ngon_ngu($row["ngonngu"]). " </td> <td>".$soluong."</td><td>". $row["bia"]. "</td>";
+        echo "<td> " .show_tua_sach($row["ma_tuasach"]). " </td><td> " . get_ngon_ngu($row["ngonngu"]). " </td> <td>".$soluong."</td><td>". $row["bia"]. "</td>";
         echo '</tr>';
     }
     echo '</tbody>';

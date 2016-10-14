@@ -22,7 +22,7 @@ if( !empty($total) ){
 	while( $row = $result->fetch_assoc() ) {
 		$isbn = $row['isbn'];
 		echo '<tr>';
-        echo "<td> " . $row["ma_cuonsach"]. " </td><td> <a class='' href= 'index.php?act=frm_add_tua_sach&id=".$row["ma_cuonsach"]."'> " . limit_string( get_tuasach_by_isbn($isbn),30). "</a> </td><td>". $row["tinhtrang"]. "</td><td><a  class='action'  href='index.php?act=frm_add_tua_sach&id=".$row["ma_cuonsach"]."'>Cập nhật</a> &nbsp; <a href='index.php?{$url}page={$current_page}&del={$row["ma_cuonsach"]}' onclick ='return remove_tua_sach()'> Xóa</a>  ";
+        echo "<td> " . $row["ma_cuonsach"]. " </td><td> <a class='' href= 'index.php?act=list_sach&id=".$row["ma_cuonsach"]."'> " . limit_string( get_tuasach_by_isbn($isbn),30). "</a> </td><td>". $row["tinhtrang"]. "</td><td><a  class='action'  href='index.php?act=frm_insert_book&id=".$row["ma_cuonsach"]."'>Cập nhật</a> &nbsp; <a href='index.php?{$url}page={$current_page}&del={$row["ma_cuonsach"]}' onclick ='return remove_tua_sach()'> Xóa</a>  ";
         echo '</tr>';
     }
     echo '</tbody>';

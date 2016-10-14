@@ -16,7 +16,7 @@
 			</select>
 	    <?php
 	}
-	function show_ngon_ngu($ma_ngon_ngu){
+	function get_ngon_ngu($ma_ngon_ngu){
 		switch ($ma_ngon_ngu) {
 			case '2':
 				return 'Anh';
@@ -41,9 +41,7 @@
 				return 'Việt';
 				break;
 		}
-		if($ma_ngon_ngu == 1){
-			echo 'Việt';
-		}
+
 	}
 	require('class_tua_sach.php');
 	require('class_dau_sach.php');
@@ -135,7 +133,7 @@
         }
 
         if($first_link){ //if current active page is first link
-            $pagination .= '<li class="first active">'.$current_page.'</li>';
+            $pagination .= '<li class="first active"><span>'.$current_page.'</span></li>';
         }elseif($current_page == $total_pages){ //if it's the last active link
             $pagination .= '<li class="last active"><span>'.$current_page.'</span></li>';
         }else{ //regular current link

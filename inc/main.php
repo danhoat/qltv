@@ -51,20 +51,19 @@
 		return Tua_Sach::show_tua_sach($ma_tuasach);
 	}
 
-	function phan_trang($total,$posts_per_page, $page){
-
+	function phan_trang($total, $posts_per_page = 10, $page = 1, $url = ''){
 		if($total < 2 )
 			return '';
 
-		$html ='<ul class="paging">';
+		$html ='<ul class="paging pagination">';
 
 		for( $i = 1; $i <= $total; $i++){
 			if ($i == $total) {
-				$html.= "<li><a href='index.php?page={$total}'>Cuối</a></li>";
+				$html.= "<li><a href='index.php?{$url}page={$total}'>Cuối</a></li>";
 			}else if($i == $page){
-				$html.= "<li><a href='#'>{$i}</a></li>";
+				$html.= "<li class='current active'><a href='#'>{$i}</a></li>";
 			} else if ($i < $total) {
-				$html.= "<li><a href='index.php?page={$i}'>{$i}</a></li>";
+				$html.= "<li><a href='index.php?{$url}page={$i}'>{$i}</a></li>";
 			}
 
 		}

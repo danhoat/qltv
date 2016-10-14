@@ -1,6 +1,15 @@
 <?php
-$result = Tua_Sach::list_tua_sach();
-if( !empty($result) ){
+$total = Tua_Sach::list_tua_sach($select_all = 1);
+if( !empty($total) ){
+	$total_record = $total->num_rows;
+    $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
+    if(! is_numeric($current_page) || $current_page < 1){
+    	$current_page = 1;
+    }
+    $posts_per_page = 10;
+    $max_page = ceil($total_record/$posts_per_page);
+
+	$result = Tua_Sach::list_tua_sach($select_all = 0, $posts_per_page, $current_page );
 	echo '<table class="table ">';
 	echo '<thead><tr><th> Mã</th> <th> Tựa sách </th> <th> Tác giả </th><th> Tóm tắt </th> </tr></thead>';
 	echo ' <tbody>';
@@ -11,4 +20,6 @@ if( !empty($result) ){
     }
     echo '</tbody>';
     echo '</table>';
+
+    phan_trang($max_page, $posts_per_page = 10, $current_page, $url = 'act=list_tua_sach&');
 }

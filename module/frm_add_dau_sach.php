@@ -1,9 +1,10 @@
 <?php
-	$error = '';
+	$error 		= '';
 	$ma_tuasach = 0;
-	$ngonngu = 0;
-	$_isbn = isset($_GET['id']) ? $_GET['id'] : 0;
-	$cDausach = DauSach::getInstance();
+	$ngonngu 	= 0;
+	$bia 		= '';
+	$_isbn 		= isset($_GET['id']) ? $_GET['id'] : 0;
+	$cDausach 	= DauSach::getInstance();
 	if( isset($_POST['submit']) ){
 
 		$request 	= $_POST;
@@ -25,7 +26,6 @@
 			$cDausach = DauSach::getInstance();
 			$isbn = $cDausach->themDauSach($ma_tuasach, $ngonngu, $bia, $trangthai);
 			if( $isbn  ){
-
 				$cuonSach = CuonSach::getInstance();
 				for($i =0; $i < $soluong; $i++) {
 					$cuonSach->themCuonSach($isbn);
@@ -93,7 +93,7 @@
 		  	<div class="form-group">
 			    <label class="control-label col-sm-2" for="pwd">Bìa </label>
 			    <div class="col-sm-10">
-			      <input type="text" class="form-control" id="tacgia" name="tacgia" placeholder="Bìa cuốn sách">
+			      <input type="text" class="form-control" id="bia" name="bia" placeholder="Bìa cuốn sách" value="<?php echo $bia;?>">
 			    </div>
 		  	</div>
 		  	<div class="form-group">

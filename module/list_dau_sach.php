@@ -22,7 +22,7 @@ if( !empty($total) ){
 	$result = DauSach::listDauSach($select_all = 0, $posts_per_page, $current_page );
 	echo "Hệ thống hiện có {$total_record} đầu sách";
 	echo '<table class="table ">';
-	echo '<thead><tr><th> ISBN</th> <th> Tựa sách </th><th> Ngôn ngữ </th><td> Số lượng<td><th> Tình trạng </td> <th> Tác vụ </th> </tr></thead>';
+	echo '<thead><tr><th> ISBN</th> <th> Tựa sách </th><th> Ngôn ngữ </th><th> Số cuốn</th><th> Tình trạng </td> <th> Tác vụ </th> </tr></thead>';
 	echo ' <tbody>';
 	while( $row = $result->fetch_assoc() ) {
 		$isbn 		= $row['isbn'];

@@ -74,7 +74,7 @@ Class TuaSach{
 		}
 		return 0;
 	}
-	
+
 	function getTuaSachByMaTuaSach($ma_tuasach){
 		$result = $this->kiemTraTuaSachTonTai($ma_tuasach);
 		if( $result ){

@@ -30,6 +30,7 @@ Class DauSach{
 	}
 	function kiemTraDauSachTonTai($isbn){
 		$sql ="SELECT * FROM {$this->table} WHERE isbn = {$isbn} ";
+
 		$result = $this->conn->query($sql);
 		if ($result->num_rows > 0) {
 			return $result;
@@ -45,10 +46,18 @@ Class DauSach{
 			if($this->conn->query($sql)){
 				return $this->conn->insert_id;
 			}
+		} else {
+			$this->capNhatDauSach($isbn, $ma_tuasach, $ngonngu, $bia, $trangthai = 1);
 		}
-		return $isbn;;
-
+		return $isbn;
 	}
+
+	function capNhatDauSach($isbn, $ma_tuasach, $ngonngu, $bia, $trangthai = 1 ) {
+		$sql = "UPDATE `{$this->table}` SET ma_tuasach = '{$ma_tuasach}',ngonngu = '{$ngonngu}', bia = '{$bia}' WHERE isbn = {$isbn}";
+
+		return $this->conn->query($sql);
+	}
+
 	function getMaTuaSachByISBN($isbn){
 		$sql 	= "SELECT ma_tuasach FROM $this->table WHERE isbn = {$isbn}";
 

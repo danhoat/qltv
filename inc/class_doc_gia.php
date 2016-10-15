@@ -13,6 +13,16 @@ Class DocGia{
 		$this->table = 'docgia';
 		$this->conn = $conn;
 	}
+	//function getThongTinDocGia(){}
+	function getThongTinDocGia($ma_docgia){
+		$sql ="SELECT * FROM  docgia WHERE ma_docgia = {$ma_docgia}";
+		$result = $this->conn->query($sql);
+		if ($result->num_rows > 0)
+			while( $row = $result->fetch_assoc() ) {
+				return $row;
+			}
+		return 0;
+	}
 	static function getInstance(){
         if(self::$instance !== null){
             return self::$instance;
@@ -55,6 +65,49 @@ Class DocGia{
 class TreEm extends DocGia{
 	protected $ma_docgia;
 	protected $ma_docgia_nguoilon;
+	static $instance;
+	function __construct(){
+		parent::__construct();
+		$this->table = 'treem';
+	}
+	static function getInstance(){
+        if(self::$instance !== null){
+            return self::$instance;
+        }
+        self::$instance = new TreEm();
+        return self::$instance;
+    }
+    function isDocGiaTreEm($ma_docgia){
+    	$sql ="SELECT * FROM  $this->table WHERE ma_docgia = {$ma_docgia} LIMIT 1";
+		$result = $this->conn->query($sql);
+		if ($result->num_rows > 0)
+			while( $row = $result->fetch_assoc() ) {
+				return 1;
+				//return $row['ma_docgia_nguoilon'];
+			}
+		return 0;
+    }
+	function getThongTinDocGia($ma_docgia){
+		$ma_docgia_nguoilon = $this->maDocGiaNguoiLon($ma_docgia);
+		$row = array();
+		$record  = parent::getThongTinDocGia($ma_docgia);
+		if($record){
+			$record['ma_docgia_nguoilon'] = $ma_docgia_nguoilon;
+			return $record;
+		}
+		return $row;
+
+	}
+	function maDocGiaNguoiLon($ma_docgia){
+		$sql ="SELECT ma_docgia_nguoilon FROM  $this->table WHERE ma_docgia = {$ma_docgia}";
+		$result = $conn->query($sql);
+		if ($result->num_rows > 0)
+			while( $row = $result->fetch_assoc() ) {
+				return $row['ma_docgia_nguoilon'];
+			}
+		return 0;
+	}
+
 }
 
 class NguoiLon extends DocGia {
@@ -65,10 +118,13 @@ class NguoiLon extends DocGia {
 	protected $dienthoai;
 	protected $han_sd;
 	static $instance;
+	protected $docgia;
 	protected $table;
 	public function __construct(){
-		$this->table = 'nguoilon';
 		parent::__construct();
+		$this->docgia = NULL;
+		$this->table = 'nguoilon';
+
 	}
 	static function getInstance(){
         if(self::$instance !== null){
@@ -97,5 +153,25 @@ class NguoiLon extends DocGia {
 		}
 		return 0;
     }
+    function getThongTinDocGia($ma_docgia){
+
+		$record = parent::getThongTinDocGia($ma_docgia);
+		if($record){
+			$sql = "SELECT * FROM {$this->table}  WHERE ma_docgia = {$ma_docgia}";
+			echo $sql;
+			$result = $this->conn->query($sql);
+			if ($result->num_rows > 0)
+			while( $row = $result->fetch_assoc() ) {
+				$record['diachi'] 		=  $row['diachi'];
+				$record['quan'] 		=  $row['quan'];
+				$record['dienthoai'] 	=  $row['dienthoai'];
+				$record['han_sd'] 		=  $row['han_sd'];
+				return $record;
+			}
+
+		}
+		return $record;
+
+	}
 
 }

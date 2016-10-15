@@ -45,30 +45,41 @@ if(isset($_POST['submit'])){
 	  </div>
 	</div>
 	<div class="form-group row">
-	  <label for="example-tel-input" class="col-xs-2 col-form-label">Địa chỉ</label>
+	  <label for="example-tel-input" class="col-xs-2 col-form-label">Loại độc giả </label>
 	  <div class="col-xs-10">
-	    <input class="form-control" type="text" value="" placeholder="Nhập địa chỉ" name="diachi" id="example-text-input">
+	    	<input type="radio" value="1" checked name="loai_docgia" > Người lớn
+	    	<input type="radio" value="0"  name="loai_docgia" >Trẻ em
 	  </div>
 	</div>
 
-	<div class="form-group row">
-	  <label for="example-datetime-local-input" class="col-xs-2 col-form-label">Quận</label>
-	  <div class="col-xs-10">
-	    <?php danhSachQuan();?>
-	  </div>
-	</div>
-	<div class="form-group row">
-	  <label for="example-datetime-local-input" class="col-xs-2 col-form-label">Điện thoại</label>
-	  <div class="col-xs-10">
-	    <input class="form-control" type="text" name="dienthoai" placeholder="Nhập điện thoại" />
-	  </div>
-	</div>
 
-	<div class="form-group row">
-	  <label for="example-datetime-local-input" class="col-xs-2 col-form-label">Hạn sử dụng</label>
-	  <div class="col-xs-10">
-	    <input class="form-control" type="text" name="han_sd" value="2016-12-16 00:00:00" >
-	  </div>
+	<div class="row-default">
+		<div class="form-group row">
+		  <label for="example-tel-input" class="col-xs-2 col-form-label">Địa chỉ</label>
+		  <div class="col-xs-10">
+		    <input class="form-control" type="text" value="" placeholder="Nhập địa chỉ" name="diachi" id="example-text-input">
+		  </div>
+		</div>
+
+		<div class="form-group row">
+		  <label for="example-datetime-local-input" class="col-xs-2 col-form-label">Quận</label>
+		  <div class="col-xs-10">
+		    <?php danhSachQuan();?>
+		  </div>
+		</div>
+		<div class="form-group row">
+		  <label for="example-datetime-local-input" class="col-xs-2 col-form-label">Điện thoại</label>
+		  <div class="col-xs-10">
+		    <input class="form-control" type="text" name="dienthoai" placeholder="Nhập điện thoại" />
+		  </div>
+		</div>
+
+		<div class="form-group row">
+		  <label for="example-datetime-local-input" class="col-xs-2 col-form-label">Hạn sử dụng</label>
+		  <div class="col-xs-10">
+		    <input class="form-control" type="text" name="han_sd" value="2016-12-16 00:00:00" >
+		  </div>
+		</div>
 	</div>
 
 	<div class="form-group row">

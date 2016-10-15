@@ -2,7 +2,7 @@
 $del_id     = isset($_GET['del']) ? $_GET['del'] : '';
 $docgia   = DocGia::getInstance();
 if( !empty($del_id)){
-    $docgia->xoaCuonSach($del_id);
+    $docgia->xoaDocGia($del_id);
 }
 $total = DocGia::danhSachDocGia($select_all = 1);
 if( !empty($total) ){
@@ -24,14 +24,14 @@ if( !empty($total) ){
 	echo '<thead><tr><th> Mã</th> <th> Tên độc giả </th><th> Tình trạng </td> <th> Tác vụ </th> </tr></thead>';
 	echo ' <tbody>';
 	while( $row = $result->fetch_assoc() ) {
-		$ma_docgia 		= $row['ma_docgia'];
+		$ma_docgia 	= $row['ma_docgia'];
         $ho         = $row['ho'];
+        $hoten      = $row['hoten'];
         $tenlot     = $row['tenlot'];
         $ten        = $row['ten'];
-
 		$tinhtrang 	= '';
 		echo '<tr>';
-        echo "<td> " . $ma_docgia. " </td><td> <a class='' href= 'index.php?act=chi_tiet_docgia&id=".$ma_docgia."'> " . $ho.$ten. "</a> </td><td>". $tinhtrang. "</td>";
+        echo "<td> " . $ma_docgia. " </td><td> <a class='' href= 'index.php?act=chi_tiet_docgia&id=".$ma_docgia."'> " . $hoten. "</a> </td><td>". $tinhtrang. "</td>";
 
         echo "<td><a  class='action'  href='index.php?act=chi_tiet_docgia&id=".$ma_docgia."'>Cập nhật</a> &nbsp; <a href='{$url}page={$current_page}&del={$ma_docgia}' onclick ='return remove_tua_sach()'> Xóa</a>  ";
         echo '</tr>';

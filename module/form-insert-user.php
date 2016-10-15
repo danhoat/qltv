@@ -1,17 +1,29 @@
 <?php
 if(isset($_POST['submit'])){
-	$docgia = NguoiLon::getInstance();
-	$result = $docgia->themNguoiLon($_POST);
-	if($result){
-		echo ' Thêm người dùng thành công';
+	$loai_docgia  = isset($_POST['loai_docgia']) ? $_POST['loai_docgia'] : 1;
+	$docgia = DocGia::getInstance();
+	$hoten = isset($_POST['hoten']) ? $_POST['hoten'] : '';
+	$ngaysinh = isset($_POST['ngaysinh']) ? $_POST['ngaysinh'] : '';
+	$ma_docgia = $docgia->themDocGia($hoten, $ngaysinh);
+
+	if($loai_docgia == 2){
+		$docgia = TreEm::getInstance();
+		$result = $TreEm->themDocGia($ma_docgia, $_POST);
+		if( $result ){
+			echo ' Thêm độc giả trẻ em thành công';
+		}
+	} else{
+		$docgia = NguoiLon::getInstance();
+		$result = $docgia->themNguoiLon($ma_docgia, $_POST);
+		if( $result ){
+			echo ' Thêm độc giả người lớn thành công';
+		}
 	}
 }
 ?>
 <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Thêm Độc giả</a></li>
-    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Thêm Độc giả trẻ em</a></li>
-
-  </ul>
+</ul>
 
   <!-- Tab panes -->
   <div class="tab-content">
@@ -19,23 +31,9 @@ if(isset($_POST['submit'])){
 
 <form action="#"  class="form-horizontal" method="POST" action="#">
 	<div class="form-group row">
-	  <label for="example-text-input" class="col-xs-2 col-form-label">Họ</label>
+	  <label for="example-text-input" class="col-xs-2 col-form-label">Họ tên</label>
 	  <div class="col-xs-10">
-	    <input class="form-control" type="text" name="ho" value="" placeholder="Nhập họ của bạn" id="example-text-input">
-	  </div>
-	</div>
-
-	<div class="form-group row">
-	  <label for="example-tel-input" class="col-xs-2 col-form-label">Tên lót</label>
-	  <div class="col-xs-10">
-	    <input class="form-control" type="text" value="" name="tenlot" placeholder="nhập tên lót" id="example-text-input">
-	  </div>
-	</div>
-
-	<div class="form-group row">
-	  <label for="example-tel-input" class="col-xs-2 col-form-label">Tên </label>
-	  <div class="col-xs-10">
-	    <input class="form-control" type="text" value="" placeholder="nhập tên" name="ten" id="example-text-input">
+	    <input class="form-control" type="text" name="hoten" value="" placeholder="Nhập họ tên độc giả" id="example-text-input">
 	  </div>
 	</div>
 	<div class="form-group row">
@@ -48,7 +46,7 @@ if(isset($_POST['submit'])){
 	  <label for="example-tel-input" class="col-xs-2 col-form-label">Loại độc giả </label>
 	  <div class="col-xs-10">
 	    	<label for = "nguoilon" ><input class="loai-docgia" id = "nguoilon" type="radio" value="1" checked name="loai_docgia" > Người lớn </label>
-	    	<label for = "treem" ><input class = "loai-docgia" id = "treem" type="radio" value="0"  name="loai_docgia" >Trẻ em</label>
+	    	<label for = "treem" ><input class = "loai-docgia" id = "treem" type="radio" value="2"  name="loai_docgia" >Trẻ em</label>
 	  </div>
 	</div>
 

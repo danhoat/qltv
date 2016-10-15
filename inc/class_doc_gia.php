@@ -17,14 +17,18 @@ Class DocGia{
         if(self::$instance !== null){
             return self::$instance;
         }
-        self::$instance = new DauSach();
+        self::$instance = new DocGia();
         return self::$instance;
     }
-	function themDocGia($ho,$tenlot,$ten,$ngaysinh ){
-		$sql = "INSERT INTO `{$this->table}` (`ma_docgia`, `ho`, `tenlot`, `ten`, `ngaysinh`) VALUES (NULL, '{$ho}', '{tenlot}', '{$ten}', '{$ngaysinh}')";
+	function themDocGia($hoten,$ngaysinh ){
+		$sql = "INSERT INTO `{$this->table}` (`ma_docgia`, `hoten`, `ngaysinh`) VALUES (NULL, '{$hoten}', '{$ngaysinh}')";
 		if($this->conn->query($sql)){
 			return $this->conn->insert_id;
 		}
+	}
+	function xoaDocGia($ma_docgia){
+		$sql = "DELETE FROM {$this->table} WHERE ma_docgia= {$ma_docgia}";
+		return $this->conn->query($sql);
 	}
 	public static function danhSachDocGia($select_all = 0, $posts_per_age = 10, $current_page = 1) {
 		global $conn;
@@ -73,20 +77,21 @@ class NguoiLon extends DocGia {
         self::$instance = new NguoiLon();
         return self::$instance;
     }
-    function themNguoiLon($args){
+    function themNguoiLon($ma_docgia = 0, $args){
     	//INSERT INTO `docgia` (`ma_docgia`, `ho`, `tenlot`, `ten`, `ngaysinh`) VALUES (NULL, 'Nguyễn', 'Gia', 'Dần', '2016-10-13 00:00:00');
-    	$ho = isset($_POST['ho']) ? $_POST['ho'] : '';
-    	$tenlot = isset($_POST['tenlot']) ? $_POST['tenlot'] : '';
-    	$ten = isset($_POST['ten']) ? $_POST['ten'] : '';
-    	$ngaysinh = isset($_POST['ngaysinh']) ? $_POST['ngaysinh'] : '';
-		$sonha = isset($_POST['sonha']) ? $_POST['sonha'] : '';
-    	$duong = isset($_POST['duong']) ? $_POST['duong'] : '';
-    	$quan = isset($_POST['quan']) ? $_POST['quan'] : '';
-    	$dienthoai = isset($_POST['dienthoai']) ? $_POST['dienthoai'] : '';
-    	$han_sd = isset($_POST['han_sd']) ? $_POST['han_sd'] : '';
-    	$id_doc_gia = $this->themDocGia($ho,$tenlot,$ten,$ngaysinh );
+    	$ho 		= isset($args['ho']) ? $args['ho'] : '';
+    	$tenlot 	= isset($args['tenlot']) ? $args['tenlot'] : '';
+    	$ten 		= isset($args['ten']) ? $args['ten'] : '';
+    	$ngaysinh 	= isset($args['ngaysinh']) ? $args['ngaysinh'] : '';
+		$sonha 		= isset($args['sonha']) ? $args['sonha'] : '';
+    	$duong 		= isset($args['duong']) ? $args['duong'] : '';
+    	$quan 		= isset($args['quan']) ? $args['quan'] : '';
+    	$dienthoai 	= isset($args['dienthoai']) ? $args['dienthoai'] : '';
+    	$han_sd 	= isset($args['han_sd']) ? $args['han_sd'] : '';
+    	$hoten 		= isset($args['hoten']) ? $args['hoten'] : '';
+
     	//INSERT INTO `nguoilon` (`ma_docgia`, `sonha`, `duong`, `quan`, `dienthoai`, `han_sd`) VALUES (NULL, '17 ', 'Trần Mai Anh', '1', '0988585858', '2016-12-16 00:00:00');
-    	$sql = "INSERT INTO `{$this->table}` (`ma_docgia`, `sonha`, `duong`, `quan`, `dienthoai`, `han_sd`) VALUES ({$id_doc_gia}, '{sonha} ', '{$duong}', '{$quan}', '{dienthoai}', '{$han_sd}')";
+    	$sql = "INSERT INTO `{$this->table}` (`ma_docgia`, `sonha`, `duong`, `quan`, `dienthoai`, `han_sd`) VALUES ({$ma_docgia}, '{sonha} ', '{$duong}', '{$quan}', '{dienthoai}', '{$han_sd}')";
     	if($this->conn->query($sql)){
 			return $this->conn->insert_id;
 		}

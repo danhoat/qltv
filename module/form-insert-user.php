@@ -1,25 +1,53 @@
 <?php
-if(isset($_POST['submit'])){
-	$loai_docgia  = isset($_POST['loai_docgia']) ? $_POST['loai_docgia'] : 1;
-	$docgia = DocGia::getInstance();
-	$hoten = isset($_POST['hoten']) ? $_POST['hoten'] : '';
-	$ngaysinh = isset($_POST['ngaysinh']) ? $_POST['ngaysinh'] : '';
-	$ma_docgia = $docgia->themDocGia($hoten, $ngaysinh);
 
-	if($loai_docgia == 2){
-		$docgia = TreEm::getInstance();
-		$result = $TreEm->themDocGia($ma_docgia, $_POST);
-		if( $result ){
-			echo ' Thêm độc giả trẻ em thành công';
-		}
-	} else{
-		$docgia = NguoiLon::getInstance();
-		$result = $docgia->themNguoiLon($ma_docgia, $_POST);
-		if( $result ){
-			echo ' Thêm độc giả người lớn thành công';
+$error 			= '';
+$label_text 	= '';
+$label_text_fail = '';
+if(isset($_POST['submit'])){
+	$loai_docgia  	= isset($_POST['loai_docgia']) ? $_POST['loai_docgia'] : 1;
+	$docgia 		= DocGia::getInstance();
+	$hoten 			= isset($_POST['hoten']) ? $_POST['hoten'] : '';
+	$ngaysinh 		= isset($_POST['ngaysinh']) ? $_POST['ngaysinh'] : '';
+
+	if(empty($hoten) ) {
+		$error .= 'Vui lòng nhập họ tên <br />';
+	}
+	if ( empty($ngaysinh) ){
+		$error .= 'Vui lòng nhập ngày sinh <br />';
+	}
+
+	if( empty( $error) ){
+
+		$ma_docgia 		= $docgia->themDocGia($hoten, $ngaysinh);
+		if( $ma_docgia){
+			if($loai_docgia == 2){
+				$ma_docgia_nguoilon = isset($_GET['ma_docgia_nguoilon']) ? $_GET['ma_docgia_nguoilon'] : 0;
+				if( ! $ma_docgia_nguoilon ){
+					$error .= 'Vui lòng chọn mã người lớn';
+				}
+				if(! empty($error) ){
+					$docgia = TreEm::getInstance();
+					$result = $TreEm->themDocGia($ma_docgia, $ma_docgia_nguoilon);
+					if( $result ){
+						$label_text .= ' Thêm độc giả trẻ em thành công';
+					}
+				} else {
+					$label_text_fail .= ' Thêm độc giả trẻ em lỗi';
+				}
+
+			} else{
+				$docgia = NguoiLon::getInstance();
+				$result = $docgia->themNguoiLon($ma_docgia, $_POST);
+				if( $result ){
+					$label_text  .= ' Thêm độc giả người lớn thành công';
+				}
+			}
+		} else {
+			$error .= 'Thêm độc giả lỗi <br />';
 		}
 	}
 }
+
 ?>
 <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Thêm Độc giả</a></li>
@@ -30,16 +58,24 @@ if(isset($_POST['submit'])){
     <div role="tabpanel" class="tab-pane active" id="home">
 
 <form action="#"  class="form-horizontal" method="POST" action="#">
+	<?php if(!empty($error)){ ?>
+	<div class="form-group row">
+	  <label for="example-tel-input" class="col-xs-2 col-form-label">Lỗi:</label>
+	  <div class="col-xs-10">
+	    <?php echo $error;?>
+	  </div>
+	</div>
+	<?php } ?>
 	<div class="form-group row">
 	  <label for="example-text-input" class="col-xs-2 col-form-label">Họ tên</label>
 	  <div class="col-xs-10">
-	    <input class="form-control" type="text" name="hoten" value="" placeholder="Nhập họ tên độc giả" id="example-text-input">
+	    <input class="form-control required" type="text" required name="hoten" value="" placeholder="Nhập họ tên độc giả" id="example-text-input">
 	  </div>
 	</div>
 	<div class="form-group row">
 	  <label for="example-tel-input" class="col-xs-2 col-form-label">Ngày sinh </label>
 	  <div class="col-xs-10">
-	    <input class="form-control" type="text" value="2016-10-13 00:00:0" name="ngaysinh" id="example-text-input">
+	    <input class="form-control" required type="text" value="2016-10-13 00:00:0" name="ngaysinh" id="example-text-input">
 	  </div>
 	</div>
 	<div class="form-group row">
@@ -53,6 +89,9 @@ if(isset($_POST['submit'])){
 
 	<div class="row-default">
 		<div class ="nguoilon">
+
+
+
 			<div class="form-group row">
 			  <label for="example-tel-input" class="col-xs-2 col-form-label">Địa chỉ</label>
 			  <div class="col-xs-10">
@@ -88,8 +127,16 @@ if(isset($_POST['submit'])){
 			  </div>
 			</div>
 		</div>
-	</div>
 
+	</div>
+	<div class="form-group row">
+	 	<div class="col-xs-10">
+	  		&nbsp;
+	  	</div>
+	  	<div class="col-xs-2">
+			<?php echo $label_text;?>
+		</div>
+	</div>
 
 	<div class="form-group row">
 	  <div class="col-xs-10">

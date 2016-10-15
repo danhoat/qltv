@@ -51,7 +51,7 @@
 	    <?php
 	}
 	function danhSachNguoiLon($selected = 0){ ?>
-		<select class="form-control" name="quan" required>
+		<select class="form-control" name="ma_docgia_nguoilon" required>
 				<option value="0" <?php add_selected($selected, 0);?> >Chọn người lớn đi kèm</option>
 				<option value="1" <?php add_selected($selected, 1);?>> Quận 1</option>
 				<option value="2" <?php add_selected($selected, 2);?>> Quận 2 </option>
@@ -207,8 +207,21 @@ function get_site_title(){
 		case 'frm_add_tua_sach':
 			$title .=  "Thêm mới tựa sách";
 			break;
-
+		case 'list_docgia':
+			$title .= 'Danh sách độc giả';
+			break;
+		case 'form-insert-user':
+			if(!isset($_GET['id'])){
+				$title .='Thêm mới độc giả';
+			} else {
+				$title .= 'Cập nhật thông tin độc giả';
+			}
+		break;
+		case 'chi_tiet_docgia':
+			$title .= 'Xem thông tin độc giả';
+			break;
 		default:
+
 			$title = 'Đồ án quản lý thư viện';
 			break;
 	}
@@ -220,4 +233,8 @@ function get_site_title(){
 function demSoLuongDauSach($isbn){
 	$dausach = DauSach::getInstance();
 	return $dausach->demSoLuong($isbn);
+}
+function them_DocGia(){
+
+
 }

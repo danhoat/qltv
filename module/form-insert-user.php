@@ -47,40 +47,51 @@ if(isset($_POST['submit'])){
 	<div class="form-group row">
 	  <label for="example-tel-input" class="col-xs-2 col-form-label">Loại độc giả </label>
 	  <div class="col-xs-10">
-	    	<input type="radio" value="1" checked name="loai_docgia" > Người lớn
-	    	<input type="radio" value="0"  name="loai_docgia" >Trẻ em
+	    	<label for = "nguoilon" ><input class="loai-docgia" id = "nguoilon" type="radio" value="1" checked name="loai_docgia" > Người lớn </label>
+	    	<label for = "treem" ><input class = "loai-docgia" id = "treem" type="radio" value="0"  name="loai_docgia" >Trẻ em</label>
 	  </div>
 	</div>
 
 
 	<div class="row-default">
-		<div class="form-group row">
-		  <label for="example-tel-input" class="col-xs-2 col-form-label">Địa chỉ</label>
-		  <div class="col-xs-10">
-		    <input class="form-control" type="text" value="" placeholder="Nhập địa chỉ" name="diachi" id="example-text-input">
-		  </div>
-		</div>
+		<div class ="nguoilon">
+			<div class="form-group row">
+			  <label for="example-tel-input" class="col-xs-2 col-form-label">Địa chỉ</label>
+			  <div class="col-xs-10">
+			    <input class="form-control" type="text" value="" placeholder="Nhập địa chỉ" name="diachi" id="example-text-input">
+			  </div>
+			</div>
 
-		<div class="form-group row">
-		  <label for="example-datetime-local-input" class="col-xs-2 col-form-label">Quận</label>
-		  <div class="col-xs-10">
-		    <?php danhSachQuan();?>
-		  </div>
-		</div>
-		<div class="form-group row">
-		  <label for="example-datetime-local-input" class="col-xs-2 col-form-label">Điện thoại</label>
-		  <div class="col-xs-10">
-		    <input class="form-control" type="text" name="dienthoai" placeholder="Nhập điện thoại" />
-		  </div>
-		</div>
+			<div class="form-group row">
+			  <label for="example-datetime-local-input" class="col-xs-2 col-form-label">Quận</label>
+			  <div class="col-xs-10">
+			    <?php danhSachQuan();?>
+			  </div>
+			</div>
+			<div class="form-group row">
+			  <label for="example-datetime-local-input" class="col-xs-2 col-form-label">Điện thoại</label>
+			  <div class="col-xs-10">
+			    <input class="form-control" type="text" name="dienthoai" placeholder="Nhập điện thoại" />
+			  </div>
+			</div>
 
-		<div class="form-group row">
-		  <label for="example-datetime-local-input" class="col-xs-2 col-form-label">Hạn sử dụng</label>
-		  <div class="col-xs-10">
-		    <input class="form-control" type="text" name="han_sd" value="2016-12-16 00:00:00" >
-		  </div>
+			<div class="form-group row">
+			  <label for="example-datetime-local-input" class="col-xs-2 col-form-label">Hạn sử dụng</label>
+			  <div class="col-xs-10">
+			    <input class="form-control" type="text" name="han_sd" value="2016-12-16 00:00:00" >
+			  </div>
+			</div>
+		</div>
+		<div class="treem hide">
+			<div class="form-group row">
+			  <label for="example-datetime-local-input" class="col-xs-2 col-form-label">Mã người lớn</label>
+			  <div class="col-xs-10">
+			     <?php danhSachNguoiLon();?>
+			  </div>
+			</div>
 		</div>
 	</div>
+
 
 	<div class="form-group row">
 	  <div class="col-xs-10">
@@ -97,8 +108,22 @@ if(isset($_POST['submit'])){
     </div>
     <div role="tabpanel" class="tab-pane" id="profile">
     	Thêm người dùng trẻ em
-
     </div>
 
   </div>
+<script type="text/javascript">
+	$(function() {
+	    $(".loai-docgia").click(function(event){
+	    	var is_check = this.checked;
+	    	var id = $(this).attr('id');
+	    	if(id == 'treem'){
+	    		$("."+id).toggleClass('hide');
+	    		$(".nguoilon").toggleClass('hide');
+	    	} else {
+	    		$("."+id).toggleClass('hide');
+	    		$(".treem").toggleClass('hide');
+	    	}
 
+	    })
+	});
+</script>

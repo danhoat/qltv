@@ -52,6 +52,16 @@
 			</select>
 	    <?php
 	}
+	function danhSachNguoiLon($selected = 0){ ?>
+		<select class="form-control" name="quan" required>
+				<option value="0" <?php add_selected($selected, 0);?> >Chọn người lớn đi kèm</option>
+				<option value="1" <?php add_selected($selected, 1);?>> Quận 1</option>
+				<option value="2" <?php add_selected($selected, 2);?>> Quận 2 </option>
+				<option value="11" <?php add_selected($selected, 17);?>> Quận Tân Phú</option>
+
+			</select>
+			<?php
+	}
 	function get_ngon_ngu($ma_ngon_ngu){
 		switch ($ma_ngon_ngu) {
 			case '2':

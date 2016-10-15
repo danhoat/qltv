@@ -21,11 +21,14 @@ $diachi = !empty($record['diachi']) ? $record['diachi'] : 'Chưa có địa ch�
 $hoten = !empty($record['hoten']) ? $record['hoten'] : 'Chưa nhập họ tên';
 $quan = !empty($record['quan']) ? $record['quan'] : 'Chưa nhập quận';
 $ngaysinh = !empty($record['ngaysinh']) ? $record['ngaysinh'] : 'Chưa nhập ngày sinh';
+$han_sd = !empty($record['han_sd']) ? $record['han_sd'] : 'Chưa nhập ngày sinh';
 
 echo 'Họ tên :'.$hoten .'<br />';
 echo 'Địa chỉ:'.$diachi.'<br />';
 echo 'Ngày sinh:'.$ngaysinh.'<br />';
+echo 'Hạn sử dụng:'.$han_sd.'<br />';
 echo 'Quận:'.$quan.'<br />';
+echo 'Số sách đang mượn';
 
 ?>
 

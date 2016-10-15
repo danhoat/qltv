@@ -1,10 +1,9 @@
 <?php
-
-
-
 $error 			= '';
 $label_text 	= '';
 $label_text_fail = '';
+$frm_nguoilon 	= '';
+$frm_treem 	= 'hide';
 if(isset($_POST['submit'])){
 	$loai_docgia  	= isset($_POST['loai_docgia']) ? $_POST['loai_docgia'] : 1;
 	$docgia 		= DocGia::getInstance();
@@ -24,6 +23,8 @@ if(isset($_POST['submit'])){
 		$ma_docgia 		= $docgia->themDocGia($hoten, $ngaysinh);
 		if( $ma_docgia){
 			if($loai_docgia == 2){
+				$frm_nguoilon 	= 'hide';
+				$frm_treem 		= '';
 				$ma_docgia_nguoilon = isset($_POST['ma_docgia_nguoilon']) ? $_POST['ma_docgia_nguoilon'] : 0;
 				if( ! $ma_docgia_nguoilon ){
 					$error .= 'Vui lòng chọn mã người lớn';
@@ -91,14 +92,11 @@ if(isset($_POST['submit'])){
 
 
 	<div class="row-default">
-		<div class ="nguoilon">
-
-
-
+		<div class ="nguoilon <?php echo $frm_nguoilon;?>">
 			<div class="form-group row">
 			  <label for="example-tel-input" class="col-xs-2 col-form-label">Địa chỉ</label>
 			  <div class="col-xs-10">
-			    <input class="form-control" type="text" value="" required placeholder="Nhập địa chỉ" name="diachi" id="example-text-input">
+			    <input class="form-control is_required required" type="text" value="" placeholder="Nhập địa chỉ" name="diachi" id="example-text-input">
 			  </div>
 			</div>
 
@@ -122,7 +120,7 @@ if(isset($_POST['submit'])){
 			  </div>
 			</div>
 		</div>
-		<div class="treem hide">
+		<div class="treem <?php echo $frm_treem;?>">
 			<div class="form-group row">
 			  <label for="example-datetime-local-input" class="col-xs-2 col-form-label">Mã người lớn</label>
 			  <div class="col-xs-10">
@@ -165,11 +163,12 @@ if(isset($_POST['submit'])){
 	    	var is_check = this.checked;
 	    	var id = $(this).attr('id');
 	    	if(id == 'treem'){
-	    		$("."+id).toggleClass('hide');
-	    		$(".nguoilon").toggleClass('hide');
+	    		$(".treem").removeClass('hide');
+	    		$(".nguoilon").addClass('hide');
+	    		$(".nguoilon").find(".is_required").removeClass("required");
 	    	} else {
-	    		$("."+id).toggleClass('hide');
-	    		$(".treem").toggleClass('hide');
+	    		$(".nguoilon").removeClass('hide');
+	    		$(".treem").addClass('hide');
 	    	}
 
 	    })

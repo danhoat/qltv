@@ -21,6 +21,6 @@
 
 		</li>
 
-		<li> <a href="index.php?act=add"> </a></li>
+		<li> <a href="index.php?act=dbstruct"> Lược đồ dữ liệu</a></li>
 	</ul>
 </div>

@@ -7,15 +7,44 @@ Class DocGia{
 	protected $ngaySinh;
 	protected $table;
 	protected $con;
+	static $instance;
 	function __construct(){
 		global $conn;
 		$this->table = 'docgia';
 		$this->conn = $conn;
 	}
+	static function getInstance(){
+        if(self::$instance !== null){
+            return self::$instance;
+        }
+        self::$instance = new DauSach();
+        return self::$instance;
+    }
 	function themDocGia($ho,$tenlot,$ten,$ngaysinh ){
 		$sql = "INSERT INTO `{$this->table}` (`ma_docgia`, `ho`, `tenlot`, `ten`, `ngaysinh`) VALUES (NULL, '{$ho}', '{tenlot}', '{$ten}', '{$ngaysinh}')";
 		if($this->conn->query($sql)){
 			return $this->conn->insert_id;
+		}
+	}
+	public static function danhSachDocGia($select_all = 0, $posts_per_age = 10, $current_page = 1) {
+		global $conn;
+		if($select_all){
+			$sql ="SELECT * FROM docgia";
+			$result = $conn->query($sql);
+
+			if ($result->num_rows > 0) {
+				return $result;
+			}
+			return 0;
+		} else {
+			$offset = $posts_per_age * ($current_page - 1);
+			$sql ="SELECT * FROM docgia LIMIT {$posts_per_age} OFFSET {$offset}";
+
+			$result = $conn->query($sql);
+			if ($result->num_rows > 0) {
+				return $result;
+			}
+			return 0;
 		}
 	}
 }

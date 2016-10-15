@@ -16,6 +16,7 @@
 		<li>
 			<a class="heading" href="#">Độc giả</a>
 			<ul class="sub">
+				<li> <a href="index.php?act=list_docgia">Danh sách độc giả</a></li>
 				<li> <a href="index.php?act=form-insert-user">Thêm mới độc giả</a></li>
 			</ul>
 

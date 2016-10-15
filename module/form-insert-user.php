@@ -95,7 +95,7 @@ if(isset($_POST['submit'])){
 			<div class="form-group row">
 			  <label for="example-tel-input" class="col-xs-2 col-form-label">Địa chỉ</label>
 			  <div class="col-xs-10">
-			    <input class="form-control" type="text" value="" placeholder="Nhập địa chỉ" name="diachi" id="example-text-input">
+			    <input class="form-control" type="text" value="" required placeholder="Nhập địa chỉ" name="diachi" id="example-text-input">
 			  </div>
 			</div>
 

@@ -40,15 +40,78 @@
 				<option value="9" <?php add_selected($selected, 9);?>> Quận 9</option>
 				<option value="10" <?php add_selected($selected, 10);?>> Quận 10</option>
 				<option value="11" <?php add_selected($selected, 11);?>> Quận 11</option>
-				<option value="11" <?php add_selected($selected, 12);?>> Quận 12</option>
+				<option value="12" <?php add_selected($selected, 12);?>> Quận 12</option>
 				<option value="11" <?php add_selected($selected, 13);?>> Quận Bình Thạnh</option>
 				<option value="11" <?php add_selected($selected, 14);?>> Quận Tân Bình</option><option value="11" <?php add_selected($selected, 15);?>> Quận Tân Phú</option>
-
 				<option value="11" <?php add_selected($selected, 16);?>> Quận Cần giờ</option>
 				<option value="11" <?php add_selected($selected, 17);?>> Quận Tân Phú</option>
 
 			</select>
 	    <?php
+	}
+	function show_quan($quan){
+		switch ($quan) {
+			case '1':
+				return 'Quận 1';
+				break;
+			case '2':
+				return 'Quận 2';
+				break;
+			case '3':
+				return 'Quận 3';
+				break;
+			case '4':
+				return 'Quận 4';
+				break;
+				break;
+			case '6':
+				return 'Quận 6';
+				break;
+			case '7':
+				return 'Quận 7';
+				break;
+			case '8':
+				return 'Quận 8';
+				break;
+			case '9':
+				return 'Quận 9';
+				break;
+			case '10':
+				return 'Quận 10';
+				break;
+			case '11':
+				return 'Quận 1';
+				break;
+			case '12':
+				return 'Quận 12';
+				break;
+			case '13':
+				return 'Quận Bình Thạnh';
+
+				break;
+			case '14':
+				return 'Quận Thủ Đức';
+
+				break;
+			case '15':
+				return 'Quận Tân Bình';
+				break;
+
+			case '16':
+				return 'Quận Tân Phú';
+				break;
+			case '17':
+				return 'Quận Cần giờ';
+				break;
+			case '18':
+				return 'Quận Nhà bè';
+				break;
+
+			case '5':
+			default:
+				return 'Quận 5';
+				break;
+		}
 	}
 	function danhSachNguoiLon($ma_docgia = 0){ ?>
 		<select class="form-control" name="ma_docgia_nguoilon" required>

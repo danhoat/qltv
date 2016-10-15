@@ -147,7 +147,7 @@ class NguoiLon extends DocGia {
     	$ten 		= isset($args['ten']) ? $args['ten'] : '';
     	$ngaysinh 	= isset($args['ngaysinh']) ? $args['ngaysinh'] : '';
 		$sonha 		= isset($args['sonha']) ? $args['sonha'] : '';
-		$sonha 		= isset($args['diachi']) ? $args['diachi'] : '';
+		$diachi 		= isset($args['diachi']) ? $args['diachi'] : '';
     	$duong 		= isset($args['duong']) ? $args['duong'] : '';
     	$quan 		= isset($args['quan']) ? $args['quan'] : '';
     	$dienthoai 	= isset($args['dienthoai']) ? $args['dienthoai'] : '';

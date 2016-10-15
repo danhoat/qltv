@@ -3,10 +3,11 @@ $ma_docgia = isset($_GET['id']) ? $_GET['id'] : 0;
 $docgia = TreEm::getInstance();
 echo "Mã độc giả : {$ma_docgia}".'<br />';
 $is_tre_em =  $docgia->isDocGiaTreEm($ma_docgia) ;
+
 if( $is_tre_em ) {
-	echo 'Loại độc giả: Trẻ em';
+	echo 'Loại độc giả: Trẻ em <br />';
 	$record = $docgia->getThongTinDocGia($ma_docgia);
-	echo 'Thông tin độc giả người lớn :';
+	echo 'Thông tin độc giả người lớn : <br />';
 	$ma_docgia = $docgia->maDocGiaNguoiLon($ma_docgia);
 }
 $nguoilon = NguoiLon::getInstance();

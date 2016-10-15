@@ -314,3 +314,12 @@ function them_DocGia(){
 
 
 }
+function checkMenu($string, $get){
+	if(empty($get) && $string == ''){
+		echo 'activate';
+	}
+	if($string == $get){
+		echo 'activate';
+	}
+
+}

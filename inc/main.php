@@ -50,12 +50,25 @@
 			</select>
 	    <?php
 	}
-	function danhSachNguoiLon($selected = 0){ ?>
+	function danhSachNguoiLon($ma_docgia = 0){ ?>
 		<select class="form-control" name="ma_docgia_nguoilon" required>
-				<option value="0" <?php add_selected($selected, 0);?> >Chọn người lớn đi kèm</option>
-				<option value="1" <?php add_selected($selected, 1);?>> Quận 1</option>
-				<option value="2" <?php add_selected($selected, 2);?>> Quận 2 </option>
-				<option value="11" <?php add_selected($selected, 17);?>> Quận Tân Phú</option>
+				<?php
+				$result = DocGia::danhSachDocGia($select_all = 1);
+				if( !empty($result) ){ ?>
+					<option value="0" <?php add_selected(0, $ma_docgia);?> > Chọn độc giả ngươi lớn</option>';
+					<?php
+					while( $row = $result->fetch_assoc() ) {
+						$_ma_docgia = $row['ma_docgia'];
+						$selected = '';
+						if($ma_docgia == $_ma_docgia){
+							$selected = 'selected';
+						}
+						echo "<option {$selected} value='".$_ma_docgia."'> ".$row['hoten']."</option>";
+					}
+				} else {
+					echo '<option value="0"> Chưa có độc giả người lớn</option>';
+				}
+				?>
 
 			</select>
 			<?php

@@ -21,13 +21,13 @@ if(isset($_POST['submit'])){
 		$ma_docgia 		= $docgia->themDocGia($hoten, $ngaysinh);
 		if( $ma_docgia){
 			if($loai_docgia == 2){
-				$ma_docgia_nguoilon = isset($_GET['ma_docgia_nguoilon']) ? $_GET['ma_docgia_nguoilon'] : 0;
+				$ma_docgia_nguoilon = isset($_POST['ma_docgia_nguoilon']) ? $_POST['ma_docgia_nguoilon'] : 0;
 				if( ! $ma_docgia_nguoilon ){
 					$error .= 'Vui lòng chọn mã người lớn';
 				}
-				if(! empty($error) ){
+				if(empty($error) ){
 					$docgia = TreEm::getInstance();
-					$result = $TreEm->themDocGia($ma_docgia, $ma_docgia_nguoilon);
+					$result = $docgia->themDocGia($ma_docgia, $ma_docgia_nguoilon);
 					if( $result ){
 						$label_text .= ' Thêm độc giả trẻ em thành công';
 					}
@@ -37,7 +37,6 @@ if(isset($_POST['submit'])){
 
 			} else{
 				$docgia = NguoiLon::getInstance();
-				var_dump($ma_docgia);
 				$result = $docgia->themNguoiLon($ma_docgia, $_POST);
 				if( $result ){
 					$label_text  .= ' Thêm độc giả người lớn thành công';

@@ -77,6 +77,15 @@ class TreEm extends DocGia{
         self::$instance = new TreEm();
         return self::$instance;
     }
+    function themDocGia($ma_docgia,$ma_docgia_nguoilon ){
+    	//INSERT INTO `treem` (`ma_docgia`, `ma_nguoilon`) VALUES ('66', '666');
+		$sql = "INSERT INTO `{$this->table}` (`ma_docgia`, `ma_docgia_nguoilon`) VALUES ('{$ma_docgia}', '{$ma_docgia_nguoilon}')";
+		echo $sql;
+		if($this->conn->query($sql)){
+			return $this->conn->insert_id;
+		}
+	}
+
     function isDocGiaTreEm($ma_docgia){
     	$sql ="SELECT * FROM  $this->table WHERE ma_docgia = {$ma_docgia} LIMIT 1";
 		$result = $this->conn->query($sql);

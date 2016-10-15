@@ -47,7 +47,7 @@
 		  	<div class="form-group">
 			    <label class="control-label col-sm-2" for="pwd"> Số lượng sách</label>
 			    <div class="col-sm-10">
-			    	<?php echo demSoLuongDauSach($isbn);?>
+			    	<?php echo demSoLuongDauSach($isbn);?> <a href="index.php?act=list_sach_by_isbn&isbn=<?php echo $isbn;?>"> Xem chi tiết</a>
 			    </div>
 		  	</div>
 

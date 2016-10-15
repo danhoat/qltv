@@ -42,7 +42,6 @@ if( !empty($total) ){
         echo "<td> " . $isbn. " </td><td> <a class='' href= 'index.php?act=chi_tiet_dau_sach&id=".$isbn."'> " . limit_string( getTuaSachByISBN($isbn),30). "</a> </td>";
         echo '<td>'.get_ngon_ngu($ngonngu).'</td>';
         echo '<td>'.demSoLuongDauSach($isbn).'</td>';
-
         echo "<td>". $trangthai. "</td>";
 
         echo "<td><a  class='action'  href='index.php?act=frm_add_dau_sach&id=".$isbn."'>Cập nhật</a> &nbsp; <a href='index.php?{$url}page={$current_page}&del={$isbn}' onclick ='return remove_tua_sach()'> Xóa</a>  ";

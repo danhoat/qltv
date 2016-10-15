@@ -140,6 +140,7 @@ class NguoiLon extends DocGia {
     	$ten 		= isset($args['ten']) ? $args['ten'] : '';
     	$ngaysinh 	= isset($args['ngaysinh']) ? $args['ngaysinh'] : '';
 		$sonha 		= isset($args['sonha']) ? $args['sonha'] : '';
+		$sonha 		= isset($args['diachi']) ? $args['diachi'] : '';
     	$duong 		= isset($args['duong']) ? $args['duong'] : '';
     	$quan 		= isset($args['quan']) ? $args['quan'] : '';
     	$dienthoai 	= isset($args['dienthoai']) ? $args['dienthoai'] : '';
@@ -147,7 +148,8 @@ class NguoiLon extends DocGia {
     	$hoten 		= isset($args['hoten']) ? $args['hoten'] : '';
 
     	//INSERT INTO `nguoilon` (`ma_docgia`, `sonha`, `duong`, `quan`, `dienthoai`, `han_sd`) VALUES (NULL, '17 ', 'Trần Mai Anh', '1', '0988585858', '2016-12-16 00:00:00');
-    	$sql = "INSERT INTO `{$this->table}` (`ma_docgia`, `sonha`, `duong`, `quan`, `dienthoai`, `han_sd`) VALUES ({$ma_docgia}, '{sonha} ', '{$duong}', '{$quan}', '{dienthoai}', '{$han_sd}')";
+    	//INSERT INTO `nguoilon` (`ma_docgia`, `diachi`, `quan`, `dienthoai`, `han_sd`) VALUES ('333', '333', '33', '33', '2016-10-15 00:00:00');
+    	$sql = "INSERT INTO `{$this->table}` (`ma_docgia`, `diachi`,  `quan`, `dienthoai`, `han_sd`) VALUES ('{$ma_docgia}', '{$diachi}', '{$quan}', '{$dienthoai}', '{$han_sd}')";
     	if($this->conn->query($sql)){
 			return $this->conn->insert_id;
 		}
@@ -158,7 +160,6 @@ class NguoiLon extends DocGia {
 		$record = parent::getThongTinDocGia($ma_docgia);
 		if($record){
 			$sql = "SELECT * FROM {$this->table}  WHERE ma_docgia = {$ma_docgia}";
-			echo $sql;
 			$result = $this->conn->query($sql);
 			if ($result->num_rows > 0)
 			while( $row = $result->fetch_assoc() ) {

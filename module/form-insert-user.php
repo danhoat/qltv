@@ -37,6 +37,7 @@ if(isset($_POST['submit'])){
 
 			} else{
 				$docgia = NguoiLon::getInstance();
+				var_dump($ma_docgia);
 				$result = $docgia->themNguoiLon($ma_docgia, $_POST);
 				if( $result ){
 					$label_text  .= ' Thêm độc giả người lớn thành công';

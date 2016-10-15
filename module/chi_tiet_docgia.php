@@ -1,7 +1,7 @@
 <?php
 $ma_docgia = isset($_GET['id']) ? $_GET['id'] : 0;
 $docgia = TreEm::getInstance();
-echo "Mã độc giả : {$ma_docgia}";
+echo "Mã độc giả : {$ma_docgia}".'<br />';;
 if( $docgia->isDocGiaTreEm($ma_docgia) ) {
 	echo 'Loại độc giả: Trẻ em';
 	$record = $docgia->getThongTinDocGia($ma_docgia);
@@ -9,13 +9,15 @@ if( $docgia->isDocGiaTreEm($ma_docgia) ) {
 
 } else {
 
+
+	echo 'Loại độc giả: Người lớn <br />';
 	$nguoilon = NguoiLon::getInstance();
 	$record = $nguoilon->getThongTinDocGia($ma_docgia);
 }
-echo 'Họ tên :'.$record['hoten'];
-echo 'Địa chỉ:'.$record['diachi'];
-echo 'Ngày sinh:'.$record['ngaysinh'];
-echo 'Quận:'.$record['quan'];
+echo 'Họ tên :'.$record['hoten'] .'<br />';
+echo 'Địa chỉ:'.$record['diachi'].'<br />';
+echo 'Ngày sinh:'.$record['ngaysinh'].'<br />';
+echo 'Quận:'.$record['quan'].'<br />';
 
 ?>
 

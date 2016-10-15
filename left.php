@@ -1,4 +1,4 @@
-<div class="left sidebar">
+
 <?php
 	$act = isset($_GET['act']) ? $_GET['act'] : '';
 ?>
@@ -10,7 +10,7 @@
 				<li class ="<?php checkMenu('frm_add_dau_sach', $act) ?> "> <a href="index.php?act=frm_add_dau_sach">Thêm đầu sách</a></li>
 				<li class ="<?php checkMenu('list_tua_sach', $act) ?>" > <a href="index.php?act=list_tua_sach">Tựa sách</a></li>
 				<li class ="<?php checkMenu('frm_add_tua_sach', $act) ?>" > <a href="index.php?act=frm_add_tua_sach">Thêm tựa sách</a></li>
-				<li class ="<?php checkMenu('frm_insert_book', $act) ?>" > <a href="index.php?act=frm_insert_book">Thêm Cuốn sách</a></li>
+				<li class ="<?php checkMenu('frm_insert_book', $act) ?> hide" > <a href="index.php?act=frm_insert_book">Thêm Cuốn sách</a></li>
 			</ul>
 		</li>
 		<li>
@@ -32,6 +32,5 @@
 
 		</li>
 
-		<li> <a href="index.php?act=dbstruct"> Lược đồ dữ liệu</a></li>
+		<li> <a class="heading" href="index.php?act=dbstruct"> Lược đồ dữ liệu</a></li>
 	</ul>
-</div>

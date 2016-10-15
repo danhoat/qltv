@@ -6,7 +6,6 @@
 	require_once("inc/main.php");
 ?>
 <head>
-
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<link rel="stylesheet" type="text/css" href="assest/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css">
@@ -26,18 +25,25 @@
 	</script>
 </head>
 <body>
-	<div class="wrapper">
-		<div id="header">
+	<div class="container">
+		<div class="row">
+			<div  id="header" >
+				<center>Đồ Án Quản lý thư viện</center>
+			</div>
 		</div>
-		<?php require_once('left.php');?>
-		<div class="main">
-			<?php
+		<div class="row">
+			<div class="col-md-3 left sidebar">
+			<?php require_once('left.php');?>
+			</div>
+			<div class="main col-md-9">
+				<?php
 
-				$view = isset($_GET['act']) ? $_GET['act']:'list';
-				$module = 'module/'.$view.'.php';
-				require($module);
-				require_once("inc/disconnect.php");
-			?>
+					$view = isset($_GET['act']) ? $_GET['act']:'list';
+					$module = 'module/'.$view.'.php';
+					require($module);
+					require_once("inc/disconnect.php");
+				?>
+			</div>
 		</div>
 	</div>
 <script type="text/javascript">

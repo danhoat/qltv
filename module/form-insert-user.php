@@ -78,7 +78,7 @@ if(isset($_POST['submit'])){
 	<div class="form-group row">
 	  <label for="example-tel-input" class="col-xs-2 col-form-label">Ngày sinh </label>
 	  <div class="col-xs-10"  data-provide="datepicker">
-	    <input class="form-control datepicker" required type="date" value="10/20/2000" name="ngaysinh" id="example-text-input">
+	   <input class="form-control datepicker" data-format="yyyy-MM-dd hh:mm:ss" type="date" name="ngaysinh" id="ngaysinh" value="2016-12-16 00:00:00" >
 	  </div>
 	</div>
 	<div class="form-group row">
@@ -118,7 +118,7 @@ if(isset($_POST['submit'])){
 			<div class="form-group row">
 			  <label for="example-datetime-local-input" class="col-xs-2 col-form-label">Hạn sử dụng</label>
 			  <div class="col-xs-10" >
-			    <input class="form-control datepicker" data-format="yyyy-MM-dd hh:mm:ss" type="date" name="han_sd" value="2016-12-16 00:00:00" >
+			    <input class="form-control datepicker" data-format="yyyy-MM-dd hh:mm:ss" type="date" name="han_sd" id="han_sd" value="2016-12-16 00:00:00" >
 			  </div>
 			</div>
 		</div>

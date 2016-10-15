@@ -1,5 +1,7 @@
 <?php
 
+
+
 $error 			= '';
 $label_text 	= '';
 $label_text_fail = '';
@@ -8,16 +10,17 @@ if(isset($_POST['submit'])){
 	$docgia 		= DocGia::getInstance();
 	$hoten 			= isset($_POST['hoten']) ? $_POST['hoten'] : '';
 	$ngaysinh 		= isset($_POST['ngaysinh']) ? $_POST['ngaysinh'] : '';
-
 	if(empty($hoten) ) {
 		$error .= 'Vui lòng nhập họ tên <br />';
 	}
 	if ( empty($ngaysinh) ){
 		$error .= 'Vui lòng nhập ngày sinh <br />';
+	} else {
+		$date 		= date_create($ngaysinh);
+		$ngaysinh 	= date_format($date,"Y-m-d H:i:s");
 	}
-
+	echo $ngaysinh;
 	if( empty( $error) ){
-
 		$ma_docgia 		= $docgia->themDocGia($hoten, $ngaysinh);
 		if( $ma_docgia){
 			if($loai_docgia == 2){
@@ -74,8 +77,8 @@ if(isset($_POST['submit'])){
 	</div>
 	<div class="form-group row">
 	  <label for="example-tel-input" class="col-xs-2 col-form-label">Ngày sinh </label>
-	  <div class="col-xs-10">
-	    <input class="form-control" required type="text" value="2016-10-13 00:00:0" name="ngaysinh" id="example-text-input">
+	  <div class="col-xs-10"  data-provide="datepicker">
+	    <input class="form-control datepicker" required type="date" value="10/20/2000" name="ngaysinh" id="example-text-input">
 	  </div>
 	</div>
 	<div class="form-group row">
@@ -114,8 +117,8 @@ if(isset($_POST['submit'])){
 
 			<div class="form-group row">
 			  <label for="example-datetime-local-input" class="col-xs-2 col-form-label">Hạn sử dụng</label>
-			  <div class="col-xs-10">
-			    <input class="form-control" type="text" name="han_sd" value="2016-12-16 00:00:00" >
+			  <div class="col-xs-10" >
+			    <input class="form-control datepicker" data-format="yyyy-MM-dd hh:mm:ss" type="date" name="han_sd" value="2016-12-16 00:00:00" >
 			  </div>
 			</div>
 		</div>

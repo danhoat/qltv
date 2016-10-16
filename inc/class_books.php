@@ -75,7 +75,7 @@ Class CuonSach{
 		}
 	}
 	function getTuaSach($ma_tuasach){
-		$result = $this->check_tua_sach($ma_tuasach);
+		$result = $this->kiemTraSach($ma_tuasach);
 		if( $result ){
 			while( $row = $result->fetch_assoc() ) {
 				return $row;
@@ -94,14 +94,17 @@ Class CuonSach{
 			}
 		return 'Empty';
 	}
-
-	function check_tua_sach($ma_tuasach){
+	/**
+	 * kiểm tra xem có tồn tại cuốn sách này không
+	 * @version [version]
+	 * @since   1.0
+	 */
+	function kiemTraSach($ma_tuasach){
 		$sql ="SELECT * FROM {$this->table} WHERE ma_tuasach = {$ma_tuasach} ";
 		$result = $this->conn->query($sql);
-		if ($result->num_rows > 0) {
+		if ( $result && $result->num_rows > 0) {
 			return $result;
 		}
 		return 0;
 	}
-
 }

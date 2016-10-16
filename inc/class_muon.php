@@ -161,26 +161,6 @@ Class Muon{
 
     }
 
-	public static function listBookByISBN($select_all = 0,$isbn = 0, $posts_per_age = 10, $current_page = 1) {
-		global $conn;
-		if($select_all){
-			$sql ="SELECT * FROM cuonsach WHERE isbn = '{$isbn}' ";
-			$result = $conn->query($sql);
-			if ($result->num_rows > 0) {
-				return $result;
-			}
-			return 0;
-		} else {
-			$offset = $posts_per_age * ($current_page - 1);
-			$sql ="SELECT * FROM cuonsach WHERE isbn='{$isbn}' LIMIT {$posts_per_age} OFFSET {$offset}";
-
-			$result = $conn->query($sql);
-			if ($result->num_rows > 0) {
-				return $result;
-			}
-			return 0;
-		}
-	}
 
 	function check_tua_sach($ma_tuasach){
 		$sql ="SELECT * FROM {$this->table} WHERE ma_tuasach = {$ma_tuasach} ";

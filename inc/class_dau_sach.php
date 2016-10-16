@@ -154,6 +154,23 @@ Class DauSach{
 			return 0;
 		}
 	}
+	public static function listBookByISBN($select_all = 0,$isbn = 0, $posts_per_age = 10, $current_page = 1) {
+		global $conn;
+		$sql =	"SELECT * FROM cuonsach cs LEFT JOIN dausach ds
+				ON cs.isbn = ds.isbn";
+		if( ! $select_all){
+			$offset = $posts_per_age * ($current_page - 1);
+			$sql ="SELECT * FROM cuonsach WHERE isbn='{$isbn}' LIMIT {$posts_per_age} OFFSET {$offset}";
+
+		}
+		$sql .=	" WHERE cs.isbn = '{$isbn}' ";
+		$result = $conn->query($sql);
+		if ($result->num_rows > 0) {
+			return $result;
+		}
+		return 0;
+
+	}
 	function xoaDauSach($isbn){
 		$sql = "DELETE FROM {$this->table} WHERE isbn= {$isbn}";
 		return $this->conn->query($sql);

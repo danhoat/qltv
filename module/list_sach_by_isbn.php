@@ -20,7 +20,9 @@ if( !empty($total) ){
     	$current_page = $max_page;
     }
 	$result = CuonSach::listBookByISBN($select_all = 0, $isbn, $posts_per_page, $current_page );
-    echo "Hệ thống hiện có {$total_record} cuốn sách";
+    echo '<br />';
+    echo "<label>Đầu sách {$isbn} hiện có {$total_record} cuốn sách </label>";
+    echo '<br />';
 	echo '<table class="table ">';
 	echo '<thead><tr><th> Mã</th> <th> Tựa sách </th><th> Tình trạng </td> <th> Tác vụ </th> </tr></thead>';
 	echo ' <tbody>';
@@ -29,7 +31,7 @@ if( !empty($total) ){
         $ma_cuonsach   = $row['ma_cuonsach'];
 		$tinhtrang 	   = ($row['tinhtrang'] == 1)  ?  'Kho' :'Đang mượn <a href="index.php?act=chi_tiet_muon&mcs='.$ma_cuonsach.'">Chi tiết </a>';
 		echo '<tr>';
-        echo "<td> " . $row["ma_cuonsach"]. " </td><td> <a class='' href= 'index.php?act=chi_tiet_sach&id=".$row["ma_cuonsach"]."'> " . limit_string( getTuaSachByISBN($isbn),30). "</a> </td><td>". $tinhtrang. "</td>";
+        echo "<td> " . $row["ma_cuonsach"]. " </td><td> <a class='' href= 'index.php?act=chi_tiet_dau_sach&id=".$row["ma_cuonsach"]."'> " . limit_string( getTuaSachByISBN($isbn),30). "</a> </td><td>". $tinhtrang. "</td>";
 
         echo "<td><a  class='action'  href='index.php?act=frm_insert_book&id=".$ma_cuonsach."'>Cập nhật</a> &nbsp; <a href='{$url}page={$current_page}&del={$ma_cuonsach}' onclick ='return remove_tua_sach()'> Xóa</a>  ";
         echo '</tr>';

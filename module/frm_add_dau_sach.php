@@ -5,6 +5,8 @@
 	$bia 		= '';
 	$_isbn 		= isset($_GET['id']) ? $_GET['id'] : 0;
 	$cDausach 	= DauSach::getInstance();
+	$result_text = '';
+	$label_text = 'Thêm đầu sách';
 	if( isset($_POST['submit']) ){
 
 		$request 	= $_POST;
@@ -49,7 +51,7 @@
 	}
 	?>
 		<form class="form-horizontal" action="" method="POST">
-			<h3> Thêm đầu sách</h3>
+			<h3> <?php echo $label_text;?></h3>
 			<div class="form-group form-error">
 				<label class="control-label col-sm-2" for="email">&nbsp;</label>
 		    	<div class="col-sm-10">

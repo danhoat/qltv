@@ -39,7 +39,7 @@
 	$(function() {
 		$("#kiemTraDocGia").click(function(event){
 		 	var ma_docgia= $("#ma_docgia").val();
-		 	var data = {"ma_docgia":ma_docgia, "act=kiemtradocgia"};
+		 	var data = {"ma_docgia":ma_docgia, "act":"kiemtradocgia"};
 
 		   	$.ajax({
 		     	url: "inc/ajax.php",
@@ -62,7 +62,7 @@
 		});
 		$("#kiemTraSach").click(function(event){
 		 	var ma_cuonsach= $("#ma_cuonsach").val();
-		 	var data = {"ma_cuonsach":ma_cuonsach, "act=kiemtrasach"};
+		 	var data = {"ma_cuonsach":ma_cuonsach, "act" :"kiemtrasach"};
 
 		   	$.ajax({
 		     	url: "inc/ajax.php",

@@ -1,11 +1,12 @@
 <?php
 	require_once("connect.php");
 	require_once("require.php");
-	$act = isset($_POST['act']);
-	header('Content-Type: application/json');
 
+	header('Content-Type: application/json');
+	$act = isset($_POST['act']) ? $_POST['act'] : '';
+	var_dump($act);
 	if( $act == 'kiemtradocgia' ){
-		$ma_docgia = $_POST['ma_docgia'];
+		$ma_docgia 	= $_POST['ma_docgia'];
 		$docgia 	= TreEm::getInstance();
 		$is_tre_em 	=  $docgia->isDocGiaTreEm($ma_docgia) ;
 		if($is_tre_em){
@@ -16,11 +17,11 @@
 		$record = $nguoilon->getThongTinDocGia($ma_docgia);
 
 		echo json_encode($record);
-	} else  if( $act == 'kiemtrasach') {
+	} else if( $act == 'kiemtrasach') {
 		$ma_cuonsach = $_POST['ma_cuonsach'];
 		$cuonsach 	= CuonSach::getInstance();
 		$record 	= array();
-		$record 	= $nguoilon->getThongTinCuonSach($ma_docgia);
+		$record 	= $cuonsach->getThongTinCuonSach($ma_docgia);
 	}
 die();
 ?>

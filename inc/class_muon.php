@@ -72,7 +72,10 @@ Class Muon{
 		return 0;
 
 	}
-	function chiTietMuonSach($ma_cuonsach, $isbn){
+	function chiTietMuonSach($ma_cuonsach, $isbn = 0){
+		if( empty($isbn) ){
+
+		}
 		$sql = "SELECT * FROM muon m
 					LEFT JOIN dausach ds
 					ON m.isbn = ds.isbn
@@ -82,6 +85,15 @@ Class Muon{
 		if ($result && $result->num_rows > 0){
 			while( $row = $result->fetch_assoc() ) {
 				return $row;
+			}
+		}
+		return 0;
+	}
+	function getISBN($ma_cuonsach){
+		$sql = "SELECT isbn FROM muon WHERE ma_cuonsach = '{$ma_cuonsach}' ";
+		if ($result && $result->num_rows > 0){
+			while( $row = $result->fetch_assoc() ) {
+				return $row['isbn'];
 			}
 		}
 		return 0;

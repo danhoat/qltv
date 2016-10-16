@@ -29,7 +29,6 @@
 				$cuonSach = CuonSach::getInstance();
 				for($i =0; $i < $soluong; $i++) {
 					$cuonSach->themCuonSach($isbn);
-					echo ' them sach thanhcong';
 				}
 			}
 			if( $isbn ){
@@ -55,6 +54,7 @@
 				<label class="control-label col-sm-2" for="email">&nbsp;</label>
 		    	<div class="col-sm-10">
 		      		<?php echo $error; ?>
+		      		<?php echo $result_text;?>
 		    	</div>
 			</div>
 

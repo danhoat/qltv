@@ -40,7 +40,7 @@ if(isset($_POST['submit'])){
 	  		<input type="text" class="form-control selectpicker" id="ma_docgia" required name="ma_docgia" data-live-search="true" value="<?php echo $ma_docgia;?>">
 		</div>
 		<div class="col-sm-2">
-		<span id="kiemTraDocGia">Kiểm tra</span>
+		<button class="btn" type="button" id="kiemTraDocGia">Kiểm tra</button>
 		</div>
 	</div>
 
@@ -50,7 +50,7 @@ if(isset($_POST['submit'])){
 	  		<input class="form-control selectpicker" required id="ma_cuonsach" name="ma_cuonsach" data-live-search="true" value="<?php echo $ma_cuonsach;?>">
 		</div>
 		<div class="col-sm-2">
-		<span id="kiemTraSach">Kiểm tra</span>
+		<button class='btn' id="kiemTraSach" type="button">Kiểm tra</button>
 		</div>
 	</div>
 	<div class="form-group">

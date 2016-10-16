@@ -74,7 +74,7 @@ if(isset($_POST['submit'])){
 	$(function() {
 		$("#kiemTraDocGia").click(function(event){
 		 	var ma_docgia= $("#ma_docgia").val();
-		 	var data = {"ma_docgia":ma_docgia, "act":"kiemtradocgia"};
+		 	var data = {"ma_docgia" : ma_docgia, "act":"kiemtradocgia"};
 
 		   	$.ajax({
 		     	url: "inc/ajax.php",

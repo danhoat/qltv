@@ -1,16 +1,17 @@
 <?php
 $error = '';
-	if(isset($_POST['submit'])){
-		$muon = Muon::getInstance();
-		$ma_cuonsach = isset($_POST['ma_cuonsach']) ? $_POST['ma_cuonsach'] : 0;
-		$ma_docgia = isset($_POST['ma_docgia']) ? $_POST['ma_docgia'] : 0;
-		$result = $muon->muonSach($ma_cuonsach, $ma_docgia);
-		if( isCustomError($result) ){
-			$error = $result->getMessage();
-		} else {
-			echo 'Mượn sách thành công';
-		}
+$label = '';
+if(isset($_POST['submit'])){
+	$muon = Muon::getInstance();
+	$ma_cuonsach = isset($_POST['ma_cuonsach']) ? $_POST['ma_cuonsach'] : 0;
+	$ma_docgia = isset($_POST['ma_docgia']) ? $_POST['ma_docgia'] : 0;
+	$result = $muon->muonSach($ma_cuonsach, $ma_docgia);
+	if( isCustomError($result) ){
+		$error = $result->getMessage();
+	} else {
+		$label =  'Mượn sách thành công <br />';
 	}
+}
 ?>
 
 <form class="form-horizontal" action="" method="POST">
@@ -20,6 +21,14 @@ $error = '';
 		<label class="control-label col-sm-2" for="email"> &nbsp; </label>
 		<div class="col-sm-8">
 			<?php echo $error;?>
+		</div>
+	</div>
+	<?php }  else if( !empty($label)) { ?>
+	<div class="form-group">
+		<label class="control-label col-sm-2" for="email"> &nbsp; </label>
+		<div class="col-sm-8">
+			<?php echo $label;?>
+			Xem chi tiết mượn của cuốn sách <a href="index.php?act=chi_tiet_muon&mcs=<?php echo $ma_cuonsach;?>">Chi tiết </a>
 		</div>
 	</div>
 	<?php } ?>

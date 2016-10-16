@@ -1,6 +1,7 @@
 <?php
 	$ma_cuonsach = isset($_GET['mcs']) ? $_GET['mcs'] : 0;
 	$isbn = isset($_GET['isbn']) ? $_GET['isbn'] : 0;
+
 	$muon = Muon::getInstance()->chiTietMuonSach($ma_cuonsach, $isbn);
 	// echo '<pre>';
 	// var_dump($muon);

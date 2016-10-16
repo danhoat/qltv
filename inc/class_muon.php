@@ -82,14 +82,15 @@ Class Muon{
 		return 0;
 	}
 	function chiTietMuonSach($ma_cuonsach, $isbn = 0){
-		if( empty($isbn) ){
-			$isdb = $this->getISBN($ma_cuonsach);
+
+		if( ! $isbn ){
+			$isbn = $this->getISBN($ma_cuonsach);
 		}
 		$sql = "SELECT * FROM muon m
 					LEFT JOIN dausach ds
 					ON m.isbn = ds.isbn
 				WHERE m.ma_cuonsach = '{$ma_cuonsach}' AND ds.isbn = '{$isbn}'";
-		// echo $sql;
+		//echo $sql;
 		$result = $this->conn->query($sql);
 		if ($result && $result->num_rows > 0){
 			while( $row = $result->fetch_assoc() ) {

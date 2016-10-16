@@ -32,7 +32,7 @@ Class DauSach{
 		$sql ="SELECT * FROM {$this->table} WHERE isbn = {$isbn} ";
 
 		$result = $this->conn->query($sql);
-		if ($result->num_rows > 0) {
+		if ($result && $result->num_rows > 0) {
 			return $result;
 		}
 		return 0;
@@ -62,7 +62,7 @@ Class DauSach{
 		$sql 	= "SELECT ma_tuasach FROM $this->table WHERE isbn = {$isbn}";
 
 		$result = $this->conn->query($sql);
-		if ( $result->num_rows > 0 ) {
+		if ($result &&  $result->num_rows > 0 ) {
 			while( $row = $result->fetch_assoc() ) {
 				return $row['ma_tuasach'];
 			}
@@ -77,7 +77,7 @@ Class DauSach{
 	function kiemTraDauSach($ma_tuasach, $ngonngu){
 		$sql ="SELECT * FROM $this->table WHERE ma_tuasach = {$ma_tuasach} AND ngonngu = '{$ngonngu}' LIMIT 1 ";
 		$result = $this->conn->query($sql);
-		if ( $result->num_rows > 0 ) {
+		if ($result &&  $result->num_rows > 0 ) {
 			while( $row = $result->fetch_assoc() ) {
 				return $row['isbn'];
 			}
@@ -98,7 +98,7 @@ Class DauSach{
 			$sql ="SELECT * FROM dausach";
 			$result = $conn->query($sql);
 
-			if ($result->num_rows > 0) {
+			if ($result && $result->num_rows > 0) {
 				return $result;
 			}
 			return 0;
@@ -107,7 +107,7 @@ Class DauSach{
 			$sql ="SELECT * FROM dausach LIMIT {$posts_per_age} OFFSET {$offset}";
 
 			$result = $conn->query($sql);
-			if ($result->num_rows > 0) {
+			if ($result && $result->num_rows > 0) {
 				return $result;
 			}
 			return 0;

@@ -39,7 +39,7 @@ Class CuonSach{
 			$sql ="SELECT * FROM cuonsach";
 			$result = $conn->query($sql);
 
-			if ($result->num_rows > 0) {
+			if ($result && $result->num_rows > 0) {
 				return $result;
 			}
 			return 0;
@@ -48,7 +48,7 @@ Class CuonSach{
 			$sql ="SELECT * FROM cuonsach LIMIT {$posts_per_age} OFFSET {$offset}";
 
 			$result = $conn->query($sql);
-			if ($result->num_rows > 0) {
+			if ($result && $result->num_rows > 0) {
 				return $result;
 			}
 			return 0;
@@ -59,7 +59,7 @@ Class CuonSach{
 		if($select_all){
 			$sql ="SELECT * FROM cuonsach WHERE isbn = '{$isbn}' ";
 			$result = $conn->query($sql);
-			if ($result->num_rows > 0) {
+			if ($result && $result->num_rows > 0) {
 				return $result;
 			}
 			return 0;
@@ -88,7 +88,7 @@ Class CuonSach{
 		$sql ="SELECT tuasach FROM tuasach WHERE ma_tuasach = {$ma_tuasach}";
 		$result = $conn->query($sql);
 
-		if ($result->num_rows > 0)
+		if ($result && $result->num_rows > 0)
 			while( $row = $result->fetch_assoc() ) {
 				return limit_string($row['tuasach'], 50);
 			}

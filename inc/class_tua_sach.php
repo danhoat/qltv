@@ -40,7 +40,7 @@ Class TuaSach{
 			$sql ="SELECT * FROM tuasach";
 			$result = $conn->query($sql);
 
-			if ($result->num_rows > 0) {
+			if ($result && $result->num_rows > 0) {
 				return $result;
 			}
 			return 0;
@@ -90,7 +90,7 @@ Class TuaSach{
 
 		$result = $conn->query($sql);
 
-		if ($result->num_rows > 0)
+		if ($result && $result->num_rows > 0)
 			while( $row = $result->fetch_assoc() ) {
 				return limit_string($row['tuasach'], 50);
 			}
@@ -100,7 +100,7 @@ Class TuaSach{
 	function kiemTraTuaSachTonTai($ma_tuasach){
 		$sql ="SELECT * FROM {$this->table} WHERE ma_tuasach = {$ma_tuasach} ";
 		$result = $this->conn->query($sql);
-		if ($result->num_rows > 0) {
+		if ($result && $result->num_rows > 0) {
 			return $result;
 		}
 		return 0;

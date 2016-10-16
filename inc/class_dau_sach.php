@@ -47,7 +47,6 @@ Class DauSach{
 	}
 	function kiemTraTrangThaiDauDachByISBN($isbn){
 		$sql ="SELECT * FROM {$this->table} WHERE isbn = {$isbn} AND trangthai ='1' ";
-		echo $sql;
 		$result = $this->conn->query($sql);
 		if ($result && $result->num_rows > 0) {
 			return 1;

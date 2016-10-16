@@ -35,7 +35,6 @@ Class Muon{
     	if($checkdocgia == 1 && $checkdausach == 1){
     		//INSERT INTO `muon` (`isbn`, `ma_cuonsach`, `ma_docgia`, `ngaygio_muon`, `ngay_hethan`) VALUES ('555', '55', '555', '2016-10-15 00:00:00', '2016-10-22 00:00:00');
     		$sql = "INSERT INTO `muon` (`isbn`, `ma_cuonsach`, `ma_docgia`, `ngaygio_muon`, `ngay_hethan`) VALUES ('{$isbn}', '{$ma_cuonsach}', '{$ma_docgia}', '{$ngay_muon}', '$ngay_hh');";
-    		echo $sql;
 			if($this->conn->query($sql)){
 				return $this->conn->insert_id;
 			}

@@ -41,6 +41,27 @@ Class Muon{
 			return 0;
     	}
     }
+    public static function list_books($select_all = 0, $posts_per_age = 10, $current_page = 1) {
+		global $conn;
+		if($select_all){
+			$sql ="SELECT * FROM muon";
+			$result = $conn->query($sql);
+
+			if ($result && $result->num_rows > 0) {
+				return $result;
+			}
+			return 0;
+		} else {
+			$offset = $posts_per_age * ($current_page - 1);
+			$sql ="SELECT * FROM muon LIMIT {$posts_per_age} OFFSET {$offset}";
+
+			$result = $conn->query($sql);
+			if ($result && $result->num_rows > 0) {
+				return $result;
+			}
+			return 0;
+		}
+	}
     /**
      * kiểm tra xem Độc giả này có được phép mượn sách hay không.
      * @version  1.0

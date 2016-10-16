@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 15, 2016 at 07:02 AM
+-- Generation Time: Oct 16, 2016 at 01:25 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 5.5.38
 
@@ -28,11 +28,10 @@ USE `qltv`;
 -- Table structure for table `cuonsach`
 --
 
-DROP TABLE IF EXISTS `cuonsach`;
 CREATE TABLE `cuonsach` (
   `isbn` int(11) DEFAULT NULL,
   `ma_cuonsach` int(11) NOT NULL,
-  `tinhtrang` varchar(255) COLLATE ucs2_unicode_ci NOT NULL
+  `tinhtrang` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=ucs2 COLLATE=ucs2_unicode_ci;
 
 --
@@ -40,37 +39,47 @@ CREATE TABLE `cuonsach` (
 --
 
 INSERT INTO `cuonsach` (`isbn`, `ma_cuonsach`, `tinhtrang`) VALUES
-(24, 260, '1'),
-(24, 261, '1'),
-(24, 262, '1'),
-(24, 263, '1'),
-(24, 264, '1'),
-(24, 265, '1'),
-(25, 266, '1'),
-(25, 267, '1'),
-(26, 268, '1'),
-(26, 269, '1'),
-(26, 270, '1'),
-(26, 271, '1'),
-(26, 272, '1'),
-(25, 273, '1'),
-(25, 274, '1'),
-(25, 275, '1'),
-(25, 276, '1'),
-(25, 277, '1'),
-(25, 278, '1'),
-(25, 279, '1'),
-(25, 280, '1'),
-(25, 281, '1'),
-(25, 282, '1'),
-(24, 283, '1'),
-(24, 284, '1'),
-(24, 285, '1'),
-(24, 286, '1'),
-(24, 287, '1'),
-(25, 288, '1'),
-(25, 289, '1'),
-(25, 290, '1');
+(24, 260, 0),
+(24, 261, 1),
+(24, 262, 1),
+(24, 263, 1),
+(24, 264, 1),
+(24, 265, 1),
+(25, 266, 1),
+(25, 267, 1),
+(26, 268, 1),
+(26, 269, 1),
+(26, 270, 1),
+(26, 271, 1),
+(26, 272, 1),
+(25, 273, 1),
+(25, 274, 1),
+(25, 275, 1),
+(25, 276, 1),
+(25, 277, 1),
+(25, 278, 1),
+(25, 279, 1),
+(25, 280, 1),
+(25, 281, 1),
+(25, 282, 1),
+(24, 283, 1),
+(24, 284, 1),
+(24, 285, 1),
+(24, 286, 1),
+(24, 287, 1),
+(25, 288, 1),
+(25, 289, 1),
+(25, 290, 1),
+(27, 291, 1),
+(24, 292, 1),
+(28, 293, 1),
+(24, 294, 1),
+(24, 295, 1),
+(24, 296, 1),
+(24, 297, 1),
+(24, 298, 1),
+(24, 299, 1),
+(24, 300, 1);
 
 -- --------------------------------------------------------
 
@@ -78,7 +87,6 @@ INSERT INTO `cuonsach` (`isbn`, `ma_cuonsach`, `tinhtrang`) VALUES
 -- Table structure for table `dausach`
 --
 
-DROP TABLE IF EXISTS `dausach`;
 CREATE TABLE `dausach` (
   `isbn` int(11) UNSIGNED NOT NULL,
   `ma_tuasach` int(11) NOT NULL,
@@ -92,9 +100,8 @@ CREATE TABLE `dausach` (
 --
 
 INSERT INTO `dausach` (`isbn`, `ma_tuasach`, `ngonngu`, `bia`, `trangthai`) VALUES
-(24, 4, '1', '', '1'),
-(25, 4, '3', 'Cuá»‘n theo chiá»u giÃ³ - PhÃ¡p', '1'),
-(26, 5, '7', '', '1');
+(24, 4, '1', 'Cuá»‘n theo chiá»u giÃ³ - Tiáº¿ng Viáº¿t', '1'),
+(25, 4, '3', 'Cuá»‘n theo chiá»u giÃ³ - PhÃ¡p', '1');
 
 -- --------------------------------------------------------
 
@@ -102,14 +109,13 @@ INSERT INTO `dausach` (`isbn`, `ma_tuasach`, `ngonngu`, `bia`, `trangthai`) VALU
 -- Table structure for table `docgia`
 --
 
-DROP TABLE IF EXISTS `docgia`;
 CREATE TABLE `docgia` (
   `ma_docgia` int(11) NOT NULL,
   `ho` varchar(155) COLLATE ucs2_unicode_ci NOT NULL,
   `hoten` varchar(255) COLLATE ucs2_unicode_ci NOT NULL,
   `tenlot` varchar(155) COLLATE ucs2_unicode_ci NOT NULL,
   `ten` varchar(155) COLLATE ucs2_unicode_ci NOT NULL,
-  `ngaysinh` datetime NOT NULL
+  `ngaysinh` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=ucs2 COLLATE=ucs2_unicode_ci;
 
 --
@@ -117,29 +123,39 @@ CREATE TABLE `docgia` (
 --
 
 INSERT INTO `docgia` (`ma_docgia`, `ho`, `hoten`, `tenlot`, `ten`, `ngaysinh`) VALUES
-(16, '', 'Nguyá»…n TÄƒng Tuáº¥n', '', '', '2016-10-13 00:00:00'),
-(22, '', 'ttt', '', '', '2016-10-13 00:00:00'),
-(23, '', '666', '', '', '2016-10-13 00:00:00'),
-(25, '', '7777', '', '', '2016-10-13 00:00:00'),
-(27, '', '666', '', '', '2016-10-13 00:00:00'),
-(28, '', 'nguyá»…n Gia Dáº§n', '', '', '2016-10-13 00:00:00'),
-(29, '', 'nguyá»…n Gia Dáº§n', '', '', '2016-10-13 00:00:00'),
-(30, '', 'Nguyá»…n VÄ©nh Trá»ng', '', '', '2016-10-13 00:00:00'),
-(31, '', '777', '', '', '2016-10-13 00:00:00'),
-(32, '', '999', '', '', '2016-10-13 00:00:00'),
-(33, '', 'Nguyá»…n VÃ¢n KhÃ¡nh', '', '', '2016-10-13 00:00:00'),
-(34, '', 'nguyá»…n VÄƒn Tráº» Em', '', '', '2016-10-13 00:00:00'),
-(35, '', 'Tráº» em 1', '', '', '2016-10-13 00:00:00'),
-(36, '', 'Äá»™c giáº£ tráº» em 2', '', '', '2016-10-13 00:00:00'),
-(37, '', '999', '', '', '2016-10-13 00:00:00'),
-(38, '', '99', '', '', '2016-10-13 00:00:00'),
-(39, '', '999', '', '', '2016-10-13 00:00:00'),
-(40, '', '888', '', '', '2016-10-13 00:00:00'),
-(41, '', 'Tre em ok', '', '', '2016-10-13 00:00:00'),
-(42, '', 'tre em ', '', '', '2016-10-13 00:00:00'),
-(43, '', 'tre em ', '', '', '2016-10-13 00:00:00'),
-(44, '', '9999', '', '', '2016-10-13 00:00:00'),
-(45, '', 'Tráº» em nÃ¨', '', '', '2016-10-13 00:00:00');
+(47, '', 'Test tráº» em', '', '', '2016-10-13'),
+(48, '', 'Nguyá»…n ANh', '', '', '2016-10-13'),
+(61, '', 'Tráº§n VÄƒn Tiáº¿n', '', '', '2000-06-20'),
+(64, '', 'Tráº» Em', '', '', '2000-06-20');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `muon`
+--
+
+CREATE TABLE `muon` (
+  `isbn` int(11) NOT NULL,
+  `ma_cuonsach` int(11) NOT NULL,
+  `ma_docgia` int(11) NOT NULL,
+  `ngaygio_muon` datetime NOT NULL,
+  `ngay_hethan` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=ucs2 COLLATE=ucs2_unicode_ci;
+
+--
+-- Dumping data for table `muon`
+--
+
+INSERT INTO `muon` (`isbn`, `ma_cuonsach`, `ma_docgia`, `ngaygio_muon`, `ngay_hethan`) VALUES
+(24, 260, 48, '2016-10-16 11:41:23', '2016-10-30 10:41:23'),
+(24, 260, 48, '2016-10-16 12:09:06', '2016-10-30 11:09:06'),
+(24, 261, 48, '2016-10-16 12:25:32', '2016-10-30 11:25:32'),
+(24, 260, 48, '2016-10-16 13:13:41', '2016-10-30 12:13:41'),
+(24, 260, 48, '2016-10-16 13:13:51', '2016-10-30 12:13:51'),
+(24, 260, 48, '2016-10-16 13:14:22', '2016-10-30 12:14:22'),
+(24, 260, 61, '2016-10-16 13:15:04', '2016-10-30 12:15:04'),
+(24, 260, 61, '2016-10-16 13:16:58', '2016-10-30 12:16:58'),
+(24, 260, 61, '2016-10-16 13:17:35', '2016-10-30 12:17:35');
 
 -- --------------------------------------------------------
 
@@ -147,13 +163,12 @@ INSERT INTO `docgia` (`ma_docgia`, `ho`, `hoten`, `tenlot`, `ten`, `ngaysinh`) V
 -- Table structure for table `nguoilon`
 --
 
-DROP TABLE IF EXISTS `nguoilon`;
 CREATE TABLE `nguoilon` (
   `ma_docgia` int(255) NOT NULL,
   `diachi` varchar(255) COLLATE ucs2_unicode_ci NOT NULL,
   `quan` int(5) NOT NULL,
   `dienthoai` varchar(166) COLLATE ucs2_unicode_ci NOT NULL,
-  `han_sd` datetime NOT NULL
+  `han_sd` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=ucs2 COLLATE=ucs2_unicode_ci;
 
 --
@@ -161,10 +176,26 @@ CREATE TABLE `nguoilon` (
 --
 
 INSERT INTO `nguoilon` (`ma_docgia`, `diachi`, `quan`, `dienthoai`, `han_sd`) VALUES
-(1, 'Trần Mai Anh', 1, '0988585858', '2016-12-16 00:00:00'),
-(32, '', 1, '{dienthoai}', '2016-12-16 00:00:00'),
-(33, '', 1, '0988939495', '2016-12-16 00:00:00'),
-(333, '333', 33, '33', '2016-10-15 00:00:00');
+(1, 'Trần Mai Anh', 1, '0988585858', '2016-12-16'),
+(32, '', 1, '{dienthoai}', '2016-12-16'),
+(33, '', 1, '0988939495', '2016-12-16'),
+(46, '', 12, '9999', '2016-12-16'),
+(47, '', 12, '9999', '2016-10-16'),
+(48, '', 5, '', '2016-12-16'),
+(49, '227 Nguyá»…n VÄƒn Cá»«', 11, '', '2016-12-16'),
+(50, 'test', 11, 'test', '2016-12-16'),
+(51, '666', 1, '', '0000-00-00'),
+(52, '666', 1, '', '0000-00-00'),
+(53, '666', 1, '', '0000-00-00'),
+(54, '666', 1, '', '0000-00-00'),
+(55, '666', 1, '', '0000-00-00'),
+(56, '666', 1, '', '0000-00-00'),
+(57, '666', 1, '', '0000-00-00'),
+(58, '666', 1, '', '0000-00-00'),
+(59, '666', 1, '', '0000-00-00'),
+(60, 'Tetst', 1, '098880000', '2016-10-29'),
+(61, '99 Nguyá»…n VÄƒn Cá»«', 1, '0988030208', '2016-10-29'),
+(333, '333', 33, '33', '2016-10-15');
 
 -- --------------------------------------------------------
 
@@ -172,7 +203,6 @@ INSERT INTO `nguoilon` (`ma_docgia`, `diachi`, `quan`, `dienthoai`, `han_sd`) VA
 -- Table structure for table `treem`
 --
 
-DROP TABLE IF EXISTS `treem`;
 CREATE TABLE `treem` (
   `ma_docgia` int(11) NOT NULL,
   `ma_docgia_nguoilon` int(11) NOT NULL
@@ -184,6 +214,8 @@ CREATE TABLE `treem` (
 
 INSERT INTO `treem` (`ma_docgia`, `ma_docgia_nguoilon`) VALUES
 (45, 28),
+(63, 47),
+(64, 61),
 (66, 666);
 
 -- --------------------------------------------------------
@@ -192,7 +224,6 @@ INSERT INTO `treem` (`ma_docgia`, `ma_docgia_nguoilon`) VALUES
 -- Table structure for table `tuasach`
 --
 
-DROP TABLE IF EXISTS `tuasach`;
 CREATE TABLE `tuasach` (
   `ma_tuasach` int(11) UNSIGNED NOT NULL,
   `tuasach` varchar(255) COLLATE ucs2_unicode_ci NOT NULL,
@@ -258,17 +289,17 @@ ALTER TABLE `tuasach`
 -- AUTO_INCREMENT for table `cuonsach`
 --
 ALTER TABLE `cuonsach`
-  MODIFY `ma_cuonsach` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=291;
+  MODIFY `ma_cuonsach` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=301;
 --
 -- AUTO_INCREMENT for table `dausach`
 --
 ALTER TABLE `dausach`
-  MODIFY `isbn` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `isbn` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 --
 -- AUTO_INCREMENT for table `docgia`
 --
 ALTER TABLE `docgia`
-  MODIFY `ma_docgia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `ma_docgia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 --
 -- AUTO_INCREMENT for table `tuasach`
 --

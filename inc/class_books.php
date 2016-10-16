@@ -33,8 +33,9 @@ Class CuonSach{
 		$sql ="INSERT INTO `{$this->table}` (`isbn`, `ma_cuonsach`, `tinhtrang`) VALUES ({$isbn}, NULL, '{$tinhtrang}' )";
 		return $this->conn->query($sql);
 	}
-	function capNhatCuonSach($ma_tuasach, $tuasach, $tacgia, $tomtat){
-		$sql = "UPDATE `{$this->table}` SET tuasach = '{$tuasach}',tacgia = '{$tacgia}', tomtat = '{$tomtat}' WHERE ma_tuasach = {$ma_tuasach}";
+	function capNhatCuonSach($ma_cuonsach, $tinhtrang){
+		$sql = "UPDATE `{$this->table}` SET tinhtrang = {$tinhtrang} WHERE ma_cuonsach = '{$ma_cuonsach}' ";
+		echo $sql;
 
 		return $this->conn->query($sql);
 	}

@@ -37,6 +37,9 @@ Class Muon{
     		//INSERT INTO `muon` (`isbn`, `ma_cuonsach`, `ma_docgia`, `ngaygio_muon`, `ngay_hethan`) VALUES ('555', '55', '555', '2016-10-15 00:00:00', '2016-10-22 00:00:00');
     		$sql = "INSERT INTO `muon` (`isbn`, `ma_cuonsach`, `ma_docgia`, `ngaygio_muon`, `ngay_hethan`) VALUES ('{$isbn}', '{$ma_cuonsach}', '{$ma_docgia}', '{$ngay_muon}', '$ngay_hh');";
 			if($this->conn->query($sql)){
+				// update trạng thái cuốn sách và đầu sách
+				$cuonsach->capNhatCuonSach($ma_cuonsach, 0);
+				// Cập nhật trạng thái đầu sách
 				return $this->conn->insert_id;
 			}
 			return 0;

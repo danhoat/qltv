@@ -29,7 +29,7 @@
 				$record['muon_status']  = 'Đã mượn quá số lượng sách cho phép';
 			}
 		} else {
-			$record = array('success' => false, 'msg'=> 'Không tồn tại độc giả này');
+			$record = array('success' => false, 'msg'=> 'Không tồn tại độc giả có mã '.$ma_docgia);
 		}
 	} else if( $act == 'kiemtrasach') {
 		$ma_cuonsach = $_POST['ma_cuonsach'];
@@ -41,7 +41,7 @@
 			$record['success'] = true;
 
 		} else {
-			$record = array('success' => false, 'msg' => 'Không tồn tại cuốn sách này');
+			$record = array('success' => false, 'msg' => 'Không tồn tại cuốn sách có mã '.$ma_cuonsach);
 		}
 	}
 	echo json_encode($record);

@@ -58,6 +58,8 @@ if(isset($_POST['submit'])){
 		<div class="col-sm-10">
 			<div id="result">
 			</div>
+			<div id="result_sach">
+			</div>
 		</div>
 	</div>
 	<div class="form-group">
@@ -123,10 +125,10 @@ if(isset($_POST['submit'])){
 			      		template = res.msg;
 			      	}
 
-		      		$("#result").html(template);
+		      		$("#result_sach").html(template);
 		      	},
 		      	error:function(){
-		          $("#result").html('không tồn tại khách hàng này');
+		          $("#result_sach").html('không tồn tại khách hàng này');
 
 		      	}
 		    });

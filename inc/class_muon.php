@@ -22,7 +22,7 @@ Class Muon{
     function muonSach($ma_cuonsach,$ma_docgia){
     	$checkdocgia 	= $this->kiemTraDocGia($ma_docgia);
     	$cuonsach 		= CuonSach::getInstance();
-    	$isbn 			= $cuonsach->getISBNCuonSach($ma_cuonsach);
+    	$isbn 			= $cuonsach->getISBN($ma_cuonsach);
     	$checkdausach	= $this->kiemTraTinhTrangCuonSach($ma_cuonsach,$isbn);
 
     	if( isCustomError($checkdocgia) ){
@@ -84,7 +84,7 @@ Class Muon{
 	function chiTietMuonSach($ma_cuonsach, $isbn = 0){
 
 		if( ! $isbn ){
-			$isbn = $this->getISBN($ma_cuonsach);
+			$isbn = CuonSach::getInstance()->getISBN($ma_cuonsach);
 		}
 		$sql = "SELECT * FROM muon m
 					LEFT JOIN dausach ds
@@ -99,17 +99,7 @@ Class Muon{
 		}
 		return 0;
 	}
-	function getISBN($ma_cuonsach){
 
-		$sql = "SELECT isbn FROM muon WHERE ma_cuonsach = '{$ma_cuonsach}' LIMIT 1 ";
-		$result = $this->conn->query($sql);
-		if ($result && $result->num_rows > 0){
-			while( $row = $result->fetch_assoc() ) {
-				return $row['isbn'];
-			}
-		}
-		return 0;
-	}
     /**
      * kiểm tra xem Độc giả này có được phép mượn sách hay không.
      * @version  1.0

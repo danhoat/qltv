@@ -18,7 +18,7 @@ Class CuonSach{
         self::$instance = new CuonSach();
         return self::$instance;
     }
-    function getISBNCuonSach($ma_cuonsach){
+    function getISBN($ma_cuonsach){
     	$sql ="SELECT isbn FROM cuonsach WHERE ma_cuonsach = {$ma_cuonsach} ";
 		$result = $this->conn->query($sql);
 		if ($result && $result->num_rows > 0) {

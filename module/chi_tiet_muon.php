@@ -1,7 +1,9 @@
 <?php
 	$ma_cuonsach = isset($_GET['mcs']) ? $_GET['mcs'] : 0;
 	$isbn = isset($_GET['isbn']) ? $_GET['isbn'] : 0;
-
+  if($isbn){
+    $isbn =CuonSach::getInstance()->getISBN($ma_cuonsach);
+  }
 	$muon = Muon::getInstance()->chiTietMuonSach($ma_cuonsach, $isbn);
   // echo '<pre>';
   // var_dump($muon);
@@ -44,4 +46,13 @@
   	<div class="col-xs-6">
   		<?php echo $muon['ngay_hethan'];?>
   	</div>
+</div>
+<div class="form-group row">
+    <label for="example-tel-input" class="col-xs-4 col-form-label">Đầu sách</label>
+    <div class="col-xs-6">
+      <?php
+      $dausach = DauSach::getInstance()->getDauSach($isbn);
+      echo $dausach['bia'] ;
+      ?>
+    </div>
 </div>

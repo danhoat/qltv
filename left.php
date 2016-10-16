@@ -26,8 +26,8 @@
 			<a class="heading" href="#">Mượn Sách</a>
 			<ul class="sub">
 				<li class ="<?php checkMenu('form_muonsach', $act) ?>" > <a href="index.php?act=form_muonsach">Mượn sách</a></li>
-				<li class ="<?php checkMenu('list_dangmuon', $act) ?>" > <a href="index.php?act=list_dangmuon">Sách Đang mượn</a></li>
-				<li class ="<?php checkMenu('list_muon_quahan', $act) ?>" > <a href="index.php?act=list_muon_quahan">Sách Quá Hạn</a></li>
+				<li class ="<?php checkMenu('list_sach_dangmuon', $act) ?>" > <a href="index.php?act=list_sach_dangmuon">Sách Đang mượn</a></li>
+				<li class ="<?php checkMenu('list_sachquahan', $act) ?>" > <a href="index.php?act=list_muon_quahan">Sách Quá Hạn</a></li>
 
 			</ul>
 

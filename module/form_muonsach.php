@@ -10,7 +10,7 @@
 	</div>
 
 	<div class="form-group">
-		<label class="control-label col-sm-2" for="email">Nhập mã ISBN</label>
+		<label class="control-label col-sm-2" for="email">Mã cuốn sách</label>
 		<div class="col-sm-8">
 	  		<input class="form-control selectpicker" required id="isbn" name="isbn" data-live-search="true">
 		</div>

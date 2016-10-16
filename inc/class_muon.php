@@ -18,6 +18,36 @@ Class Muon{
         self::$instance = new Muon();
         return self::$instance;
     }
+    function muonSach($isbn,$ma_docgia){
+
+    }
+    /**
+     * kiểm tra xem Độc giả này có được phép mượn sách hay không.
+     * @version  1.0
+     * @author danng
+     * @return  boolean true or false
+     */
+    function kiemTraDocGia(){
+    	return true;
+    }
+    /**
+     * kiểm tra xem đầu sách này còn cuốn sách nào trong thư việc không
+     *@return   [<description>] bool : true or false
+     */
+    function kiemTraTinhTrangDauSach($isbn) {
+    	return true;
+    }
+    /**
+     * nếu đầu sách còn có trong thư viện. Lấy một mã cuốn sách của đầu sách này  và cho người dùng mượn.
+     * @version [version]
+     * @since   1.0
+     * @author danng
+     * @param   [type]    $isbn [description]
+     * @return  [type]          [description]
+     */
+    function chonCuonSach($isbn){
+
+    }
     function soSachDangMuonCuaDocGia($ma_docgia){
     	$sql 	= "SELECT count(*) $this->table WHERE ma_docgia ='{$ma_docgia}'";
    		$result = $this->conn->query($sql);

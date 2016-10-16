@@ -31,8 +31,9 @@
                 <input type="hidden" name="search" value="1" >
                 <input type="text" name="keyword" >
                 <select name="type" >
-                     <option value="1"> Mã độc giả </option>
+                    <option value="1"> Mã độc giả </option>
                     <option value="2"> Mã cuốn sách </option>
+                    <option value="3"> Mã đầu sách(isbn) </option>
                 </select>
                 <button type="submit">Tìm Kiếm</button>
             </form>

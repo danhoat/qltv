@@ -43,46 +43,30 @@ Class Muon{
     }
     public static function list_books($select_all = 0, $posts_per_age = 10, $current_page = 1, $search = 0, $type ='1', $keyword = '') {
 		global $conn;
-		$sql =" SELECT * FROM muon m LEFT JOIN cuonsach s ";
+		$sql =" SELECT * FROM muon m LEFT JOIN cuonsach s ON m.ma_cuonsach = s.ma_cuonsach ";
 
-		if($select_all){
-
-			$sql .=" ON s.ma_cuonsach = m.ma_cuonsach ";
-			if($search && !empty($keyword) ){
-
-				if($type == '1'){
-					$sql .=" WHERE m.ma_docgia = '{$keyword}' ";
-				} else {
-					$sql .=" WHERE m.ma_cuonsach = '{$keyword}' ";
-				}
+		if($search && !empty($keyword) ){
+			if($type == '1'){
+				$sql .=" WHERE m.ma_docgia = '{$keyword}' ";
+			} else if($type == '2') {
+				$sql .=" WHERE m.ma_cuonsach = '{$keyword}' ";
+			} else if ($type == '3'){
+				$sql .=" WHERE m.isbn = '{$keyword}' ";
 			}
-
-			$result = $conn->query($sql);
-			if ($result && $result->num_rows > 0) {
-				return $result;
-			}
-			return 0;
-		} else {
-			$offset = $posts_per_age * ($current_page - 1);
-
-
-			$sql .= " ON s.ma_cuonsach = m.ma_cuonsach ";
-
-			if($search && !empty($keyword) ){
-				if($type == '1'){
-					$sql .=" WHERE m.ma_docgia = '{$keyword}' ";
-				} else {
-					$sql .=" WHERE m.ma_cuonsach = '{$keyword}' ";
-				}
-			}
-			$sql .=" LIMIT {$posts_per_age} OFFSET {$offset}";
-
-			$result = $conn->query($sql);
-			if ($result && $result->num_rows > 0) {
-				return $result;
-			}
-			return 0;
 		}
+
+		if( !$select_all ){
+			$offset = $posts_per_age * ($current_page - 1);
+			$sql .=" LIMIT {$posts_per_age} OFFSET {$offset}";
+		}
+		echo $sql;
+
+		$result = $conn->query($sql);
+		if ($result && $result->num_rows > 0) {
+			return $result;
+		}
+		return 0;
+
 	}
     /**
      * kiểm tra xem Độc giả này có được phép mượn sách hay không.

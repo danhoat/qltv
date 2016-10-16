@@ -120,4 +120,15 @@ Class CuonSach{
 	function getCuonSach($ma_cuonsach){
 		return DauSach::getInstance()->getTuaSachByMaCuonSach($ma_cuonsach);
 	}
+	function getThongTinCuonSach($ma_cuonsach){
+		$sql = "SELECT * FROM cuonsach cs LEFT JOIN dausach ds ON cs.isbn = ds.isbn WHERE cs.ma_cuonsach = '{$ma_cuonsach}' ";
+		$result = $this->conn->query($sql);
+		if ( $result && $result->num_rows > 0) {
+			while( $row = $result->fetch_assoc() ) {
+				return $row;
+			}
+			return 1;
+		}
+		return 0;
+	}
 }

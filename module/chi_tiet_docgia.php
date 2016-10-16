@@ -124,12 +124,15 @@ if($is_tre_em){ ?>
 		$list = Muon::getInstance()->muonByDocGia($ma_docgia);
 		if($list){
 			echo '<table class="table">';
-			echo '<thead><th> Bìa </th><th>Ngày mượn</th><th>Ngày trả</th>';
+			echo '<thead><th> Bìa </th><th>Ngày mượn</th><th>Ngày trả</th><th> Chi tiết</th></thead>';
 			while( $row = $list->fetch_assoc() ) {
 				echo '<tr>';
 				echo '<td>' . $row['bia'] .'</td>';
 				echo '<td>' . $row['ngaygio_muon'] .'</td>';
 				echo '<td>' . $row['ngay_hethan'] .'</td>';
+				echo '<td>';
+				echo "<a href='index.php?act=chi_tiet_muon&mcs={$row['ma_cuonsach']}'>Chi tiết</a>";
+				echo '</td>';
 			}
 			echo '</table>';
 		}

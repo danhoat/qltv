@@ -8,7 +8,7 @@ $isbn = isset($_GET['isbn']) ? $_GET['isbn'] : 0;
 $total = CuonSach::listBookByISBN($select_all = 1, $isbn);
 if( !empty($total) ){
 
-	$url = 'index.php?act=list_sach&';
+	$url = 'index.php?act=list_sach_by_isbn&';
 	$total_record = $total->num_rows;
     $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
     if(! is_numeric($current_page) || $current_page < 1){

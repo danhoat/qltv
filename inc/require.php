@@ -1,0 +1,9 @@
+<?php
+	require('class_tua_sach.php');
+	require('class_dau_sach.php');
+	require('class_books.php');
+	require('class_doc_gia.php');
+	require('class_muon.php');
+	require("main.php");
+	require('functions.php');
+?>

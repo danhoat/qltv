@@ -17,8 +17,9 @@ Class DocGia{
 	function getThongTinDocGia($ma_docgia){
 		$sql ="SELECT * FROM  docgia WHERE ma_docgia = {$ma_docgia}";
 		$result = $this->conn->query($sql);
-		if ($result->num_rows > 0)
+		if ($result && $result->num_rows > 0)
 			while( $row = $result->fetch_assoc() ) {
+				$row['so_sachdangmuon'] = soSachDangMuonCuaDocGia($ma_docgia);
 				return $row;
 			}
 		return 0;

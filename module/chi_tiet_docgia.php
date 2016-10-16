@@ -28,7 +28,7 @@ echo 'Địa chỉ:'.$diachi.'<br />';
 echo 'Ngày sinh:'.$ngaysinh.'<br />';
 echo 'Hạn sử dụng:'.$han_sd.'<br />';
 echo 'Quận:'.$quan.'<br />';
-echo 'Số sách đang mượn';
+echo 'Số sách đang mượn : '.soSachDangMuonCuaDocGia($ma_docgia);
 
 ?>
 

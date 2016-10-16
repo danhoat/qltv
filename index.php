@@ -3,7 +3,7 @@
 <html>
 <?php
 	require_once("inc/connect.php");
-	require_once("inc/main.php");
+	require_once("inc/require.php");
 ?>
 <head>
 	<link rel="stylesheet" type="text/css" href="style.css">

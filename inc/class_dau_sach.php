@@ -86,7 +86,6 @@ Class DauSach{
 
 	function getMaTuaSachByISBN($isbn){
 		$sql 	= "SELECT ma_tuasach FROM $this->table WHERE isbn = {$isbn}";
-
 		$result = $this->conn->query($sql);
 		if ($result &&  $result->num_rows > 0 ) {
 			while( $row = $result->fetch_assoc() ) {
@@ -95,7 +94,23 @@ Class DauSach{
 		}
 		return 0;
 	}
+	function getISBNbyMaCuonSach($ma_cuonsach){
+		$sql 	= "SELECT isbn FROM $this->table WHERE ma_cuonsach = {$ma_cuonsach}";
+		$result = $this->conn->query($sql);
+		if ($result &&  $result->num_rows > 0 ) {
+			while( $row = $result->fetch_assoc() ) {
+				return $row['isbn'];
+			}
+		}
+		return 0;
+	}
 	function getTuaSachByISBN($isbn){
+		$ma_tuasach = $this->getMaTuaSachByISBN($isbn);
+		$tuasach 	=  TuaSach::getInstance();
+		return $tuasach->getTitleTuaSach($ma_tuasach);
+	}
+	function getTuaSachByMaCuonSach($ma_cuonsach){
+		$isbn = getISBNbyMaCuonSach($ma_cuonsach);
 		$ma_tuasach = $this->getMaTuaSachByISBN($isbn);
 		$tuasach 	=  TuaSach::getInstance();
 		return $tuasach->getTitleTuaSach($ma_tuasach);

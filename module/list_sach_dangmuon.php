@@ -17,15 +17,18 @@ if( !empty($total) ){
     	$current_page = $max_page;
     }
 	$result = Muon::list_books($select_all = 0, $posts_per_page, $current_page );
-    echo "Hệ thống hiện có {$total_record} cuốn sách";
+    echo "Có {$total_record} cuốn sách đang được mượn";
 	echo '<table class="table ">';
 	echo '<thead><tr><th> Mã</th><th>Độc giả </th> <th> Tựa sách </th><th> Tình trạng </td> <th> Tác vụ </th> </tr></thead>';
 	echo ' <tbody>';
 	while( $row = $result->fetch_assoc() ) {
 		$isbn 		= $row['isbn'];
+        $ma_docgia  = $row['ma_docgia'];
+        echo $ma_docgia;
 		echo '<tr>';
-        echo '<td> Tình Trạng </td>';
-        echo '<th>Độc giả </th>';
+        echo "<td>{$isbn} </td>";
+        echo '<th>'.getTenDocGia($ma_docgia).'</th>';
+         echo "<td> <a class='' href= 'index.php?act=chi_tiet_sach&id=".$row["ma_cuonsach"]."'> " . limit_string( getTuaSachByISBN($isbn),30). "</a> </td>";
 
         echo "<td><a  class='action'  href='index.php?act=frm_insert_book&id=".$row["ma_cuonsach"]."'>Cập nhật</a> &nbsp; <a href='{$url}page={$current_page}&del={$row["ma_cuonsach"]}' onclick ='return remove_tua_sach()'> Xóa</a>  ";
         echo '</tr>';

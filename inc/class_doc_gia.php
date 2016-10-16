@@ -41,6 +41,15 @@ Class DocGia{
 		$sql = "DELETE FROM {$this->table} WHERE ma_docgia= {$ma_docgia}";
 		return $this->conn->query($sql);
 	}
+	function getTenDocGia($ma_docgia){
+		$sql ="SELECT hoten FROM  $this->table WHERE ma_docgia = {$ma_docgia}";
+		$result = $this->conn->query($sql);
+		if ($result->num_rows > 0)
+			while( $row = $result->fetch_assoc() ) {
+				return $row['hoten'];
+			}
+		return 0;
+	}
 	public static function danhSachDocGia($select_all = 0, $posts_per_age = 10, $current_page = 1) {
 		global $conn;
 		if($select_all){

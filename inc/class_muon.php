@@ -46,14 +46,16 @@ Class Muon{
 		if($select_all){
 			$sql ="SELECT * FROM muon";
 			$result = $conn->query($sql);
-
 			if ($result && $result->num_rows > 0) {
 				return $result;
 			}
 			return 0;
 		} else {
 			$offset = $posts_per_age * ($current_page - 1);
-			$sql ="SELECT * FROM muon LIMIT {$posts_per_age} OFFSET {$offset}";
+			$sql =" SELECT * FROM muon m
+					LEFT JOIN cuonsach s
+					ON s.ma_cuonsach = m.ma_cuonsach
+			 		LIMIT {$posts_per_age} OFFSET {$offset}";
 
 			$result = $conn->query($sql);
 			if ($result && $result->num_rows > 0) {

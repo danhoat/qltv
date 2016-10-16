@@ -18,14 +18,23 @@ Class CuonSach{
         self::$instance = new CuonSach();
         return self::$instance;
     }
+    function getISBNCuonSach($ma_cuonsach){
+    	$sql ="SELECT isbn FROM cuonsach WHERE ma_cuonsach = {$ma_cuonsach} ";
+		$result = $this->conn->query($sql);
+		if ($result && $result->num_rows > 0) {
+			while( $row = $result->fetch_assoc() ) {
+				return $row['isbn'];
+			}
+		}
+		return 0;
+    }
 	function themCuonSach( $isbn, $ma_cuonsach = 0, $tinhtrang = 1 ) {
 
 		$sql ="INSERT INTO `{$this->table}` (`isbn`, `ma_cuonsach`, `tinhtrang`) VALUES ({$isbn}, NULL, '{$tinhtrang}' )";
 		return $this->conn->query($sql);
 	}
 	function capNhatCuonSach($ma_tuasach, $tuasach, $tacgia, $tomtat){
-		$sql = "UPDATE `{$this->table}` SET tuasach = '{$tuasach}',tacgia = '{$tacgia}', tomtat = '{$tomtat}'
-				WHERE ma_tuasach = {$ma_tuasach}";
+		$sql = "UPDATE `{$this->table}` SET tuasach = '{$tuasach}',tacgia = '{$tacgia}', tomtat = '{$tomtat}' WHERE ma_tuasach = {$ma_tuasach}";
 
 		return $this->conn->query($sql);
 	}

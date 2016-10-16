@@ -19,7 +19,7 @@ Class DocGia{
 		$result = $this->conn->query($sql);
 		if ($result && $result->num_rows > 0)
 			while( $row = $result->fetch_assoc() ) {
-				$row['so_sachdangmuon'] = soSachDangMuonCuaDocGia($ma_docgia);
+				$row['so_sachdangmuon'] = soSachDangMuon($ma_docgia);
 				return $row;
 			}
 		return 0;
@@ -56,12 +56,29 @@ Class DocGia{
 			$sql ="SELECT * FROM docgia LIMIT {$posts_per_age} OFFSET {$offset}";
 
 			$result = $conn->query($sql);
-			if ($result->num_rows > 0) {
+			if ($result && $result->num_rows > 0) {
 				return $result;
 			}
 			return 0;
 		}
 	}
+	function soSachDangMuon($ma_docgia){
+    	$sql 	= "SELECT count(*) FROM muon WHERE ma_docgia ='{$ma_docgia}'";
+   		$result = $this->conn->query($sql);
+   		if ($result && $result->num_rows > 0) {
+			$row = mysqli_fetch_row($result);
+			return $row[0];
+		}
+		return 0;
+    }
+    function conHanSuDung($ma_docgia){
+  //   	$sql = "SELECT * FROM docgia WHERE ma_docgia = '{$ma_docgia' AND han_sd >= cast((now()) as date) ";
+  //   	$result = $this->conn->query($sql);
+  //  		if ($result && $result->num_rows > 0) {
+		// 	return 0;
+		// }
+		// return 1;
+    }
 }
 class TreEm extends DocGia{
 	protected $ma_docgia;
@@ -84,6 +101,7 @@ class TreEm extends DocGia{
 		if($this->conn->query($sql)){
 			return $this->conn->insert_id;
 		}
+		return 0;
 	}
 
     function isDocGiaTreEm($ma_docgia){
@@ -175,6 +193,10 @@ class NguoiLon extends DocGia {
 				$record['quan'] 		=  $row['quan'];
 				$record['dienthoai'] 	=  $row['dienthoai'];
 				$record['han_sd'] 		=  $row['han_sd'];
+				$ngay_hh 				= date_create($row['han_sd']);
+				$ngay_hh 				= date_format($ngay_hh,"Y-m-d");
+				$now 					= date('Y-m-d', time() );
+				$record['con_hsd'] 		= ($ngay_hh < $now) ? 0 : 1;
 				return $record;
 			}
 

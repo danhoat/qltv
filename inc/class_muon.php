@@ -18,8 +18,30 @@ Class Muon{
         self::$instance = new Muon();
         return self::$instance;
     }
-    function muonSach($isbn,$ma_docgia){
-
+    function muonSach($ma_cuonsach,$ma_docgia){
+    	$checkdocgia 	= $this->kiemTraDocGia($ma_docgia);
+    	$checkdausach	= $this->kiemTraTinhTrangDauSach($ma_cuonsach);
+    	$cuonsach 		= CuonSach::getInstance();
+    	$isbn 			= $cuonsach->getISBNCuonSach($ma_cuonsach);
+    	//$ma_cuonsach 	= 260;
+    	//isbn = 24;
+    	if( isCustomError($checkdocgia) ){
+    		return $checkdocgia;
+    	}
+    	if( isCustomError($checkdausach) ){
+    		return $checkdausach;
+    	}
+    	$ngay_muon 	= date('Y-m-d H:i:s', time() );
+    	$ngay_hh 	= date("Y-m-d H:i:s", time()+ 14*24*60*60);
+    	if($checkdocgia == 1 && $checkdausach == 1){
+    		//INSERT INTO `muon` (`isbn`, `ma_cuonsach`, `ma_docgia`, `ngaygio_muon`, `ngay_hethan`) VALUES ('555', '55', '555', '2016-10-15 00:00:00', '2016-10-22 00:00:00');
+    		$sql = "INSERT INTO `muon` (`isbn`, `ma_cuonsach`, `ma_docgia`, `ngaygio_muon`, `ngay_hethan`) VALUES ('{$isbn}', '{$ma_cuonsach}', '{$ma_docgia}', '{$ngay_muon}', '$ngay_hh');";
+    		echo $sql;
+			if($this->conn->query($sql)){
+				return $this->conn->insert_id;
+			}
+			return 0;
+    	}
     }
     /**
      * kiểm tra xem Độc giả này có được phép mượn sách hay không.
@@ -27,14 +49,32 @@ Class Muon{
      * @author danng
      * @return  boolean true or false
      */
-    function kiemTraDocGia(){
-    	return true;
+    function kiemTraDocGia( $ma_docgia ){
+
+    	$docgia 	= TreEm::getInstance();
+		$is_tre_em =  $docgia->isDocGiaTreEm($ma_docgia) ;
+		if( $is_tre_em ) {
+			$ma_docgia = $docgia->maDocGiaNguoiLon($ma_docgia);
+			$docgia 	= $docgia->getThongTinDocGia($ma_docgia);
+		} else {
+			$nguoilon 	= NguoiLon::getInstance();
+			$docgia 	= $nguoilon->getThongTinDocGia($ma_docgia);
+	    	if($docgia['con_hsd'] == 0)
+	    		return new HandleError('docgia','hethan');
+    	}
+    	if($docgia['so_sachdangmuon'] > 5)
+	    		return new HandleError('docgia','quasoluong');
+
+    	return 1;
     }
     /**
      * kiểm tra xem đầu sách này còn cuốn sách nào trong thư việc không
+     * Nếu còn --> trả về ID 1 cuốn sách của đầ sách này;
+     * Nếu không -> trả về lỗi;
      *@return   [<description>] bool : true or false
      */
-    function kiemTraTinhTrangDauSach($isbn) {
+    function kiemTraTinhTrangDauSach($ma_cuonsach) {
+
     	return true;
     }
     /**
@@ -48,16 +88,7 @@ Class Muon{
     function chonCuonSach($isbn){
 
     }
-    function soSachDangMuonCuaDocGia($ma_docgia){
-    	$sql 	= "SELECT count(*) $this->table WHERE ma_docgia ='{$ma_docgia}'";
-   		$result = $this->conn->query($sql);
 
-   		if ($result && $result->num_rows > 0) {
-			$row = mysqli_fetch_row($result);
-			return $row[0];
-		}
-		return 0;
-    }
 	public static function listBookByISBN($select_all = 0,$isbn = 0, $posts_per_age = 10, $current_page = 1) {
 		global $conn;
 		if($select_all){

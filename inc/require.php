@@ -1,4 +1,5 @@
 <?php
+	require('handle_error.php');
 	require('class_tua_sach.php');
 	require('class_dau_sach.php');
 	require('class_books.php');

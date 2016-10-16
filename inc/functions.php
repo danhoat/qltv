@@ -1,7 +1,7 @@
 <?php
 
-function soSachDangMuonCuaDocGia($ma_docgia){
-	$muon = Muon::getInstance();
-	$soluong = $muon->soSachDangMuonCuaDocGia($ma_docgia);
+function soSachDangMuon($ma_docgia){
+	$docgia = DocGia::getInstance();
+	$soluong = $docgia->soSachDangMuon($ma_docgia);
 	return $soluong;
 }

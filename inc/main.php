@@ -1,5 +1,7 @@
 <?php
-
+	function isCustomError( $thing ) {
+		return ( $thing instanceof HandleError );
+	}
 
 	function add_selected($input, $default){
 

@@ -1,3 +1,19 @@
+<?php
+$error = '';
+	if(isset($_POST['submit'])){
+		$muon = Muon::getInstance();
+		$ma_cuonsach = isset($_POST['ma_cuonsach']) ? $_POST['ma_cuonsach'] : 0;
+		$ma_docgia = isset($_POST['ma_docgia']) ? $_POST['ma_docgia'] : 0;
+		$result = $muon->muonSach($ma_cuonsach, $ma_docgia);
+		if( isCustomError($result) ){
+			$error = $result->getMessage();
+			echo $error;
+		} else {
+			echo 'Mượn sách thành công';
+		}
+
+	}
+?>
 <form class="form-horizontal" action="" method="POST">
 	<div class="form-group">
 		<label class="control-label col-sm-2" for="email">Mã độc giả</label>

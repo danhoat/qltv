@@ -28,12 +28,30 @@ Class DauSach{
 		}
 		return 0;
 	}
+
 	function kiemTraDauSachTonTai($isbn){
 		$sql ="SELECT * FROM {$this->table} WHERE isbn = {$isbn} ";
-
 		$result = $this->conn->query($sql);
 		if ($result && $result->num_rows > 0) {
 			return $result;
+		}
+		return 0;
+	}
+	function kiemTraTrangThaiDauDach($isbn){
+		$sql ="SELECT * FROM {$this->table} WHERE isbn = {$isbn} AND trangthai == '1' ";
+		$result = $this->conn->query($sql);
+		if ($result && $result->num_rows > 0) {
+			return 1;
+		}
+		return 0;
+	}
+	function getMaCuonSach($isbn){
+		$sql ="SELECT ma_cuonsach FROM cuonsach WHERE isbn = {$isbn} AND tinhtrang == '1' ";
+		$result = $this->conn->query($sql);
+		if ($result && $result->num_rows > 0) {
+			while( $row = $result->fetch_assoc() ) {
+				return $row['ma_cuonsach'];
+			}
 		}
 		return 0;
 	}

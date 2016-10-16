@@ -111,4 +111,7 @@ Class CuonSach{
 	function getTenCuonSach($ma_cuonsach){
 		return DauSach::getInstance()->getTuaSachByMaCuonSach($ma_cuonsach);
 	}
+	function getCuonSach($ma_cuonsach){
+		return DauSach::getInstance()->getTuaSachByMaCuonSach($ma_cuonsach);
+	}
 }

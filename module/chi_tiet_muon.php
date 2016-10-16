@@ -1,41 +1,34 @@
 <?php
-$ma_docgia = isset($_GET['id']) ? $_GET['id'] : 0;
-$docgia = TreEm::getInstance();
-echo "Mã độc giả : {$ma_docgia}".'<br />';
-$is_tre_em =  $docgia->isDocGiaTreEm($ma_docgia) ;
-
-if( $is_tre_em ) {
-	echo 'Loại độc giả: Trẻ em <br />';
-	$record = $docgia->getThongTinDocGia($ma_docgia);
-	echo 'Thông tin độc giả người lớn : <br />';
-	$ma_docgia = $docgia->maDocGiaNguoiLon($ma_docgia);
-}
-$nguoilon = NguoiLon::getInstance();
-$record = $nguoilon->getThongTinDocGia($ma_docgia);
-
-
-if(!$is_tre_em){
-	echo 'Loại độc giả: Người lớn <br />';
-}
-$diachi = !empty($record['diachi']) ? $record['diachi'] : 'Chưa có địa chỉ';
-$hoten = !empty($record['hoten']) ? $record['hoten'] : 'Chưa nhập họ tên';
-$quan = !empty($record['quan']) ? $record['quan'] : 'Chưa nhập quận';
-$ngaysinh = !empty($record['ngaysinh']) ? $record['ngaysinh'] : 'Chưa nhập ngày sinh';
-$han_sd = !empty($record['han_sd']) ? $record['han_sd'] : 'Chưa nhập ngày sinh';
-// echo '<pre>';
-// var_dump($record);
-// echo '</pre>';
-$con_hsd = $record['con_hsd'];
-
-$han_sd_text =  ($con_hsd == 1)? 'Còn sạn sử dụng' : 'Thẻ hết hạn';
-echo 'Họ tên :'.$hoten .'<br />';
-echo 'Địa chỉ:'.$diachi.'<br />';
-echo 'Ngày sinh:'.$ngaysinh.'<br />';
-echo 'Ngày hết hạn:'.$han_sd.'<br />';
-echo 'Hạn sử dụng:'.$han_sd_text.'<br />';
-echo 'Quận:'.$quan.'<br />';
-echo 'Số sách đang mượn : '.soSachDangMuon($ma_docgia) .'<br />';
-
+	$ma_cuonsach = isset($_GET['mcs']) ? $_GET['mcs'] : 0;
+	$isbn = isset($_GET['isbn']) ? $_GET['isbn'] : 0;
+	$muon = Muon::getInstance()->chiTietMuonSach($ma_cuonsach, $isbn);
+	// echo '<pre>';
+	// var_dump($muon);
+	// echo '</pre>';
 ?>
 
+<div class="form-group row">
+  	<label for="example-tel-input" class="col-xs-4 col-form-label">Tên Cuốn sách</label>
+  	<div class="col-xs-6">
+  		<?php echo $muon['bia'] ;?>
+  	</div>
+</div>
+<div class="form-group row">
+  	<label for="example-tel-input" class="col-xs-4 col-form-label">Ngày mượn</label>
+  	<div class="col-xs-6">
+  		<?php echo $muon['ngaygio_muon'] ;?>
+  	</div>
+</div>
+<div class="form-group row">
+  	<label for="example-tel-input" class="col-xs-4 col-form-label">Ngày hết hạn</label>
+  	<div class="col-xs-6">
+  		<?php echo $muon['ngay_hethan'];?>
+  	</div>
+</div>
+<div class="form-group row">
+  	<label for="example-tel-input" class="col-xs-4 col-form-label">Tên Cuốn sách</label>
+  	<div class="col-xs-6">
+
+  	</div>
+</div>
 

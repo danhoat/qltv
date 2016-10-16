@@ -158,4 +158,13 @@ Class DauSach{
 		$sql = "DELETE FROM {$this->table} WHERE isbn= {$isbn}";
 		return $this->conn->query($sql);
 	}
+	function getDauSachByMaCuonSach($ma_cuonsach){
+		$sql = "SELECT * FROM dausach WHERE ma_cuonsach = '{$ma_cuonsach}' ";
+		$result = $this->conn->query($sql);
+		if ($result && $result->num_rows > 0)
+		while( $row = $result->fetch_assoc() ) {
+			return $row['tuasach'];
+		}
+		return 0;
+	}
 }

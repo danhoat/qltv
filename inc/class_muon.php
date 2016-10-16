@@ -8,7 +8,7 @@ Class Muon{
 	function __construct(){
 		global $conn;
 		$this->conn = $conn;
-		$this->table = 'cuonsach';
+		$this->table = 'muon';
 
 	}
 	static function getInstance(){
@@ -18,6 +18,7 @@ Class Muon{
         self::$instance = new Muon();
         return self::$instance;
     }
+
     function muonSach($ma_cuonsach,$ma_docgia){
     	$checkdocgia 	= $this->kiemTraDocGia($ma_docgia);
     	$cuonsach 		= CuonSach::getInstance();
@@ -59,7 +60,7 @@ Class Muon{
 			$offset = $posts_per_age * ($current_page - 1);
 			$sql .=" LIMIT {$posts_per_age} OFFSET {$offset}";
 		}
-		echo $sql;
+		//echo $sql;
 
 		$result = $conn->query($sql);
 		if ($result && $result->num_rows > 0) {
@@ -67,6 +68,20 @@ Class Muon{
 		}
 		return 0;
 
+	}
+	function chiTietMuonSach($ma_cuonsach, $isbn){
+		$sql = "SELECT * FROM muon m
+					LEFT JOIN dausach ds
+					ON m.isbn = ds.isbn
+				WHERE m.ma_cuonsach = '{$ma_cuonsach}' AND ds.isbn = '{$isbn}'";
+		// echo $sql;
+		$result = $this->conn->query($sql);
+		if ($result && $result->num_rows > 0){
+			while( $row = $result->fetch_assoc() ) {
+				return $row;
+			}
+		}
+		return 0;
 	}
     /**
      * kiểm tra xem Độc giả này có được phép mượn sách hay không.

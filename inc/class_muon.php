@@ -72,6 +72,15 @@ Class Muon{
 		return 0;
 
 	}
+	function muonByDocGia($ma_docgia){
+		$sql =" SELECT * FROM muon m LEFT JOIN dausach ds  ON m.isbn = ds.isbn
+		 WHERE m.ma_docgia = '{$ma_docgia}' ";
+		$result = $this->conn->query($sql);
+		if ($result && $result->num_rows > 0){
+			return $result;
+		}
+		return 0;
+	}
 	function chiTietMuonSach($ma_cuonsach, $isbn = 0){
 		if( empty($isbn) ){
 

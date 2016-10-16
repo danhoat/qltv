@@ -20,15 +20,14 @@ Class Muon{
     }
     function muonSach($ma_cuonsach,$ma_docgia){
     	$checkdocgia 	= $this->kiemTraDocGia($ma_docgia);
-    	$checkdausach	= $this->kiemTraTinhTrangDauSach($ma_cuonsach);
     	$cuonsach 		= CuonSach::getInstance();
     	$isbn 			= $cuonsach->getISBNCuonSach($ma_cuonsach);
-    	//$ma_cuonsach 	= 260;
-    	//isbn = 24;
+    	$checkdausach	= $this->kiemTraTinhTrangDauSach($ma_cuonsach,$isbn);
+
     	if( isCustomError($checkdocgia) ){
     		return $checkdocgia;
     	}
-    	if( isCustomError($checkdausach) ){
+    	if( isCustomError( $checkdausach ) ){
     		return $checkdausach;
     	}
     	$ngay_muon 	= date('Y-m-d H:i:s', time() );
@@ -50,8 +49,12 @@ Class Muon{
      * @return  boolean true or false
      */
     function kiemTraDocGia( $ma_docgia ){
-
+    	$docgia 	= DocGia::getInstance()->getThongTinDocGia($ma_docgia);
+    	if(!$docgia){
+    		return new HandleError('docgia','no_exist');
+    	}
     	$docgia 	= TreEm::getInstance();
+
 		$is_tre_em =  $docgia->isDocGiaTreEm($ma_docgia) ;
 		if( $is_tre_em ) {
 			$ma_docgia = $docgia->maDocGiaNguoiLon($ma_docgia);
@@ -63,8 +66,7 @@ Class Muon{
 	    		return new HandleError('docgia','hethan');
     	}
     	if($docgia['so_sachdangmuon'] > 5)
-	    		return new HandleError('docgia','quasoluong');
-
+	    	return new HandleError('docgia','quasoluong');
     	return 1;
     }
     /**
@@ -73,8 +75,15 @@ Class Muon{
      * Nếu không -> trả về lỗi;
      *@return   [<description>] bool : true or false
      */
-    function kiemTraTinhTrangDauSach($ma_cuonsach) {
-
+    function kiemTraTinhTrangDauSach($ma_cuonsach, $isbn) {
+    	$cuonsach = CuonSach::getInstance()->kiemTraSachCuonSach($ma_cuonsach);
+    	if( !$cuonsach ){
+    		return new HandleError('sach','no_exists');
+    	}
+    	$dausach = DauSach::getInstance()->kiemTraTrangThaiDauDachByISBN($isbn);
+    	if( !$dausach ){
+    		return new HandleError('dausach','busy');
+    	}
     	return true;
     }
     /**

@@ -83,15 +83,7 @@ Class CuonSach{
 			return 0;
 		}
 	}
-	function getTuaSach($ma_tuasach){
-		$result = $this->kiemTraSach($ma_tuasach);
-		if( $result ){
-			while( $row = $result->fetch_assoc() ) {
-				return $row;
-			}
-		}
-		return 0;
-	}
+
 	public static function 	show_tua_sach($ma_tuasach){
 		global $conn;
 		$sql ="SELECT tuasach FROM tuasach WHERE ma_tuasach = {$ma_tuasach}";
@@ -108,8 +100,8 @@ Class CuonSach{
 	 * @version [version]
 	 * @since   1.0
 	 */
-	function kiemTraSach($ma_tuasach){
-		$sql ="SELECT * FROM {$this->table} WHERE ma_tuasach = {$ma_tuasach} ";
+	function kiemTraSachCuonSach($ma_cuonsach){
+		$sql ="SELECT * FROM {$this->table} WHERE ma_cuonsach = {$ma_cuonsach} ";
 		$result = $this->conn->query($sql);
 		if ( $result && $result->num_rows > 0) {
 			return $result;

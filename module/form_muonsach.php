@@ -7,14 +7,20 @@ $error = '';
 		$result = $muon->muonSach($ma_cuonsach, $ma_docgia);
 		if( isCustomError($result) ){
 			$error = $result->getMessage();
-			echo $error;
 		} else {
 			echo 'Mượn sách thành công';
 		}
-
 	}
 ?>
 <form class="form-horizontal" action="" method="POST">
+	<?php if(!empty($error)) { ?>
+	<div class="form-group">
+		<label class="control-label col-sm-2" for="email"> &nbsp; </label>
+		<div class="col-sm-8">
+			<?php echo $error;?>
+		</div>
+	</div>
+	<?php } ?>
 	<div class="form-group">
 		<label class="control-label col-sm-2" for="email">Mã độc giả</label>
 		<div class="col-sm-8">
@@ -36,7 +42,7 @@ $error = '';
 	</div>
 	<div class="form-group">
 		<label class="control-label col-sm-2" for="email">&nbsp;</label>
-		<div class="col-sm-10"> Thông báo;
+		<div class="col-sm-10">
 			<div id="result">
 			</div>
 		</div>

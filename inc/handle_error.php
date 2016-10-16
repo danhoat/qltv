@@ -14,21 +14,36 @@ class HandleError{
 		if($class == 'docgia'){
 			switch ($code){
 				case 'hethan':
-				$msg =  'Thẻ độc giả đã hết hạn.';
-				break;
+					$msg =  'Thẻ độc giả đã hết hạn.';
+					break;
 				case 'quasoluong':
-				$msg =  'Độc giả này đã mượn quá số lượng sách được phép';
+					$msg =  'Độc giả này đã mượn quá số lượng sách được phép';
 				break;
+				case 'no_exist':
+					$msg = 'Không tồn tại thẻ độc giả này trong hệ thống';
+					break;
+
 				case 'empty':
 				default :
-				$msg = 'Đầu sách đã hết';
-				break;
+					$msg = 'Đầu sách đã hết';
+					break;
 
 			}
-		} else if($class ='dausach'){
+		} else if($class == 'dausach'){
 			switch ($code){
 				case 'han_sd':
-				$msg =  'Hết hạn';
+					$msg =  'Hết hạn';
+					break;
+				case 'busy':
+				default :
+					$msg = 'Đầu sách đang được mượn hết';
+					break;
+			}
+
+		} else if($class =='sach'){
+			switch ($code){
+				case 'no_exists':
+				$msg =  'Không tồn tại cuốn sách này';
 				break;
 				case 'empty':
 				default :

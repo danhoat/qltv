@@ -74,6 +74,9 @@ if(isset($_POST['submit'])){
 	$(function() {
 		$("#kiemTraDocGia").click(function(event){
 		 	var ma_docgia= $("#ma_docgia").val();
+		 	if(ma_docgia == ''){
+		 		return '';
+		 	}
 		 	var data = {"ma_docgia" : ma_docgia, "act":"kiemtradocgia"};
 
 		   	$.ajax({
@@ -82,22 +85,28 @@ if(isset($_POST['submit'])){
 		      	data: data,
 		  		datatype: 'json',
 		      	success: function(res){
-		      		console.log(res);
-		      		var template = "Khach hang: "+ res.hoten + "<br/> ";
-		      		template = template + 'Số sách đang mượn:' + res.so_sachdangmuon +  '<br />';
-		      		template = template + 'Tình trạng : ' + res.muon_status + '<br />';
-		      		template = template + "<a target = '_blank' href='index.php?act=chi_tiet_docgia&id="+res.ma_docgia+"'>Chi tiết</a>";
-		      		$("#result").html(template);
+		      		if( res.success ){
+			      		var template = "Khach hang: "+ res.hoten + "<br/> ";
+			      		template = template + 'Số sách đang mượn:' + res.so_sachdangmuon +  '<br />';
+			      		template = template + 'Tình trạng : ' + res.muon_status + '<br />';
+			      		template = template + "<a target = '_blank' href='index.php?act=chi_tiet_docgia&id="+res.ma_docgia+"'>Chi tiết</a>";
+			      	} else {
+			      		template = res.msg;
+			      	}
+			      	$("#result").html(template);
+
 		      	},
 		      	error:function(){
 		          $("#result").html('không tồn tại khách hàng này');
-		          $("#result").addClass('msg_error');
-		          $("#result").fadeIn(1500);
+
 		      	}
 		    });
 		});
 		$("#kiemTraSach").click(function(event){
 		 	var ma_cuonsach= $("#ma_cuonsach").val();
+		 	if(ma_cuonsach == ''){
+		 		return '';
+		 	}
 		 	var data = {"ma_cuonsach":ma_cuonsach, "act" :"kiemtrasach"};
 
 		   	$.ajax({
@@ -106,16 +115,19 @@ if(isset($_POST['submit'])){
 		      	data: data,
 		  		datatype: 'json',
 		      	success: function(res){
-		      		console.log(res);
-		      		var template = "Đầu sách: <a target='_blank' href='index.php?act=list_sach_by_isbn&isbn="+res.isbn+"'>"+ res.bia + " </a><br/> ";
-		      		template = template + 'Tình trạng: ' + res.tt_text +  '<br />';
+		      		var template;
+		      		if(res.success){
+			      		template = "Đầu sách: <a target='_blank' href='index.php?act=list_sach_by_isbn&isbn="+res.isbn+"'>"+ res.bia + " </a><br/> ";
+			      		template = template + 'Tình trạng: ' + res.tt_text +  '<br />';
+			      	} else {
+			      		template = res.msg;
+			      	}
 
 		      		$("#result").html(template);
 		      	},
 		      	error:function(){
 		          $("#result").html('không tồn tại khách hàng này');
-		          $("#result").addClass('msg_error');
-		          $("#result").fadeIn(1500);
+
 		      	}
 		    });
 		})

@@ -35,8 +35,6 @@ Class CuonSach{
 	}
 	function capNhatCuonSach($ma_cuonsach, $tinhtrang){
 		$sql = "UPDATE `{$this->table}` SET tinhtrang = {$tinhtrang} WHERE ma_cuonsach = '{$ma_cuonsach}' ";
-		echo $sql;
-
 		return $this->conn->query($sql);
 	}
 	function xoaCuonSach($ma_cuonsach){

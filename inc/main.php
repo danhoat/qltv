@@ -12,18 +12,17 @@
 	function list_ngon_ngu($selected = 1){
 		if(empty($selected)){
 			$selected = 1;
-		}
-	?>
+		}?>
 		<select class="form-control" name="ngonngu" required>
-				<option value="0" <?php add_selected($selected, 0);?> > Chọn ngôn ngữ</option>
-				<option value="1" <?php add_selected($selected, 1);?>> Việt</option>
-				<option value="2" <?php add_selected($selected, 2);?>> Anh </option>
-				<option value="3" <?php add_selected($selected, 3);?>> Pháp</option>
-				<option value="4" <?php add_selected($selected, 4);?>> Đức</option>
-				<option value="5" <?php add_selected($selected, 5);?>> Trung Quốc</option>
-				<option value="6" <?php add_selected($selected, 6);?>> Nhật</option>
-				<option value="7" <?php add_selected($selected, 7);?>> Hàn Quốc</option>
-			</select>
+			<option value="0" <?php add_selected($selected, 0);?> > Chọn ngôn ngữ</option>
+			<option value="1" <?php add_selected($selected, 1);?>> Việt</option>
+			<option value="2" <?php add_selected($selected, 2);?>> Anh </option>
+			<option value="3" <?php add_selected($selected, 3);?>> Pháp</option>
+			<option value="4" <?php add_selected($selected, 4);?>> Đức</option>
+			<option value="5" <?php add_selected($selected, 5);?>> Trung Quốc</option>
+			<option value="6" <?php add_selected($selected, 6);?>> Nhật</option>
+			<option value="7" <?php add_selected($selected, 7);?>> Hàn Quốc</option>
+		</select>
 	    <?php
 	}
 	function danhSachQuan($selected = 1){
@@ -294,6 +293,22 @@ function get_site_title(){
 				$title .= 'Cập nhật thông tin độc giả';
 			}
 		break;
+		case 'form_muonsach':
+			$title .= 'Thêm độc giả';
+			break;
+
+		case 'list_sach_dangmuon':
+			$title .= 'Các sách đang mượn';
+			break;
+		case 'list_muon_quahan':
+			$title .= 'Sách quá hạn';
+			break;
+		case 'chi_tiet_muon':
+			$title .= 'Chi tiết mượn một cuốn sách';
+			break;
+		case 'form_muonsach':
+			$title .= 'Thêm độc giả';
+			break;
 		case 'chi_tiet_docgia':
 			$title .= 'Xem thông tin độc giả';
 			break;

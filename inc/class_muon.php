@@ -47,7 +47,7 @@ Class Muon{
     }
     public static function list_books($select_all = 0, $posts_per_age = 10, $current_page = 1, $search = 0, $type ='1', $keyword = '') {
 		global $conn;
-		$sql =" SELECT * FROM muon m LEFT JOIN cuonsach s ON m.ma_cuonsach = s.ma_cuonsach ";
+		$sql =" SELECT * FROM muon m LEFT JOIN dausach ds ON m.isbn = ds.isbn ";
 
 		if($search && !empty($keyword) ){
 			if($type == '1'){

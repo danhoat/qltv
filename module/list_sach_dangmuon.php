@@ -48,7 +48,7 @@
         		echo '<tr>';
                 echo "<td>{$isbn} </td>";
                 echo '<th><a href="index.php?act=chi_tiet_docgia&id='.$ma_docgia.'">'.getTenDocGia($ma_docgia).'<a/></th>';
-                 echo "<td> <a class='' href= 'index.php?act=chi_tiet_muon&mcs=".$ma_cuonsach."&isbn=".$isbn."'> " . limit_string( getTuaSachByISBN($isbn),30). "</a> </td>";
+                 echo "<td> <a class='' href= 'index.php?act=chi_tiet_muon&mcs=".$ma_cuonsach."&isbn=".$isbn."'> " . limit_string( $row['bia'], 30). "</a> </td>";
 
                 echo "<td><a  class='action'  href='index.php?act=frm_insert_book&id=".$ma_cuonsach."'>Cập nhật</a> &nbsp; <a href='{$url}page={$current_page}&del={$row["ma_cuonsach"]}' onclick ='return remove_tua_sach()'> Xóa</a>  ";
                 echo '</tr>';

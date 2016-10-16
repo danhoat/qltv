@@ -123,7 +123,7 @@ Class Muon{
 	    	if($docgia['con_hsd'] == 0)
 	    		return new HandleError('docgia','hethan');
     	}
-    	if($docgia['so_sachdangmuon'] > 5)
+    	if($docgia['so_sachdangmuon'] > 4)
 	    	return new HandleError('docgia','quasoluong');
     	return 1;
     }

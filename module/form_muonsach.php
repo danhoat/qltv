@@ -88,7 +88,7 @@ if(isset($_POST['submit'])){
 		  		datatype: 'json',
 		      	success: function(res){
 		      		if( res.success ){
-			      		var template = "Khach hang: "+ res.hoten + "<br/> ";
+			      		var template = "Khách hàng: "+ res.hoten + "<br/> ";
 			      		template = template + 'Số sách đang mượn:' + res.so_sachdangmuon +  '<br />';
 			      		template = template + 'Tình trạng : ' + res.muon_status + '<br />';
 			      		template = template + "<a target = '_blank' href='index.php?act=chi_tiet_docgia&id="+res.ma_docgia+"'>Chi tiết</a>";
@@ -99,7 +99,7 @@ if(isset($_POST['submit'])){
 
 		      	},
 		      	error:function(){
-		          $("#result").html('không tồn tại khách hàng này');
+		          $("#result").html('Không tồn tại khách hàng này');
 
 		      	}
 		    });

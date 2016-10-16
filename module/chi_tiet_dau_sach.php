@@ -38,8 +38,13 @@
 		  	<div class="form-group">
 			    <label class="control-label col-sm-2" for="pwd">Trạng thái</label>
 			    <div class="col-sm-10">
-			    	<input type="radio" value="1" checked name="trangthai" > Có sẵn
-			    	<input type="radio" value="0"  name="trangthai" > Chưa sẵn sàng
+			    <?php
+				    if($dausach['trangthai']){
+				    	echo ' Có sẵn cho mượn';
+				    } else {
+				    echo 'Đã mượn hết hoặc không có trong kho';
+				    }
+			    	?>
 			    </div>
 		  	</div>
 

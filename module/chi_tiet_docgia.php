@@ -109,11 +109,16 @@ if($is_tre_em){ ?>
   	</div>
 </div>
 <div class="form-group row">
-	  	<label for="example-tel-input" class="col-xs-4 col-form-label">Số sách đang mượn</label>
-	  	<div class="col-xs-6">
-	  		<?php echo soSachDangMuon($ma_docgia_nguoilon);?>
-	  	</div>
-	</div>
+  	<label for="example-tel-input" class="col-xs-4 col-form-label">Số sách đang mượn</label>
+  	<div class="col-xs-6">
+  		<?php echo soSachDangMuon($ma_docgia_nguoilon);?>
+  	</div>
+</div>
+<style type="text/css">
+	.form-group{
+		margin-bottom: 5px;
+	}
+</style>
 <?php
 	if( soSachDangMuon($ma_docgia) ){
 		$list = Muon::getInstance()->muonByDocGia($ma_docgia);

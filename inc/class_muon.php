@@ -100,8 +100,8 @@ Class Muon{
 		return 0;
 	}
 	function getISBN($ma_cuonsach){
+
 		$sql = "SELECT isbn FROM muon WHERE ma_cuonsach = '{$ma_cuonsach}' LIMIT 1 ";
-		echo $sql;
 		$result = $this->conn->query($sql);
 		if ($result && $result->num_rows > 0){
 			while( $row = $result->fetch_assoc() ) {

@@ -43,11 +43,14 @@ class HandleError{
 		} else if($class =='sach'){
 			switch ($code){
 				case 'no_exists':
-				$msg =  'Không tồn tại cuốn sách này';
-				break;
+					$msg =  'Không tồn tại cuốn sách này';
+					break;
+				case 'busy' :
+					$msg =  'Cuốn sách này đã được mượn';
+					break;
 				case 'empty':
 				default :
-				$msg = 'Đầu sách đã hết';
+				$msg = 'Không mượn được';
 				break;
 			}
 

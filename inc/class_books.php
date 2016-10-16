@@ -99,13 +99,20 @@ Class CuonSach{
 	 * @version [version]
 	 * @since   1.0
 	 */
-	function kiemTraSachCuonSach($ma_cuonsach){
+	function kiemTraCuonSach($ma_cuonsach){
 		$sql ="SELECT * FROM {$this->table} WHERE ma_cuonsach = {$ma_cuonsach} ";
 		$result = $this->conn->query($sql);
 		if ( $result && $result->num_rows > 0) {
-			return $result;
+			while( $row = $result->fetch_assoc() ) {
+				if($row['tinhtrang'] == 0)
+					return 2;
+			}
+			return 1;
 		}
 		return 0;
+	}
+	function kiemTraTinhTrangCuonSach($ma_cuonsach){
+
 	}
 	function getTenCuonSach($ma_cuonsach){
 		return DauSach::getInstance()->getTuaSachByMaCuonSach($ma_cuonsach);

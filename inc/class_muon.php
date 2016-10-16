@@ -23,7 +23,7 @@ Class Muon{
     	$checkdocgia 	= $this->kiemTraDocGia($ma_docgia);
     	$cuonsach 		= CuonSach::getInstance();
     	$isbn 			= $cuonsach->getISBNCuonSach($ma_cuonsach);
-    	$checkdausach	= $this->kiemTraTinhTrangDauSach($ma_cuonsach,$isbn);
+    	$checkdausach	= $this->kiemTraTinhTrangCuonSach($ma_cuonsach,$isbn);
 
     	if( isCustomError($checkdocgia) ){
     		return $checkdocgia;
@@ -83,7 +83,7 @@ Class Muon{
 	}
 	function chiTietMuonSach($ma_cuonsach, $isbn = 0){
 		if( empty($isbn) ){
-
+			$isdb = $this->getISBN($ma_cuonsach);
 		}
 		$sql = "SELECT * FROM muon m
 					LEFT JOIN dausach ds
@@ -99,7 +99,9 @@ Class Muon{
 		return 0;
 	}
 	function getISBN($ma_cuonsach){
-		$sql = "SELECT isbn FROM muon WHERE ma_cuonsach = '{$ma_cuonsach}' ";
+		$sql = "SELECT isbn FROM muon WHERE ma_cuonsach = '{$ma_cuonsach}' LIMIT 1 ";
+		echo $sql;
+		$result = $this->conn->query($sql);
 		if ($result && $result->num_rows > 0){
 			while( $row = $result->fetch_assoc() ) {
 				return $row['isbn'];
@@ -140,11 +142,16 @@ Class Muon{
      * Nếu không -> trả về lỗi;
      *@return   [<description>] bool : true or false
      */
-    function kiemTraTinhTrangDauSach($ma_cuonsach, $isbn) {
-    	$cuonsach = CuonSach::getInstance()->kiemTraSachCuonSach($ma_cuonsach);
+    function kiemTraTinhTrangCuonSach($ma_cuonsach, $isbn) {
+    	$cuonsach = CuonSach::getInstance()->kiemTraCuonSach($ma_cuonsach);
     	if( !$cuonsach ){
     		return new HandleError('sach','no_exists');
     	}
+    	if($cuonsach == 2){
+    		return new HandleError('sach','busy');
+    	}
+    	// kiểm tra xem cuốn sách đã được mượn hay chưa
+
     	$dausach = DauSach::getInstance()->kiemTraTrangThaiDauDachByISBN($isbn);
     	if( !$dausach ){
     		return new HandleError('dausach','busy');

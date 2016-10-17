@@ -99,7 +99,7 @@ Class Muon{
 			$and = ' AND ';
 		}
 		$sql .= $and;
-		$sql .= " m.ngay_hethan < CURRENT_DATE ";
+		$sql .= " m.ngay_hethan >= CURRENT_DATE ";
 
 		if( !$select_all ){
 			$offset = $posts_per_age * ($current_page - 1);
@@ -130,7 +130,7 @@ Class Muon{
 		}
 
 		$sql .= $and;
-		$sql .= " m.ngay_hethan >= CURRENT_DATE ";
+		$sql .= " m.ngay_hethan < CURRENT_DATE ";
 
 		if( !$select_all ){
 			$offset = $posts_per_age * ($current_page - 1);

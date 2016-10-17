@@ -23,11 +23,30 @@ Class QuaTrinhMuon{
     }
 
 	function moveMuontoQuaTrinhMuon($record){
-		$isbn = $record['isbn'];
-		$isbn = $record['ma_cuonsach'];
-		$isbn = $record['ngaygio_muon'];
-		$isbn = $record['ngaygio_tra'];
-    	$sql = "INSERT INTO `quatrinhmuon` (`isbn`, `ma_cuonsach`,  `ngaygio_muon`, `ma_docgia`, `ngay_hethan`) VALUES ('{$isbn}', '{$ma_cuonsach}', '{$ngaygio_muon}',  '{$ma_docgia}', '$ngaygio_tra');";
+		$isbn 	= $record['isbn'];
+		$isbn 	= $record['ma_cuonsach'];
+		$isbn 	= $record['ngaygio_muon'];
+		$isbn 	=	$record['ngaygio_tra'];
+    	$sql 	= "INSERT INTO `quatrinhmuon` (`isbn`, `ma_cuonsach`,  `ngaygio_muon`, `ma_docgia`, `ngay_hethan`) VALUES ('{$isbn}', '{$ma_cuonsach}', '{$ngaygio_muon}',  '{$ma_docgia}', '$ngaygio_tra')";
 
+    	if($this->conn->query($sql)){
+			return $this->conn->insert_id;
+		}
+		return 0;
+
+    }
+    function removeQuaTrinhMuon($muon){
+    	$isbn 			= $muon['isbn'];
+    	$ma_cuonsach 	= $muon['ma_cuonsach'];
+    	$ngaygio_muon 		= $muon['ngaygio_muon'];
+
+    	$sql = "DELETE FROM $this->table
+				WHERE isbn = '{$isbn}' AND ma_cuonsach = '{$ma_cuonsach}' AND ngaygio_muon= '{$ngaygio_muon}' ";
+		$result = $conn->query($sql);
+		if ($result ) {
+
+			return 1;
+		}
+		return 0;
     }
  }

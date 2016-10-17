@@ -45,26 +45,44 @@ Class Muon{
 			return 0;
     	}
     }
+    function xoaMuon($muon){
+    	$isbn 			= $muon['isbn'];
+    	$ma_cuonsach 	= $muon['ma_cuonsach'];
+    	$ma_docgia 		= $muon['ma_docgia'];
+
+    	$sql = "DELETE FROM $this->table
+				WHERE isbn = '{$isbn}' AND ma_cuonsach = '{$ma_cuonsach}' ";
+		$result = $conn->query($sql);
+		if ($result ) {
+
+			return 1;
+		}
+		return 0;
+    }
     function traSach($ma_cuonsach,$ma_docgia,$isbn =0){
     	if( !$isbn){
-    		$isbn 			= $cuonsach->getISBN($ma_cuonsach);
+    		$isbn 	= $cuonsach->getISBN($ma_cuonsach);
     	}
-
+    	$muon_item = $this->chiTietMuonSach($ma_cuonsach, $isbn);
     	try {
 		   	// copy this item to  quatrinh_muon table;
-    		$muon_item = $this->chiTietMuonSach($ma_cuonsach, $isbn);
-		   	if( $this->moveMuontoQuaTrinhMuon($muon_item) ){
+		   	if( QuaTrinhMuon::getInstance()->moveMuontoQuaTrinhMuon($muon_item)  ){
+		   		// remove this item khoi muon table.
+		   		$xoa_muonsach = $this->xoaMuon($xoaMuon);
+		   		if( ! $xoa_muonsach ){
+		   			throw new Exception("Xóa mượn lỗi");
+		   		}
+		   	}
 
-		   }
-		   // remove this item khoi muon table.
 		} catch (Exception $e) {
-		    echo 'Caught exception: ',  $e->getMessage(), "\n";
+			// nếu xóa mượn sách lỗi => Xóa record của quá trình mượn;
+			QuaTrinhMuon::getInstance()->removeQuaTrinhMuon($muon_item)
 		} finally {
 		    echo "First finally.\n";
 		}
 
     }
-    
+
     public static function list_books($select_all = 0, $posts_per_age = 10, $current_page = 1, $search = 0, $type ='1', $keyword = '') {
 		global $conn;
 		$sql =" SELECT * FROM muon m LEFT JOIN dausach ds ON m.isbn = ds.isbn ";

@@ -32,5 +32,5 @@
 			</ul>
 		</li>
 
-		<li> <a class="heading" href="index.php?act=dbstruct"> Lược đồ dữ liệu</a></li>
+		<li class="wrap"> <a class="heading" href="index.php?act=dbstruct"> Lược đồ dữ liệu</a></li>
 	</ul>

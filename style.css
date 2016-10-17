@@ -23,7 +23,7 @@ ul.paging li a{
 	margin: 0 auto;
 }
 .left.sidebar{
-	padding-top: 20px;
+	padding-top: 10px;
 	padding-left: 0;
 	padding-right: 0;
 }
@@ -43,6 +43,10 @@ ul.paging li a{
 .left ul.sub li:hover a,
 .left ul.sub li.activate a{
 	background: #2E9AFE;
+}
+.sidebar ul li.wrap a.heading {
+	padding: 10px 0px;
+	border-bottom: 1px solid #BDBDBD;
 }
 .sidebar ul.sub li a {
     font-size: 16px;
@@ -140,4 +144,16 @@ ul.pagination {
 input.checkbox{
 	width: 20px;
 	height: 16px;
+}
+div.line-top{
+	padding: 10px 0 0 0;
+}
+div.line-top label{
+	padding-top: 10px;
+}
+div.result{
+
+	font-size: 15px;
+	padding: 10px 0;
+	padding-left: 15px;
 }

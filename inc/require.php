@@ -5,6 +5,7 @@
 	require('class_books.php');
 	require('class_doc_gia.php');
 	require('class_muon.php');
+	require('class_quatrinh_muon.php');
 	require("main.php");
 	require('functions.php');
 ?>

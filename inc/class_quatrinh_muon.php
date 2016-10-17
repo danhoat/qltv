@@ -5,7 +5,6 @@ Class QuaTrinhMuon{
 	protected $ma_cuonsach;//primary
 	protected $ngaygio_muon;//primary
 	protected $ma_docgia;
-	protected $ngaygio_tra;
 	protected $ngaygio_tra;// ghi chu
 	static $instance;
 	function __construct(){

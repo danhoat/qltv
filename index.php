@@ -66,6 +66,8 @@
 	    var t = new Date;
 	   	var ns =  new Date("2000-06-20T12:00:00");
 	    document.getElementById('han_sd').valueAsDate = t;
+	    console.log(t);
+		document.getElementById('ngaygio_tra').valueAsDate = t;
 	    document.getElementById('ngaysinh').valueAsDate = ns;
 		//$('#han_sd').val(new Date().toDateInputValue());
 

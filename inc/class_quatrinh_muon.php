@@ -38,13 +38,12 @@ Class QuaTrinhMuon{
     function removeQuaTrinhMuon($muon){
     	$isbn 			= $muon['isbn'];
     	$ma_cuonsach 	= $muon['ma_cuonsach'];
-    	$ngaygio_muon 		= $muon['ngaygio_muon'];
+    	$ngaygio_muon 	= $muon['ngaygio_muon'];
 
-    	$sql = "DELETE FROM $this->table
+    	$sql = " DELETE FROM $this->table
 				WHERE isbn = '{$isbn}' AND ma_cuonsach = '{$ma_cuonsach}' AND ngaygio_muon= '{$ngaygio_muon}' ";
 		$result = $conn->query($sql);
 		if ($result ) {
-
 			return 1;
 		}
 		return 0;

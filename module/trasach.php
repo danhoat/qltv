@@ -1,35 +1,28 @@
 <?php
 	$ma_cuonsach = isset($_GET['mcs']) ? $_GET['mcs'] : 0;
-	$isbn = isset($_GET['isbn']) ? $_GET['isbn'] : 0;
-  if( !$isbn ){
-    $isbn =CuonSach::getInstance()->getISBN($ma_cuonsach);
-  }
-	$muon = Muon::getInstance()->chiTietMuonSach($ma_cuonsach, $isbn);
-	if(isset($_POST['submit'])){
-		$ngaygio_tra = isset($_POST['ngaygio_tra']) ? $_POST['ngaygio_tra'] '';
-		$ghichu = isset($_POST['ghichu']) ? $_POST['ghichu'] '';
-		$muon->traSach($ma_cuonsach, $isbn, $ngaygio_tra, $ghichu);
+	$isbn 	= isset($_GET['isbn']) ? $_GET['isbn'] : 0;
+	if( !$isbn ){
+	    $isbn =CuonSach::getInstance()->getISBN($ma_cuonsach);
+  	}
+  	$muon = Muon::getInstance()->chiTietMuonSach($ma_cuonsach, $isbn);
+	if( isset( $_GET['submit']) ) {
+
+		$ngaygio_tra 	= isset( $_GET['ngaygio_tra'] ) ? $_GET['ngaygio_tra'] : '';
+
+		$ghichu 		= isset($_GET['ghichu']) ? $_GET['ghichu'] : '';
+
+		Muon::getInstance()->traSach($ma_cuonsach, $isbn, $ngaygio_tra, $ghichu);
 	}
 
 ?>
 <div class="form-group row">
     <h3 class="col-xs-12 col-form-label"> Chi tiết mượn sách</h3>
 </div>
-<form>
-	<div class="form-group row">
-	    <label for="example-tel-input" class="col-xs-4 col-form-label">Độc giả mượn</label>
-	    <div class="col-xs-6">
-	      <?php echo $docgia['hoten'] ;?><a href="index.php?act=chi_tiet_docgia&id=<?php echo $ma_docgia;?>"> Chi tiết</a>
-	    </div>
-	</div>
-	<div class="form-group row">
-	    <label for="example-tel-input" class="col-xs-4 col-form-label">Số sách đang mượn</label>
-	    <div class="col-xs-3">
-	      <?php echo soSachDangMuon($ma_docgia);?>
-	    </div>
+<form action="index.php" method="_GET">
 
-	</div>
-
+	<input type="hidden" name="act" value="trasach" />
+	<input type="hidden" name="mcs" value="<?php echo $ma_cuonsach;?>" />
+	<input type="hidden" name="isbn" value="<?php echo $isbn;?>" />
 	<div class="form-group row">
 	  	<label for="example-tel-input" class="col-xs-4 col-form-label">Tên Cuốn sách</label>
 	  	<div class="col-xs-6">
@@ -73,7 +66,7 @@
 	<div class="form-group row">
 	    <label for="example-tel-input" class="col-xs-4 col-form-label">&nbsp; </label>
 	    <div class="col-xs-3">
-	      <button type ="submit" value="1" class="btn" > Trả cuốn sách này </button>
+	      <button type ="submit" name="submit" value="1" class="btn" > Trả cuốn sách này </button>
 	    </div>
 	</div>
 </form>

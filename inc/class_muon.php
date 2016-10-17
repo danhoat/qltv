@@ -60,9 +60,7 @@ Class Muon{
 		return 0;
     }
     function traSach( $ma_cuonsach, $isbn =0, $ngaygio_tra, $ghichu){
-    	if( !$isbn){
-    		$isbn 	= $cuonsach->getISBN($ma_cuonsach);
-    	}
+
     	$muon_item = $this->chiTietMuonSach($ma_cuonsach, $isbn);
     	try {
 		   	// copy this item to  quatrinh_muon table;
@@ -78,6 +76,7 @@ Class Muon{
 			// nếu xóa mượn sách lỗi => Xóa record của quá trình mượn;
 			QuaTrinhMuon::getInstance()->removeQuaTrinhMuon($muon_item);
 		} finally {
+
 		    echo "First finally.\n";
 		}
 

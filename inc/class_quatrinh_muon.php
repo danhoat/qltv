@@ -17,7 +17,7 @@ Class QuaTrinhMuon{
         if(self::$instance !== null){
             return self::$instance;
         }
-        self::$instance = new Muon();
+        self::$instance = new QuaTrinhMuon();
         return self::$instance;
     }
 
@@ -29,12 +29,13 @@ Class QuaTrinhMuon{
 		if( empty($ghichu) ){
 			$ghichu = 'Rỗng';
 		}
-		$isbn 	= $record['isbn'];
-		$isbn 	= $record['ma_cuonsach'];
-		$isbn 	= $record['ngaygio_muon'];
-		$isbn 	= $record['ngaygio_tra'];
-    	$sql 	= "INSERT INTO `quatrinhmuon` (`isbn`, `ma_cuonsach`,  `ngaygio_muon`, `ma_docgia`, `ngay_hethan`) VALUES ('{$isbn}', '{$ma_cuonsach}', '{$ngaygio_muon}',  '{$ma_docgia}', '$ngaygio_tra')";
-    	echo $sql;
+		$isbn 			= $record['isbn'];
+		$ma_cuonsach 	= $record['ma_cuonsach'];
+		$ngaygio_muon 	= $record['ngaygio_muon'];
+		$ma_docgia 		= $record['ma_docgia'];
+		$ngay_hethan  	= $record['ngay_hethan'];
+    	$sql 	= "INSERT INTO `quatrinhmuon` (`isbn`, `ma_cuonsach`,  `ngaygio_muon`, `ma_docgia`, `ngaygio_tra`, `ngay_hethan`) VALUES ('{$isbn}', '{$ma_cuonsach}', '{$ngaygio_muon}',  '{$ma_docgia}', '$ngaygio_tra', '{$ngay_hethan}')";
+
     	if($this->conn->query($sql)){
 			return $this->conn->insert_id;
 		}

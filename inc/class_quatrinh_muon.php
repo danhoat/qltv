@@ -22,7 +22,7 @@ Class QuaTrinhMuon{
     }
 
 	function moveMuontoQuaTrinhMuon($record, $ngaygio_tra = 0, $ghichu =''){
-		if(empty($ngaygio_tra || !$ngaygio_tra)){
+		if( empty($ngaygio_tra || !$ngaygio_tra) ){
 			//2016-10-22 00:00:0
 			$ngaygio_tra = date('Y-m-d H:i:s', time() );
 		}

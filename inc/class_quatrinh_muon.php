@@ -22,13 +22,20 @@ Class QuaTrinhMuon{
         return self::$instance;
     }
 
-	function moveMuontoQuaTrinhMuon($record){
+	function moveMuontoQuaTrinhMuon($record, $ngaygio_tra = 0, $ghichu =''){
+		if(empty($ngaygio_tra || !$ngaygio_tra)){
+			//2016-10-22 00:00:0
+			$ngaygio_tra = date('Y-m-d H:i:s', time() );
+		}
+		if( empty($ghichu) ){
+			$ghichu = 'Rỗng';
+		}
 		$isbn 	= $record['isbn'];
 		$isbn 	= $record['ma_cuonsach'];
 		$isbn 	= $record['ngaygio_muon'];
-		$isbn 	=	$record['ngaygio_tra'];
+		$isbn 	= $record['ngaygio_tra'];
     	$sql 	= "INSERT INTO `quatrinhmuon` (`isbn`, `ma_cuonsach`,  `ngaygio_muon`, `ma_docgia`, `ngay_hethan`) VALUES ('{$isbn}', '{$ma_cuonsach}', '{$ngaygio_muon}',  '{$ma_docgia}', '$ngaygio_tra')";
-
+    	echo $sql;
     	if($this->conn->query($sql)){
 			return $this->conn->insert_id;
 		}

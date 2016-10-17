@@ -59,14 +59,14 @@ Class Muon{
 		}
 		return 0;
     }
-    function traSach($ma_cuonsach,$ma_docgia,$isbn =0){
+    function traSach( $ma_cuonsach, $isbn =0, $ngaygio_tra, $ghichu){
     	if( !$isbn){
     		$isbn 	= $cuonsach->getISBN($ma_cuonsach);
     	}
     	$muon_item = $this->chiTietMuonSach($ma_cuonsach, $isbn);
     	try {
 		   	// copy this item to  quatrinh_muon table;
-		   	if( QuaTrinhMuon::getInstance()->moveMuontoQuaTrinhMuon($muon_item)  ){
+		   	if( QuaTrinhMuon::getInstance()->moveMuontoQuaTrinhMuon($muon_item, $ngaygio_tra, $ghichu)  ){
 		   		// remove this item khoi bảng muon.
 		   		$xoa_muonsach = $this->xoaMuon($muon_item);
 		   		if( ! $xoa_muonsach ){

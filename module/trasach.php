@@ -6,7 +6,9 @@
   }
 	$muon = Muon::getInstance()->chiTietMuonSach($ma_cuonsach, $isbn);
 	if(isset($_POST['submit'])){
-		$muon->traSach($muon);
+		$ngaygio_tra = isset($_POST['ngaygio_tra']) ? $_POST['ngaygio_tra'] '';
+		$ghichu = isset($_POST['ghichu']) ? $_POST['ghichu'] '';
+		$muon->traSach($ma_cuonsach, $isbn, $ngaygio_tra, $ghichu);
 	}
 
 ?>

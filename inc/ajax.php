@@ -24,7 +24,7 @@
 				$record['duocphep_muon'] = 1;
 				$record['muon_status']  = 'Thẻ hợp lệ';
 			} else if( !$record['con_hsd'] ){
-				$record['muon_status']  = 'Hết hạn sử dụng';
+				$record['muon_status']  = 'Thẻ đã hết hạn sử dụng';
 			} else  if( $sl > 4){
 				$record['muon_status']  = 'Đã mượn quá số lượng sách cho phép';
 			}

@@ -43,7 +43,7 @@
 
     if( !empty($total) ){
 
-    	$url = 'index.php?act=list_sach&';
+    	$url = 'index.php?act=list_sach_dangmuon&';
     	$total_record = $total->num_rows;
         $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
         if(! is_numeric($current_page) || $current_page < 1){

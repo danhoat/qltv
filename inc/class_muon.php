@@ -48,16 +48,51 @@ Class Muon{
     public static function list_books($select_all = 0, $posts_per_age = 10, $current_page = 1, $search = 0, $type ='1', $keyword = '') {
 		global $conn;
 		$sql =" SELECT * FROM muon m LEFT JOIN dausach ds ON m.isbn = ds.isbn ";
-
+		$sql .= " WHERE ";
+		$and = '';
 		if($search && !empty($keyword) ){
-			if($type == '1'){
-				$sql .=" WHERE m.ma_docgia = '{$keyword}' ";
-			} else if($type == '2') {
-				$sql .=" WHERE m.ma_cuonsach = '{$keyword}' ";
+			 if($type == '2') {
+				$sql .=" m.ma_cuonsach = '{$keyword}' ";
 			} else if ($type == '3'){
-				$sql .=" WHERE m.isbn = '{$keyword}' ";
+				$sql .=" m.isbn = '{$keyword}' ";
+			}  else {
+				$sql .=" m.ma_docgia = '{$keyword}' ";
 			}
+			$and = ' AND ';
 		}
+		$sql .= $and;
+		$sql .= " m.ngay_hethan < CURRENT_DATE ";
+
+		if( !$select_all ){
+			$offset = $posts_per_age * ($current_page - 1);
+			$sql .=" LIMIT {$posts_per_age} OFFSET {$offset}";
+		}
+
+		$result = $conn->query($sql);
+		if ($result && $result->num_rows > 0) {
+			return $result;
+		}
+		return 0;
+
+	}
+	public static function listSachQuaHan($select_all = 0, $posts_per_age = 10, $current_page = 1, $search = 0, $type ='1', $keyword = '') {
+		global $conn;
+		$sql =" SELECT * FROM muon m LEFT JOIN dausach ds ON m.isbn = ds.isbn ";
+		$sql .= " WHERE ";
+		$and = '';
+		if($search && !empty($keyword) ){
+			if($type == '2') {
+				$sql .=" m.ma_cuonsach = '{$keyword}' ";
+			} else if ($type == '3'){
+				$sql .=" m.isbn = '{$keyword}' ";
+			} else {
+				$sql .=" m.ma_docgia = '{$keyword}' ";
+			}
+			$and = ' AND ';
+		}
+
+		$sql .= $and;
+		$sql .= " m.ngay_hethan >= CURRENT_DATE ";
 
 		if( !$select_all ){
 			$offset = $posts_per_age * ($current_page - 1);

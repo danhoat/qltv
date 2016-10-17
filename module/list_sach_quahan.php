@@ -6,7 +6,8 @@
     $total_record = 0;
     $cuonsach   = Muon::getInstance();
 
-    $total = Muon::list_books($select_all = 1, 10, 1 , $search, $type, $keyword );
+    $total = Muon::listSachQuaHan($select_all = 1, 10, 1 , $search, $type, $keyword );
+    //select *from muon where ngay_hethan < CURRENT_DATE
      if( !empty($total) ){
         $total_record = $total->num_rows;
     }
@@ -35,9 +36,9 @@
 <?php
     echo '<div class="row result">';
     if(!$search){
-        echo "Có {$total_record} cuốn sách đang được mượn";
+        echo "Có {$total_record} cuốn sách quá hạn";
     } else {
-        echo "Tìm thấy {$total_record} cuốn sách";
+        echo "Tìm thấy {$total_record} cuốn sách quá hạn";
     }
     echo '</div>';
 
@@ -54,7 +55,7 @@
         if($current_page > $max_page){
             $current_page = $max_page;
         }
-        $result = Muon::list_books($select_all = 0, $posts_per_page, $current_page, $search, $type, $keyword );
+        $result = Muon::listSachQuaHan($select_all = 0, $posts_per_page, $current_page, $search, $type, $keyword );
         if($result ){
             echo '<table class="table ">';
             echo '<thead><tr><th> ISBN </th><th>Độc giả </th> <th> Tựa sách </th><th> Tình trạng </td> <th> Tác vụ </th> </tr></thead>';

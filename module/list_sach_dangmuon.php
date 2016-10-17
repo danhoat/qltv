@@ -62,17 +62,19 @@
         	while( $row = $result->fetch_assoc() ) {
         		$isbn 		  = $row['isbn'];
                 $ma_docgia    = $row['ma_docgia'];
-                $ma_cuonsach  = $row['ma_cuonsach'];
+                $mcs          = $row['ma_cuonsach'];
                 $ngaygio_muon = $row['ngaygio_muon'];
+                $date         = date_create( $ngaygio_muon );
+                $date         = date_format($date,"d/m/Y");
         		echo '<tr>';
                 echo "<td>{$isbn} </td>";
                 echo '<th><a href="index.php?act=chi_tiet_docgia&id='.$ma_docgia.'">'.getTenDocGia($ma_docgia).'<a/></th>';
-                 echo "<td> <a class='' href= 'index.php?act=chi_tiet_muon&mcs=".$ma_cuonsach."&isbn=".$isbn."'> " . limit_string( $row['bia'], 30). "</a> </td>";
+                 echo "<td> <a class='' href= 'index.php?act=chi_tiet_muon&mcs=".$mcs."&isbn=".$isbn."'> " . limit_string( $row['bia'], 30). "</a> </td>";
 
                 echo "<td>";
-                echo $ngaygio_muon;
+                echo $date;
                 echo "</td>";
-                echo '<td><a href="">Trả sách</a></td>';
+                echo '<td><a href="index.php?act=trasach&mcs'.$mcs.'">Trả sách</a></td>';
                 echo '</tr>';
             }
             echo '</tbody>';

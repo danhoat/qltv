@@ -53,13 +53,18 @@ Class Muon{
     	try {
 		   // copy this item to  quatrinh_muon table;
 
-		   $this->
+		   if( $this->moveMuontoQuaTrinhMuon() ){
+
+		   }
 		   // remove this item khoi muon table.
 		} catch (Exception $e) {
 		    echo 'Caught exception: ',  $e->getMessage(), "\n";
 		} finally {
 		    echo "First finally.\n";
 		}
+
+    }
+    function moveMuontoQuaTrinhMuon($record){
 
     }
     public static function list_books($select_all = 0, $posts_per_age = 10, $current_page = 1, $search = 0, $type ='1', $keyword = '') {

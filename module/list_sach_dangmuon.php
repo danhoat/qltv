@@ -57,18 +57,22 @@
     	$result = Muon::list_books($select_all = 0, $posts_per_page, $current_page, $search, $type, $keyword );
         if($result ){
         	echo '<table class="table table-bordered">';
-        	echo '<thead><tr><th> ISBN </th><th>Độc giả </th> <th> Tựa sách </th><th> Tình trạng </td> <th> Tác vụ </th> </tr></thead>';
+        	echo '<thead><tr><th> ISBN </th><th>Độc giả </th> <th> Tựa sách </th><th> Ngày mượn </td> <th> Tác vụ </th> </tr></thead>';
         	echo ' <tbody>';
         	while( $row = $result->fetch_assoc() ) {
-        		$isbn 		= $row['isbn'];
-                $ma_docgia  = $row['ma_docgia'];
-                $ma_cuonsach = $row['ma_cuonsach'];
+        		$isbn 		  = $row['isbn'];
+                $ma_docgia    = $row['ma_docgia'];
+                $ma_cuonsach  = $row['ma_cuonsach'];
+                $ngaygio_muon = $row['ngaygio_muon'];
         		echo '<tr>';
                 echo "<td>{$isbn} </td>";
                 echo '<th><a href="index.php?act=chi_tiet_docgia&id='.$ma_docgia.'">'.getTenDocGia($ma_docgia).'<a/></th>';
                  echo "<td> <a class='' href= 'index.php?act=chi_tiet_muon&mcs=".$ma_cuonsach."&isbn=".$isbn."'> " . limit_string( $row['bia'], 30). "</a> </td>";
 
-                echo "<td><a  class='action'  href='index.php?act=frm_insert_book&id=".$ma_cuonsach."'>Cập nhật</a> &nbsp; <a href='{$url}page={$current_page}&del={$row["ma_cuonsach"]}' onclick ='return remove_tua_sach()'> Xóa</a>  ";
+                echo "<td>";
+                echo $ngaygio_muon;
+                echo "</td>";
+                echo '<td><a href="">Trả sách</a></td>';
                 echo '</tr>';
             }
             echo '</tbody>';

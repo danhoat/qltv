@@ -52,9 +52,10 @@ Class Muon{
 
     	$sql = "DELETE FROM $this->table
 				WHERE isbn = '{$isbn}' AND ma_cuonsach = '{$ma_cuonsach}' ";
-		$result = $conn->query($sql);
-		if ($result ) {
+		echo $sql;
 
+		$result = $this->conn->query($sql);
+		if ( $result ) {
 			return 1;
 		}
 		return 0;
@@ -64,7 +65,9 @@ Class Muon{
     	$muon_item = $this->chiTietMuonSach($ma_cuonsach, $isbn);
     	try {
 		   	// copy this item to  quatrinh_muon table;
-		   	if( QuaTrinhMuon::getInstance()->moveMuontoQuaTrinhMuon($muon_item, $ngaygio_tra, $ghichu)  ){
+		   	$qtm 	= QuaTrinhMuon::getInstance();
+		   	$check 	= $qtm->moveMuontoQuaTrinhMuon($muon_item, $ngaygio_tra, $ghichu);
+		   	if( $check  ){
 		   		// remove this item khoi bảng muon.
 		   		$xoa_muonsach = $this->xoaMuon($muon_item);
 		   		if( ! $xoa_muonsach ){

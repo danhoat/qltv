@@ -36,8 +36,8 @@ Class QuaTrinhMuon{
 		$ngay_hethan  	= $record['ngay_hethan'];
     	$sql 	= "INSERT INTO `quatrinhmuon` (`isbn`, `ma_cuonsach`,  `ngaygio_muon`, `ma_docgia`, `ngaygio_tra`, `ngay_hethan`) VALUES ('{$isbn}', '{$ma_cuonsach}', '{$ngaygio_muon}',  '{$ma_docgia}', '$ngaygio_tra', '{$ngay_hethan}')";
 
-    	if($this->conn->query($sql)){
-			return $this->conn->insert_id;
+    	if( $this->conn->query($sql) ){
+			return 1;
 		}
 		return 0;
 

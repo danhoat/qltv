@@ -8,9 +8,7 @@
 	if( isset( $_GET['submit']) ) {
 
 		$ngaygio_tra 	= isset( $_GET['ngaygio_tra'] ) ? $_GET['ngaygio_tra'] : '';
-
 		$ghichu 		= isset($_GET['ghichu']) ? $_GET['ghichu'] : '';
-
 		Muon::getInstance()->traSach($ma_cuonsach, $isbn, $ngaygio_tra, $ghichu);
 	}
 
@@ -32,19 +30,27 @@
 	<div class="form-group row">
 	  	<label for="example-tel-input" class="col-xs-4 col-form-label">Ngày mượn</label>
 	  	<div class="col-xs-6">
-	  		<?php echo $muon['ngaygio_muon'] ;?>
+	  		<?php
+
+	  		$date = date_create( $muon['ngaygio_muon'] );
+            echo date_format($date,"d/m/Y");
+	  		?>
 	  	</div>
 	</div>
 	<div class="form-group row">
 	  	<label for="example-tel-input" class="col-xs-4 col-form-label">Ngày hết hạn</label>
 	  	<div class="col-xs-6">
-	  		<?php echo $muon['ngay_hethan'];?>
+	  		<?php
+
+	  		$date = date_create( $muon['ngay_hethan'] );
+            echo date_format($date,"d/m/Y");
+            ?>
 	  	</div>
 	</div>
 
 	<div class="form-group row">
-	  <label for="example-datetime-local-input" class="col-xs-2 col-form-label">Ngày giờ trả</label>
-	  <div class="col-xs-10" >
+	  <label for="example-datetime-local-input" class="col-xs-4 col-form-label">Ngày giờ trả</label>
+	  <div class="col-xs-6" >
 	    <input class="form-control datepicker" data-format="yyyy-MM-dd hh:mm:ss" type="date" name="ngaygio_tra" id="ngaygio_tra" />
 	  </div>
 	</div>

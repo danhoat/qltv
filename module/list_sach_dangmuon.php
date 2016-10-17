@@ -74,7 +74,7 @@
                 echo "<td>";
                 echo $date;
                 echo "</td>";
-                echo '<td><a href="index.php?act=trasach&mcs'.$mcs.'">Trả sách</a></td>';
+                echo '<td><a href="index.php?act=trasach&mcs='.$mcs.'&isbn='.$isbn.'">Trả sách</a></td>';
                 echo '</tr>';
             }
             echo '</tbody>';

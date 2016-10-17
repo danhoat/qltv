@@ -67,7 +67,7 @@ if(isset($_POST['submit'])){
 		&nbsp;
 		</div>
 	    <div class="col-sm-2">
-	    	<button type="submit" name="submit" class="btn btn-default">Lưu </button>
+	    	<button type="submit" name="submit" class="btn btn-default">Lưu mượn sách </button>
 	    </div>
 	</div>
 </form>

@@ -76,7 +76,7 @@ Class Muon{
 
 		} catch (Exception $e) {
 			// nếu xóa mượn sách lỗi => Xóa record của quá trình mượn;
-			QuaTrinhMuon::getInstance()->removeQuaTrinhMuon($muon_item)
+			QuaTrinhMuon::getInstance()->removeQuaTrinhMuon($muon_item);
 		} finally {
 		    echo "First finally.\n";
 		}

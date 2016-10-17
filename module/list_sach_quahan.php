@@ -31,7 +31,7 @@
           </div>
         </div>
         <input type="hidden" name="search" value="1" >
-        <input type="hidden" name="act" value="list_sach_dangmuon" >
+        <input type="hidden" name="act" value="list_sach_quahan" >
     </form>
 <?php
     echo '<div class="row result">';

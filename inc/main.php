@@ -331,6 +331,9 @@ function them_DocGia(){
 
 }
 function checkMenu($string, $get){
+	if(empty($string)){
+		$string = 'list_dau_sach';
+	}
 	if(empty($get) && $string == ''){
 		echo 'activate';
 	}

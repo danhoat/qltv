@@ -36,7 +36,7 @@
 			<div class="main col-md-9">
 				<?php
 
-					$view = isset($_GET['act']) ? $_GET['act']:'list';
+					$view = isset($_GET['act']) ? $_GET['act']:'list_dau_sach';
 					$module = 'module/'.$view.'.php';
 					require($module);
 					require_once("inc/disconnect.php");

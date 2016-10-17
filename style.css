@@ -5,6 +5,10 @@ body, ul, li, div, ol, td, span, p ,label, form,h1,h2,h3,h4,h5,h6{
 .row-middle{
 	border: 1px solid #ccc;
 }
+.footer{
+	border:1px solid #ccc;
+	border-top: 0;
+}
 ul.paging li{
 	float: left;
 	list-style: none;
@@ -18,11 +22,10 @@ ul.paging li a{
 	width: 1240px;
 	margin: 0 auto;
 }
-.left{
-	width: 20%;
-	float: left;
+.left.sidebar{
 	padding-top: 20px;
-	min-height: 500px;
+	padding-left: 0;
+	padding-right: 0;
 }
 .row-middle .main {
 	border-left: 1px solid #ccc;
@@ -31,7 +34,8 @@ ul.paging li a{
 .left ul li{
 	display: block;
 	list-style: none;
-	padding: 5px 0px 5px 5px;
+	padding: 5px 0px 5px 0px;
+	width: 100%;
 }
 .left ul.sub li:hover a,
 .left ul li.activate a{
@@ -44,7 +48,7 @@ ul.paging li a{
 	padding: 5px 10px;
 }
 ul.sub{
-	padding-left: 10px;
+	padding-left: 0px;
 }
 .sidebar  .navbar-nav>li>a{
 	padding-top: 0;
@@ -75,7 +79,6 @@ div.row{
 	display: block;
 	width: 100%;
 	clear: both;
-	padding:5px;
 }
 form label{
 	width: 100px;

@@ -43,6 +43,11 @@
 				?>
 			</div>
 		</div>
+		<div class="row footer">
+			<br />
+			<center> Đồ án quản lý thư viện.<br /> Xây dựng bằng ngôn ngữ PHp & MySql </center>
+			<br />
+		</div>
 	</div>
 <script type="text/javascript">
 	$('.selectpicker').selectpicker({

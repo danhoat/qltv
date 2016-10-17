@@ -51,9 +51,9 @@ Class Muon{
     	}
 
     	try {
-		   // copy this item to  quatrinh_muon table;
-
-		   if( $this->moveMuontoQuaTrinhMuon() ){
+		   	// copy this item to  quatrinh_muon table;
+    		$muon_item = $this->chiTietMuonSach($ma_cuonsach, $isbn);
+		   	if( $this->moveMuontoQuaTrinhMuon($muon_item) ){
 
 		   }
 		   // remove this item khoi muon table.
@@ -64,9 +64,7 @@ Class Muon{
 		}
 
     }
-    function moveMuontoQuaTrinhMuon($record){
-
-    }
+    
     public static function list_books($select_all = 0, $posts_per_age = 10, $current_page = 1, $search = 0, $type ='1', $keyword = '') {
 		global $conn;
 		$sql =" SELECT * FROM muon m LEFT JOIN dausach ds ON m.isbn = ds.isbn ";

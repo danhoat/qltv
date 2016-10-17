@@ -27,7 +27,7 @@
 <body>
 	<div class="container">
 		<div class="row" id="header">
-			<center>Đồ Án Quản lý thư viện</center>
+			<h1><center>Đồ Án Quản lý thư viện</center></h1>
 		</div>
 		<div class="row row-middle">
 			<div class="col-md-3 left sidebar">

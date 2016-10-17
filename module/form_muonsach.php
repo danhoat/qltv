@@ -39,8 +39,8 @@ if(isset($_POST['submit'])){
 		<div class="col-sm-8">
 	  		<input type="text" class="form-control selectpicker" id="ma_docgia" required name="ma_docgia" data-live-search="true" value="<?php echo $ma_docgia;?>">
 		</div>
-		<div class="col-sm-2">
-		<button class="btn" type="button" id="kiemTraDocGia">Kiểm tra</button>
+		<div class="col-sm-2 txt-right">
+		<button class="btn btn-full" type="button" id="kiemTraDocGia">Kiểm tra</button>
 		</div>
 	</div>
 
@@ -49,8 +49,8 @@ if(isset($_POST['submit'])){
 		<div class="col-sm-8">
 	  		<input class="form-control selectpicker" required id="ma_cuonsach" name="ma_cuonsach" data-live-search="true" value="<?php echo $ma_cuonsach;?>">
 		</div>
-		<div class="col-sm-2">
-		<button class='btn' id="kiemTraSach" type="button">Kiểm tra</button>
+		<div class="col-sm-2 txt-right">
+		<button class='btn btn-full' id="kiemTraSach" type="button">Kiểm tra</button>
 		</div>
 	</div>
 	<div class="form-group">
@@ -63,10 +63,10 @@ if(isset($_POST['submit'])){
 		</div>
 	</div>
 	<div class="form-group">
-		<div class="col-sm-10">
+		<div class="col-sm-9">
 		&nbsp;
 		</div>
-	    <div class="col-sm-2">
+	    <div class="col-sm-3 col-right">
 	    	<button type="submit" name="submit" class="btn btn-default">Lưu mượn sách </button>
 	    </div>
 	</div>

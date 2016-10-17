@@ -164,7 +164,20 @@ a.text-inline{
 }
 form.csf{
 	padding-top: 20px;
-}form .error{
+}
+form .error{
 	color: red;
 	font-style: italic;
+}
+.col-right{
+	float: right;
+}
+.txt-right{
+	text-align: right;
+}
+.col-right button{
+	float: right;
+}
+button.btn-full{
+	width: 100%;
 }

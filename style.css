@@ -34,18 +34,21 @@ ul.paging li a{
 .left ul li{
 	display: block;
 	list-style: none;
-	padding: 5px 0px 5px 0px;
+	padding: 0px 0px 0px 0px;
 	width: 100%;
 }
+.left ul.sub li{
+	border-bottom:1px solid #BDBDBD;
+}
 .left ul.sub li:hover a,
-.left ul li.activate a{
-	background: red;
+.left ul.sub li.activate a{
+	background: #2E9AFE;
 }
 .sidebar ul.sub li a {
-    font-size: 15px;
+    font-size: 16px;
 	text-transform: uppercase;
 	display: block;
-	padding: 5px 10px;
+	padding: 6px 10px;
 }
 ul.sub{
 	padding-left: 0px;

@@ -26,12 +26,10 @@
 </head>
 <body>
 	<div class="container">
-		<div class="row">
-			<div  id="header" >
-				<center>Đồ Án Quản lý thư viện</center>
-			</div>
+		<div class="row" id="header">
+			<center>Đồ Án Quản lý thư viện</center>
 		</div>
-		<div class="row">
+		<div class="row row-middle">
 			<div class="col-md-3 left sidebar">
 			<?php require_once('left.php');?>
 			</div>

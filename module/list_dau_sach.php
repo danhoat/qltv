@@ -33,13 +33,13 @@ if( !empty($total) ){
 	while( $row = $result->fetch_assoc() ) {
 		$isbn 		= $row['isbn'];
 		$ma_tuasach = $row['ma_tuasach'];
-        $ngonngu = $row['ngonngu'];
+        $ngonngu    = $row['ngonngu'];
 		$trangthai 	= ($row['trangthai'] == 1)  ?  'Có sẵn' :'Hết';
 		echo '<tr>';
         echo '<td>';
         echo "<input class='checkbox ' id= 'checkbox' type='checkbox' />";
         echo '</td>';
-        echo "<td> " . $isbn. " </td><td> <a class='' href= 'index.php?act=chi_tiet_dau_sach&id=".$isbn."'> " . limit_string( $row['bia'],30). "</a> </td>";
+        echo "<td> " . $isbn. " </td><td> <a class='text-inline' href= 'index.php?act=chi_tiet_dau_sach&id=".$isbn."'> " .  $row['bia']. "</a> </td>";
         echo '<td>'.get_ngon_ngu($ngonngu).'</td>';
         echo '<td>'.demSoLuongDauSach($isbn).'</td>';
         echo "<td>". $trangthai. "</td>";

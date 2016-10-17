@@ -157,3 +157,8 @@ div.result{
 	padding: 10px 0;
 	padding-left: 15px;
 }
+a.text-inline{
+	display: inline;
+	text-overflow: ellipsis;
+    white-space: nowrap;
+}

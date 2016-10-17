@@ -67,8 +67,8 @@ Class Muon{
     	try {
 		   	// copy this item to  quatrinh_muon table;
 		   	if( QuaTrinhMuon::getInstance()->moveMuontoQuaTrinhMuon($muon_item)  ){
-		   		// remove this item khoi muon table.
-		   		$xoa_muonsach = $this->xoaMuon($xoaMuon);
+		   		// remove this item khoi bảng muon.
+		   		$xoa_muonsach = $this->xoaMuon($muon_item);
 		   		if( ! $xoa_muonsach ){
 		   			throw new Exception("Xóa mượn lỗi");
 		   		}

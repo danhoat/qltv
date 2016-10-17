@@ -16,11 +16,16 @@ class HandleError{
 				case 'hethan':
 					$msg =  'Thẻ độc giả đã hết hạn.';
 					break;
-				case 'quasoluong':
-					$msg =  'Độc giả này đã mượn quá số lượng sách được phép';
-				break;
+
 				case 'no_exist':
 					$msg = 'Không tồn tại thẻ độc giả này trong hệ thống';
+					break;
+				case 'quasoluong' :
+					$msg = 'Chỉ cho phép bảo hộ tối đa 2 trẻ em.';
+					break;
+
+				case 'add_fail' :
+					$msg = 'Thêm độc giả không thành công';
 					break;
 
 				case 'empty':
@@ -54,6 +59,16 @@ class HandleError{
 				break;
 			}
 
+		} else if( $class = 'muon'){
+			switch ($code){
+				case 'quasoluong':
+						$msg =  'Độc giả này đã mượn quá số lượng sách được phép';
+					break;
+
+				default :
+					$msg = 'chưa set';
+					break;
+			}
 		}
 		return $msg;
 	}

@@ -162,3 +162,9 @@ a.text-inline{
 	text-overflow: ellipsis;
     white-space: nowrap;
 }
+form.csf{
+	padding-top: 20px;
+}form .error{
+	color: red;
+	font-style: italic;
+}

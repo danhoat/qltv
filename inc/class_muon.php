@@ -159,7 +159,7 @@ Class Muon{
 	    		return new HandleError('docgia','hethan');
     	}
     	if($docgia['so_sachdangmuon'] > 4)
-	    	return new HandleError('docgia','quasoluong');
+	    	return new HandleError('muon','quasoluong');
     	return 1;
     }
     /**

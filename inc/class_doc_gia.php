@@ -106,13 +106,40 @@ class TreEm extends DocGia{
     }
     function themDocGia($ma_docgia,$ma_docgia_nguoilon ){
     	//INSERT INTO `treem` (`ma_docgia`, `ma_nguoilon`) VALUES ('66', '666');
+
+		$sl = $this->kiemTraNguoiLonHopLe($ma_docgia_nguoilon);
+		if( isCustomError($sl)){
+			return $sl;
+		}
 		$sql = "INSERT INTO `{$this->table}` (`ma_docgia`, `ma_docgia_nguoilon`) VALUES ('{$ma_docgia}', '{$ma_docgia_nguoilon}')";
 		if($this->conn->query($sql)){
 			return $this->conn->insert_id;
 		}
 		return 0;
 	}
+	/**
+	 * nếu số lượng trẻ em lớn hớn 2 => thông báo l
+	 * @version [version]
+	 * @since   1.0
+	 * @author danng
+	 * @param   [type]    $ma_docgia [description]
+	 * @return  [type]               [description]
+	 */
+	function kiemTraNguoiLonHopLe($ma_docgia_nguoilon){
+		$sql ="SELECT count(*) FROM  $this->table WHERE ma_docgia_nguoilon = '{$ma_docgia_nguoilon}'";
+		$result = $this->conn->query($sql);
+		if ($result->num_rows > 0){
+			$row = mysqli_fetch_row($result);
+			$sl =  $row[0];
+			if($sl >= 2)
+				return new HandleError('docgia','quasoluong');
+			return 1;
+		}
+		return 0;
+	}
+	function ma_docgia_nguoilon($ma_docgia){
 
+	}
     function isDocGiaTreEm($ma_docgia){
     	$sql ="SELECT * FROM  $this->table WHERE ma_docgia = '{$ma_docgia}' LIMIT 1";
 		$result = $this->conn->query($sql);

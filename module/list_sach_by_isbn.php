@@ -31,7 +31,7 @@ if( !empty($total) ){
         $ma_cuonsach   = $row['ma_cuonsach'];
 		$tinhtrang 	   = ($row['tinhtrang'] == 1)  ?  'Kho' :'Đang mượn <a href="index.php?act=chi_tiet_muon&mcs='.$ma_cuonsach.'">Chi tiết </a>';
 		echo '<tr>';
-        echo "<td> " . $row["ma_cuonsach"]. " </td><td> <a class='' href= 'index.php?act=chi_tiet_dau_sach&id=".$row["ma_cuonsach"]."'> " . limit_string( getTuaSachByISBN($isbn),30). "</a> </td><td>". $tinhtrang. "</td>";
+        echo "<td> " . $row["ma_cuonsach"]. " </td><td> <a class='' href= '#'> " . limit_string( getTuaSachByISBN($isbn),30). "</a> </td><td>". $tinhtrang. "</td>";
 
         echo "<td><a  class='action'  href='index.php?act=frm_insert_book&id=".$ma_cuonsach."'>Cập nhật</a> &nbsp; <a href='{$url}page={$current_page}&del={$ma_cuonsach}' onclick ='return remove_tua_sach()'> Xóa</a>  ";
         echo '</tr>';

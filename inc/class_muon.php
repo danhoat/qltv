@@ -45,6 +45,23 @@ Class Muon{
 			return 0;
     	}
     }
+    function traSach($ma_cuonsach,$ma_docgia,$isbn =0){
+    	if( !$isbn){
+    		$isbn 			= $cuonsach->getISBN($ma_cuonsach);
+    	}
+
+    	try {
+		   // copy this item to  quatrinh_muon table;
+
+		   $this->
+		   // remove this item khoi muon table.
+		} catch (Exception $e) {
+		    echo 'Caught exception: ',  $e->getMessage(), "\n";
+		} finally {
+		    echo "First finally.\n";
+		}
+
+    }
     public static function list_books($select_all = 0, $posts_per_age = 10, $current_page = 1, $search = 0, $type ='1', $keyword = '') {
 		global $conn;
 		$sql =" SELECT * FROM muon m LEFT JOIN dausach ds ON m.isbn = ds.isbn ";

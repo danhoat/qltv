@@ -40,4 +40,6 @@ if( !empty($total) ){
     echo '</table>';
 
     echo paginate( $posts_per_page, $current_page, $total_record,  $max_page, $url = 'index.php?act=list_sach');
+} else {
+    Echo 'Không có kết quả trả về';
 }

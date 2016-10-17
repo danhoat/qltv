@@ -30,7 +30,7 @@
 			$selected = 1;
 		}
 	?>
-		<select class="form-control" name="quan" required>
+		<select class="form-control required" required name="quan" required>
 				<option value="0" <?php add_selected($selected, 0);?> >Chọn quận </option>
 				<option value="1" <?php add_selected($selected, 1);?>> Quận 1</option>
 				<option value="2" <?php add_selected($selected, 2);?>> Quận 2 </option>

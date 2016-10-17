@@ -127,7 +127,7 @@ if(isset($_POST['submit'])){
 			<div class="form-group row">
 			  <label for="example-datetime-local-input" class="col-xs-2 col-form-label">Điện thoại</label>
 			  <div class="col-xs-10">
-			    <input class="form-control" type="text" name="dienthoai" placeholder="Nhập điện thoại" />
+			    <input class="form-control " type="text"  name="dienthoai" placeholder="Nhập điện thoại" />
 			  </div>
 			</div>
 

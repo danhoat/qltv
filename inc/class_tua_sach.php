@@ -26,8 +26,8 @@ Class TuaSach{
 		return $this->conn->query($sql);
 	}
 	function capNhatTuaSach($ma_tuasach, $tuasach, $tacgia, $tomtat){
-		$sql = "UPDATE `{$this->table}` SET tuasach = '{$tuasach}',tacgia = '{$tacgia}', tomtat = '{$tomtat}'WHERE ma_tuasach = {$ma_tuasach}";
-		echo $sql;
+		$sql = "UPDATE `{$this->table}` SET tuasach = '{$tuasach}',tacgia = '{$tacgia}', tomtat = '{$tomtat}' WHERE ma_tuasach = '{$ma_tuasach}' ";
+
 		return $this->conn->query($sql);
 	}
 	function delete_tua_sach($ma_tuasach){

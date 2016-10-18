@@ -15,9 +15,9 @@
                   <?php
                   if( !empty($login_error) ) {
                      ?>
-                     <fieldset>
+                     <fieldset class="error">
                         <div class="spacing"><br/></div>
-                        <?php echo $login_error;?>
+                        <i><small><?php echo $login_error;?></small></i>
                         <div class="spacing"><br/></div>
                      </fieldset>
                      <?php
@@ -27,12 +27,12 @@
                      <div class="spacing"><br/></div>
                      <input id="password" name="password" type="text" placeholder="Mật khẩu" class="form-control input-md required" required>
                      <div class="spacing"><br/></div>
-                    
+
                         <label for="checkbox" class="col-md-8"><input type="checkbox" name="checkboxes" id="checkbox" value="1"><small> &nbsp; Ghi nhớ cho lần đang nhập sau</small> </label>
                         <div class = "col-md-4 txt-right col-right">
                         <button type="submit" name ="submit" value="login" id="singlebutton" name="singlebutton" class="btn btn-info btn-sm pull-right">Đăng nhập</button>
                         </div>
-                  
+
                   </fieldset>
                </form>
             </div>

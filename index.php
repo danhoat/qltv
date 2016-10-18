@@ -34,7 +34,7 @@ if( isset($_POST['submit']) && $_POST['submit'] == 'login' ){
 	<script src="assest/js/bootstrap.min.js"></script>
 	<!-- Latest compiled and minified JavaScript -->
 	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/js/bootstrap-select.min.js"></script> -->
-	<script src="assest/js/bootstrap-select.min.js"></script> -->
+	<script src="assest/js/bootstrap-select.min.js"></script>
 
 	<meta charset ="utf-8"/>
 	<title><?php echo get_site_title();?></title>

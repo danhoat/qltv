@@ -196,3 +196,11 @@ form h3.heading{
 	text-align: center;
 	margin-top: 22px;
 }
+.col-right-login label{
+	font-weight: normal;
+}
+.col-right-login label small{
+	text-indent: 5px;
+	position: relative;
+    top: -2px;
+}

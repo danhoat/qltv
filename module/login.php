@@ -10,7 +10,7 @@
               <img class="login-icon" src="images/login.png" />
             </div>
 
-            <div class="col-md-7" style="border-left:1px solid #ccc;min-height:160px">
+            <div class="col-md-7 col-right-login" style="border-left:1px solid #ccc;min-height:160px">
                <form class="form-horizontal" method="POST">
                   <?php
                   if( !empty($login_error) ) {
@@ -27,9 +27,12 @@
                      <div class="spacing"><br/></div>
                      <input id="password" name="password" type="text" placeholder="Mật khẩu" class="form-control input-md required" required>
                      <div class="spacing"><br/></div>
-                     <input type="checkbox" name="checkboxes" id="checkbox" value="1"><small><span for="checkbox"> Ghi nhớ cho lần đang nhập sau</span></small>
-
+                     <div class="row">
+                        <label for="checkbox" class="col-md-8"><input type="checkbox" name="checkboxes" id="checkbox" value="1"><small> &nbsp; Ghi nhớ cho lần đang nhập sau</small> </label>
+                        <div clas= "col-md-4">
                         <button type="submit" name ="submit" value="login" id="singlebutton" name="singlebutton" class="btn btn-info btn-sm pull-right">Đăng nhập</button>
+                        </div>
+                     </div>
                   </fieldset>
                </form>
             </div>

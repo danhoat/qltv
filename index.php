@@ -59,7 +59,7 @@ if( isset($_POST['submit']) && $_POST['submit'] == 'login' ){
 					require($module);
 					require_once("inc/disconnect.php");
 				} else {
-					//require( 'module/login.php' );
+					require( 'module/login.php' );
 				}
 				?>
 			</div>

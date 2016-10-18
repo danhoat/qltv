@@ -8,9 +8,9 @@
          <div class="row">
 
             <div class="col-md-5" >
-            <a href="#"><img src="http://techulus.com/buttons/fb.png" /></a><br/>
-            <a href="#"><img src="http://techulus.com/buttons/tw.png" /></a><br/>
-            <a href="#"><img src="http://techulus.com/buttons/gplus.png" /></a>
+               <a href="#"><img src="http://techulus.com/buttons/fb.png" /></a><br/>
+               <a href="#"><img src="http://techulus.com/buttons/tw.png" /></a><br/>
+               <a href="#"><img src="http://techulus.com/buttons/gplus.png" /></a>
             </div>
 
             <div class="col-md-7" style="border-left:1px solid #ccc;height:160px">
@@ -31,4 +31,3 @@
   </div>
   <p class="txt-right">Hệ thống quản lý thư viện. version 1.0</p>
 </div>
-<?php" 

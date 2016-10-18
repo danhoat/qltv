@@ -19,7 +19,7 @@ if( !empty($total) ){
     	$current_page = $max_page;
     }
 	$result = TuaSach::list_tua_sach($select_all = 0, $posts_per_page, $current_page );
-     echo "Hệ thống hiện có {$total_record} tựa sách";
+     echo " <div class='row'>Hệ thống hiện có {$total_record} tựa sách </div>";
 	echo '<table class="table table-bordered ">';
 	echo "<thead><tr><th><input class ='checkbox selectall' type='checkbox' name=''></th><th> Mã</th> <th> Tựa sách </th> <th> Tác giả </th><th> Tóm tắt </th><th> Tác vụ </th> </tr></thead>";
 	echo ' <tbody>';

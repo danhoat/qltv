@@ -23,7 +23,7 @@ if( !empty($total) ){
     echo '<br />';
     echo "<label>Đầu sách {$isbn} hiện có {$total_record} cuốn sách </label>";
     echo '<br />';
-	echo '<table class="table ">';
+	echo '<table class="table table-bordered ">';
 	echo '<thead><tr><th> Mã</th> <th> Tựa sách </th><th> Tình trạng </td> <th> Tác vụ </th> </tr></thead>';
 	echo ' <tbody>';
 	while( $row = $result->fetch_assoc() ) {

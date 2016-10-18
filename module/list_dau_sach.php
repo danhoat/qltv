@@ -22,7 +22,7 @@ if( !empty($total) ){
     }
 	$result = DauSach::listDauSach($select_all = 0, $posts_per_page, $current_page );
 
-    echo '<table class= "table">';
+    echo '<table class= "table table-bordered ">';
     echo '<th class="col-md-8"> Số lượng đầu sách hiện có :'.$total_record .'</th>';
     echo '<th class= "col-md-2"><a href="index.php?act=frm_add_dau_sach" class="btn-default btn btn-link1"> Thêm mới đầu sách </a></th>';
 

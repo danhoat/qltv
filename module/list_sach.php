@@ -20,7 +20,7 @@ if( !empty($total) ){
     }
 	$result = CuonSach::list_books($select_all = 0, $posts_per_page, $current_page );
     echo "Hệ thống hiện có {$total_record} cuốn sách";
-	echo '<table class="table ">';
+	echo '<table class="table table-bordered ">';
 	echo '<thead><tr><th> Mã</th> <th> Tựa sách </th><th> Tình trạng </td> <th> Tác vụ </th> </tr></thead>';
 	echo ' <tbody>';
 	while( $row = $result->fetch_assoc() ) {

@@ -20,7 +20,7 @@ if( !empty($total) ){
     }
 	$result = DocGia::danhSachDocGia($select_all = 0, $posts_per_page, $current_page );
     echo "Hệ thống hiện có {$total_record} độc giả";
-	echo '<table class="table ">';
+	echo '<table class="table table-bordered ">';
 	echo '<thead><tr><th> Mã</th> <th> Tên độc giả </th><th> Tình trạng </td> <th> Tác vụ </th> </tr></thead>';
 	echo ' <tbody>';
 	while( $row = $result->fetch_assoc() ) {

@@ -77,7 +77,7 @@ ul.sub{
 	text-transform: uppercase;
 }
 .main{
-
+	padding-top: 35px;
 }
 #header{
 	width: 100%;
@@ -183,4 +183,7 @@ form .error{
 }
 button.btn-full{
 	width: 100%;
+}
+form h3.heading{
+	padding: 10px 0 25px 0;
 }

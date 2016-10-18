@@ -17,7 +17,7 @@ if(isset($_POST['submit'])){
 ?>
 
 <form class="form-horizontal" action="" method="POST">
-	<h3> Nhập thông tin mượn sách </h3>
+	<h3 class="heading"> Nhập thông tin mượn sách </h3>
 	<?php if(!empty($error)) { ?>
 	<div class="form-group">
 		<label class="control-label col-sm-2" for="email"> &nbsp; </label>

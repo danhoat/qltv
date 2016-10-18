@@ -14,7 +14,7 @@
     ?>
     <form action="index.php?act=list_sachdangmuon" method="GET" class="form-horizontal">
         <div class="form-group row">
-        <h4 for="example-tel-input" class="col-xs-12 col-form-label"> Tìm kiếm</h4>
+        <h3 for="example-tel-input" class="col-xs-12 col-form-label heading"> Tìm kiếm</h3>
           <label for="example-tel-input" class="col-xs-2 col-form-label"> Nhập mã </label>
           <div class="col-xs-4">
             <input type="text" class="form-control required" placeholder = "Mã tìm kiếm" name="keyword" value="<?php echo $keyword;?>" >

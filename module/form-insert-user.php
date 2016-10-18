@@ -152,9 +152,9 @@ if(isset($_POST['submit'])){
 	  <div class="col-xs-10">
 	  &nbsp;
 	  </div>
-	  <div class="col-xs-2">
+	  <div class="col-xs-2 col-right">
 	  		<input type="hidden" name="submit" value="1">
-	    	<button type="submit" class="btn btn-default btn-md"> Thêm mới</button>
+	    	<button type="submit" class="btn btn-info btn-sm pull-right"> Thêm mới</button>
 	  </div>
 	</div>
 

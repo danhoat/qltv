@@ -60,7 +60,7 @@
 <div class="form-group row">
     <label for="example-tel-input" class="col-xs-4 col-form-label">&nbsp; </label>
     <div class="col-xs-3">
-      <a class="btn" href ="index.php?act=trasach&mcs=<?php echo $ma_cuonsach;?>&isbn=<?php echo $isbn;?>&trasach=1"> Trả cuốn sách này </a>
+      <a class="btn btn-info btn-sm pull-right" href ="index.php?act=trasach&mcs=<?php echo $ma_cuonsach;?>&isbn=<?php echo $isbn;?>&trasach=1"> Trả cuốn sách này </a>
     </div>
 
 </div>

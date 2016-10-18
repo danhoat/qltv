@@ -120,7 +120,7 @@
 		    &nbsp;
 		    </div>
 			    <div class="col-sm-2">
-			    	<button type="submit" name="submit" class="btn btn-default">Lưu đầu sách</button>
+			    	<button type="submit" name="submit" class="btn btn-default btn-info btn-sm pull-right">Lưu đầu sách</button>
 			    </div>
 		  	</div>
 			</form>

@@ -95,7 +95,7 @@
 		    &nbsp;
 		    </div>
 			    <div class="col-sm-2">
-			    	<button type="submit" name="submit" class="btn btn-default"><?php echo $button_text;?></button>
+			    	<button type="submit" name="submit" class="btn btn-default btn-info btn-sm pull-right"><?php echo $button_text;?></button>
 			    </div>
 		  	</div>
 			</form>

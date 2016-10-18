@@ -72,7 +72,7 @@
 	<div class="form-group row">
 	    <label for="example-tel-input" class="col-xs-4 col-form-label">&nbsp; </label>
 	    <div class="col-xs-3">
-	      <button type ="submit" name="submit" value="1" class="btn" > Trả cuốn sách này </button>
+	      <button type ="submit" name="submit" value="1" class="btn btn-info btn-sm pull-right" > Trả cuốn sách này </button>
 	    </div>
 	</div>
 </form>

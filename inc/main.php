@@ -1,6 +1,6 @@
 <?php
 	function isLogin(){
-		if(isset($_SESSION) && $_SESSION['is_logged'] == 1 )
+		if( isset($_SESSION['is_logged']) && $_SESSION['is_logged'] == 1 )
 			return 1;
 		return 0;
 	}

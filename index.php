@@ -1,4 +1,20 @@
-<?php ob_start(); ?>
+<?php  session_start(); ?>
+<?php
+if( isset($_POST['submit']) && $_POST['submit'] == 'login' ){
+   $username = isset($_POST['username']) ? $_POST['username'] : '';
+   $password = isset($_POST['password']) ? $_POST['password'] : '';
+
+   if( $username == 'admin' && $pass  = 'admin' ) {
+      $_SESSION['is_logged'] = 1;
+      ob_start();
+      header("Location: index.php");
+   } else {
+      $_SESSION['is_logged'] = 0;
+   }
+
+}
+
+?>
 <!DOCTYPE html>
 <html>
 <?php
@@ -36,11 +52,15 @@
 			</div>
 			<div class="main col-md-9">
 				<?php
-
+				$login = isLogin();
+				if ($login){
 					$view = isset($_GET['act']) ? $_GET['act']:'list_dau_sach';
 					$module = 'module/'.$view.'.php';
 					require($module);
 					require_once("inc/disconnect.php");
+				} else {
+					//require( 'module/login.php' );
+				}
 				?>
 			</div>
 		</div>

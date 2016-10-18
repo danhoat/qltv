@@ -32,5 +32,14 @@
 			</ul>
 		</li>
 
-		<li class="wrap"> <a class="heading" href="index.php?act=dbstruct"> Lược đồ dữ liệu</a></li>
+		<li class="wrap">
+			<a class="heading" href="index.php?act=dbstruct"> Quản lý tài khoản</a>
+			<ul class="sub">
+			<?php
+			if(isLogin()){?>
+				<li class ="" > <a href="index.php?act=dangxuat">Đăng xuất</a></li>
+			<?php } ?>
+				<li><a href="index.php?act=dbstruct"> Lược đồ dữ liệu</a></li>
+			</ul>
+		</li>
 	</ul>

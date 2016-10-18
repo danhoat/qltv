@@ -1,4 +1,9 @@
 <?php
+	function isLogin(){
+		if(isset($_SESSION) && $_SESSION['is_logged'] == 1 )
+			return 1;
+		return 0;
+	}
 	function isCustomError( $thing ) {
 		return ( $thing instanceof HandleError );
 	}

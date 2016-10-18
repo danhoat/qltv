@@ -15,10 +15,10 @@
                   <?php
                   if( !empty($login_error) ) {
                      ?>
-                     <fieldset class="error">
+                     <fieldset >
                         <div class="spacing"><br/></div>
-                        <i><small><?php echo $login_error;?></small></i>
-                        <small> tài khoản admin: admin/admin</small>
+                        <i class="error"><small><?php echo $login_error;?></small></i>
+                        <p><small> Tài khoản demo: admin/admin</small></p>
                         <div class="spacing"><br/></div>
                      </fieldset>
                      <?php

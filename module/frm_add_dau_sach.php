@@ -95,7 +95,7 @@
 		  	<div class="form-group">
 			    <label class="control-label col-sm-2" for="pwd">Bìa </label>
 			    <div class="col-sm-10">
-			      <input type="text" class="form-control" id="bia" name="bia" placeholder="Bìa cuốn sách" value="<?php echo $bia;?>">
+			      <input type="text" class="form-control required" required id="bia" name="bia" placeholder="Bìa cuốn sách" value="<?php echo $bia;?>">
 			    </div>
 		  	</div>
 		  	<div class="form-group">

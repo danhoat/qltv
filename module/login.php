@@ -6,19 +6,26 @@
       <div class="panel-body">
 
          <div class="row">
-
-            <div class="col-md-5" >
-               <a href="#"><img src="http://techulus.com/buttons/fb.png" /></a><br/>
-               <a href="#"><img src="http://techulus.com/buttons/tw.png" /></a><br/>
-               <a href="#"><img src="http://techulus.com/buttons/gplus.png" /></a>
+            <div class="col-md-5 col-left-login" >
+              <img class="login-icon" src="images/login.png" />
             </div>
 
-            <div class="col-md-7" style="border-left:1px solid #ccc;height:160px">
+            <div class="col-md-7" style="border-left:1px solid #ccc;min-height:160px">
                <form class="form-horizontal" method="POST">
+                  <?php
+                  if( !empty($login_error) ) {
+                     ?>
+                     <fieldset>
+                        <div class="spacing"><br/></div>
+                        <?php echo $login_error;?>
+                        <div class="spacing"><br/></div>
+                     </fieldset>
+                     <?php
+                  }?>
                   <fieldset>
-                     <input id="username" name="username" type="text" placeholder="Tên đăng nhập" class="form-control input-md">
+                     <input id="username" name="username" type="text" placeholder="Tên đăng nhập" class="form-control input-md required" required>
                      <div class="spacing"><br/></div>
-                     <input id="password" name="password" type="text" placeholder="Mật khẩu" class="form-control input-md">
+                     <input id="password" name="password" type="text" placeholder="Mật khẩu" class="form-control input-md required" required>
                      <div class="spacing"><br/></div>
                      <input type="checkbox" name="checkboxes" id="checkbox" value="1"><small><span for="checkbox"> Ghi nhớ cho lần đang nhập sau</span></small>
 

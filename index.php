@@ -1,5 +1,6 @@
 <?php  session_start(); ?>
 <?php
+$login_error= '';
 if( isset($_POST['submit']) && $_POST['submit'] == 'login' ){
    $username = isset($_POST['username']) ? $_POST['username'] : '';
    $password = isset($_POST['password']) ? $_POST['password'] : '';
@@ -9,6 +10,7 @@ if( isset($_POST['submit']) && $_POST['submit'] == 'login' ){
       ob_start();
       header("Location: index.php");
    } else {
+   		$login_error = 'Tên đăng nhập và mật khẩu chưa chính xác';
       $_SESSION['is_logged'] = 0;
    }
 

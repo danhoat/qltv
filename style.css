@@ -189,3 +189,10 @@ form h3.heading{
 .txt-right{
 	text-align: right;
 }
+.login-icon{
+	width: 120px;
+}
+.col-left-login{
+	text-align: center;
+	margin-top: 22px;
+}

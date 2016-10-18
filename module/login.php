@@ -27,12 +27,12 @@
                      <div class="spacing"><br/></div>
                      <input id="password" name="password" type="text" placeholder="Mật khẩu" class="form-control input-md required" required>
                      <div class="spacing"><br/></div>
-                     <div class="row">
+                    
                         <label for="checkbox" class="col-md-8"><input type="checkbox" name="checkboxes" id="checkbox" value="1"><small> &nbsp; Ghi nhớ cho lần đang nhập sau</small> </label>
-                        <div clas= "col-md-4">
+                        <div class = "col-md-4 txt-right col-right">
                         <button type="submit" name ="submit" value="login" id="singlebutton" name="singlebutton" class="btn btn-info btn-sm pull-right">Đăng nhập</button>
                         </div>
-                     </div>
+                  
                   </fieldset>
                </form>
             </div>

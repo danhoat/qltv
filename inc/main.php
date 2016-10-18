@@ -22,6 +22,7 @@
 			<option value="5" <?php add_selected($selected, 5);?>> Trung Quốc</option>
 			<option value="6" <?php add_selected($selected, 6);?>> Nhật</option>
 			<option value="7" <?php add_selected($selected, 7);?>> Hàn Quốc</option>
+			<option value="7" <?php add_selected($selected, 8);?>> Khác</option>
 		</select>
 	    <?php
 	}

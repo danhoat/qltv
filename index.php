@@ -6,9 +6,10 @@
 	require_once("inc/require.php");
 ?>
 <head>
-	<link rel="stylesheet" type="text/css" href="style.css">
 	<link rel="stylesheet" type="text/css" href="assest/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 	<script src="assest/js/bootstrap.min.js"></script>

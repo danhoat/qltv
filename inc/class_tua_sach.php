@@ -36,24 +36,19 @@ Class TuaSach{
 	}
 	public static function list_tua_sach($select_all = 0, $posts_per_age = 10, $current_page = 1) {
 		global $conn;
-		if($select_all){
-			$sql ="SELECT * FROM tuasach";
-			$result = $conn->query($sql);
+		$offset = $posts_per_age * ($current_page - 1);
+		$sql = "SELECT * FROM tuasach ";
 
-			if ($result && $result->num_rows > 0) {
-				return $result;
-			}
-			return 0;
-		} else {
-			$offset = $posts_per_age * ($current_page - 1);
-			$sql ="SELECT * FROM tuasach LIMIT {$posts_per_age} OFFSET {$offset}";
-
-			$result = $conn->query($sql);
-			if ($result->num_rows > 0) {
-				return $result;
-			}
-			return 0;
+		if( !$select_all ){
+			$sql .=" LIMIT {$posts_per_age} OFFSET {$offset}";
 		}
+
+		$result = $conn->query($sql);
+		if ( $result && $result->num_rows > 0) {
+			return $result;
+		}
+		return 0;
+
 	}
 	function getTuaSach($ma_tuasach){
 		$result = $this->kiemTraTuaSachTonTai($ma_tuasach);

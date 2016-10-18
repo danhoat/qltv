@@ -25,10 +25,11 @@ if( !empty($total) ){
 	echo ' <tbody>';
 	while( $row = $result->fetch_assoc() ) {
         $ma_tuasach = $row['ma_tuasach'];
+
 		echo '<tr>';
-        echo "<td><input class ='checkbox' type='checkbox' name='remove[{$ma_tuasach}]'>";
-        echo "<td> " . $ma_tuasach. " </td>";
-        echo "<td> <a class='' href= 'index.php?act=frm_add_tua_sach&id=".$row["ma_tuasach"]."'> " . limit_string($row["tuasach"],25). "</a> </td><td> " . $row["tacgia"]."</td><td>". limit_string($row["tomtat"],60). "</td>";
+        echo "<td><input class ='checkbox' type='checkbox' name='remove[]'>";
+        echo "<td> " . $ma_tuasach. "123 </td>";
+        echo "<td> <a class='' href= 'index.php?act=frm_add_tua_sach&id=".$ma_tuasach."'> " . limit_string($row["tuasach"],25). "</a> </td><td> " . $row["tacgia"]."</td><td>". limit_string($row["tomtat"],60). "</td>";
         echo "<td><a  class='action'  href='index.php?act=frm_add_tua_sach&id=".$ma_tuasach."'>Cập nhật</a> &nbsp; <a href='{$url}page={$current_page}&del={$ma_tuasach}' onclick ='return remove_tua_sach()'> Xóa</a>  ";
         echo '</tr>';
     }

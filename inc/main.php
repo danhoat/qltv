@@ -19,9 +19,9 @@
 			<option value="2" <?php add_selected($selected, 2);?>> Anh </option>
 			<option value="3" <?php add_selected($selected, 3);?>> Pháp</option>
 			<option value="4" <?php add_selected($selected, 4);?>> Đức</option>
-			<option value="5" <?php add_selected($selected, 5);?>> Trung Quốc</option>
+			<option value="5" <?php add_selected($selected, 5);?>> Trung</option>
 			<option value="6" <?php add_selected($selected, 6);?>> Nhật</option>
-			<option value="7" <?php add_selected($selected, 7);?>> Hàn Quốc</option>
+			<option value="7" <?php add_selected($selected, 7);?>> Hàn</option>
 			<option value="7" <?php add_selected($selected, 8);?>> Khác</option>
 		</select>
 	    <?php

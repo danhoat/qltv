@@ -18,6 +18,7 @@
                      <fieldset class="error">
                         <div class="spacing"><br/></div>
                         <i><small><?php echo $login_error;?></small></i>
+                        <small> tài khoản admin: admin/admin</small>
                         <div class="spacing"><br/></div>
                      </fieldset>
                      <?php

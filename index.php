@@ -1,3 +1,4 @@
+
 <?php  session_start(); ?>
 <?php
 $login_error= '';
@@ -16,13 +17,12 @@ if( isset($_POST['submit']) && $_POST['submit'] == 'login' ){
    }
 }
 
+require_once("inc/connect.php");
+require_once("inc/require.php");
 ?>
+
 <!DOCTYPE html>
 <html>
-<?php
-	require_once("inc/connect.php");
-	require_once("inc/require.php");
-?>
 <head>
 	<link rel="stylesheet" type="text/css" href="assest/css/bootstrap.min.css">
 	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css"> -->
@@ -63,7 +63,7 @@ if( isset($_POST['submit']) && $_POST['submit'] == 'login' ){
 					require($module);
 					require_once("inc/disconnect.php");
 				} else {
-					require( 'module/login.php' );
+					header("Location: login.php");
 				}
 				?>
 			</div>

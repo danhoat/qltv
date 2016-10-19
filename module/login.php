@@ -12,17 +12,7 @@
 
             <div class="col-md-7 col-right-login" style="border-left:1px solid #ccc;min-height:160px">
                <form class="form-horizontal" method="POST">
-                  <?php
-                  if( !empty($login_error) ) {
-                     ?>
-                     <fieldset >
-                        <div class="spacing"><br/></div>
-                        <i class="error"><small><?php echo $login_error;?></small></i>
-                        <p><small> Tài khoản demo: admin/admin</small></p>
-                        <div class="spacing"><br/></div>
-                     </fieldset>
-                     <?php
-                  }?>
+
                   <fieldset>
                      <input id="username" name="username" type="text" placeholder="Tên đăng nhập" class="form-control input-md required" required>
                      <div class="spacing"><br/></div>

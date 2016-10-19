@@ -13,7 +13,6 @@ if( isset($_POST['submit']) && $_POST['submit'] == 'login' ){
    		$login_error = 'Tên đăng nhập và mật khẩu chưa chính xác';
       $_SESSION['is_logged'] = 0;
    }
-
 }
 
 ?>

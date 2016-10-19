@@ -6,7 +6,7 @@ if( isset($_POST['username']) && isset($_POST['password']))
    $username = isset($_POST['username']) ? $_POST['username'] : '';
    $password = isset($_POST['password']) ? $_POST['password'] : '';
 
-   if( $username == 'admin' && $pass  = 'admin' ) {
+   if( $username == 'admin' && $password  = 'admin' ) {
       $_SESSION['is_logged'] = 1;
       ob_start();
       header("Location: index.php");

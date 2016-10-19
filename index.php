@@ -1,6 +1,7 @@
 <?php  session_start(); ?>
 <?php
 $login_error= '';
+
 if( isset($_POST['submit']) && $_POST['submit'] == 'login' ){
    $username = isset($_POST['username']) ? $_POST['username'] : '';
    $password = isset($_POST['password']) ? $_POST['password'] : '';

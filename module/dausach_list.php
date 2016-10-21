@@ -62,7 +62,7 @@
 												<tr>
 													<td><input class="checkbox" id="checkbox" type="checkbox" /></td>
 													<td><?php echo $isbn; ?></td>
-													<td><a class="text-inline" href="?act=chi_tiet_dau_sach&id=<?php echo $isbn?>"><?php echo $row['bia']; ?></a></td>
+													<td><a class="text-inline" href="?act=dausach_chitiet&id=<?php echo $isbn?>"><?php echo $row['bia']; ?></a></td>
 													<td><?php echo get_ngon_ngu($ngonngu); ?></td>
 													<td><?php echo demSoLuongDauSach($isbn); ?></td>
 													<td><?php echo $trangthai; ?></td>

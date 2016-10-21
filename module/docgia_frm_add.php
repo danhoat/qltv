@@ -77,7 +77,7 @@ if(isset($_POST['submit'])){
                         echo $error;
                     	echo '</div>';
 					 } else if( !empty( $label ) ){
-						echo '<div class="alert alert-danger">';
+						echo '<div class="alert alert-info">';
                         echo $label;
                     	echo '</div>';
 					 } ?>

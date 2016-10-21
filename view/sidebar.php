@@ -13,7 +13,7 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="/qltv"><i class="fa fa-dashboard fa-fw"></i> Trang Chủ</a>
+                            <a href="index.php"><i class="fa fa-dashboard fa-fw"></i> Trang Chủ</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-book"></i> Quản lý Sách<span class="fa arrow"></span></a>
@@ -65,10 +65,10 @@
                             <a href="#"><i class="fa fa-files-o fa-fw"></i> Quản Lý Tài Khoản<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="blank.html">Đăng Xuất</a>
+                                    <a href="logout.php">Đăng Xuất</a>
                                 </li>
                                 <li>
-                                    <a href="login.html">Login Page</a>
+                                    <a href="login.php">Login Page</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

@@ -56,12 +56,6 @@ $han_sd_text  	= ($con_hsd  == '1') ? 'Còn hạn sử dụng' :'<span class="er
   	</div>
 </div>
 <div class="form-group row">
-  	<label for="example-tel-input" class="col-xs-4 col-form-label">Quận</label>
-  	<div class="col-xs-6">
-  		<?php echo $quan;?>
-  	</div>
-</div>
-<div class="form-group row">
   	<label for="example-tel-input" class="col-xs-4 col-form-label">Số sách đang mượn</label>
   	<div class="col-xs-6">
   		<?php echo soSachDangMuon($ma_docgia);?>

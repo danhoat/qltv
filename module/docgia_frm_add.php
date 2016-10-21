@@ -5,7 +5,8 @@ $label_text_fail = '';
 $frm_nguoilon 	= '';
 $frm_treem 	= 'hide';
 $loai_docgia  	= isset($_POST['loai_docgia']) ? $_POST['loai_docgia'] : 1;
-
+$label = '';
+$error = '';
 if(isset($_POST['submit'])){
 
 	$docgia 		= DocGia::getInstance();
@@ -22,35 +23,10 @@ if(isset($_POST['submit'])){
 	}
 
 	if( empty( $error) ){
-		$ma_docgia 		= $docgia->themDocGia($hoten, $ngaysinh);
+
 		if( $ma_docgia){
-			if( $loai_docgia == 2 ){
-				$frm_nguoilon 		= 'hide';
-				$frm_treem 			= '';
-				$ma_docgia_nguoilon = isset($_POST['ma_docgia_nguoilon']) ? $_POST['ma_docgia_nguoilon'] : 0;
-
-				if( ! $ma_docgia_nguoilon ){
-					$error = 'Vui lòng chọn mã người lớn';
-				}
-				if( empty($error) ){
-					$docgia = TreEm::getInstance();
-					$result = $docgia->themDocGia($ma_docgia, $ma_docgia_nguoilon);
-					if( isCustomError($result) ){
-						$error = $result->getMessage();
-					} else {
-						$label_text = 'Thêm độc giả trẻ em thành công';
-					}
-				} else {
-					$label_text_fail .= ' Thêm độc giả trẻ em lỗi';
-				}
-
-			} else{
-				$docgia = NguoiLon::getInstance();
-				$result = $docgia->themNguoiLon($ma_docgia, $_POST);
-				if( $result ){
-					$label_text  .= ' Thêm độc giả người lớn thành công';
-				}
-			}
+			$ma_docgia 		= $docgia->themDocGia($hoten, $ngaysinh);
+			$label = 'Thêm độc giả thành công';
 		} else {
 			$error .= 'Thêm độc giả lỗi <br />';
 		}
@@ -75,17 +51,16 @@ if(isset($_POST['submit'])){
                 <div class="panel-body">
                 <form action="#"  class="form-horizontal csf" method="POST" action="#">
 
-					<?php if( !empty( $error ) ){ 
+					<?php if( !empty( $error ) ){
 						echo '<div class="alert alert-danger">';
                         echo $error;
                     	echo '</div>';
-					 } ?>
-
-					<?php if( !empty( $label_text ) ){ 
-						echo '<div class="alert alert-info">';
-                        echo $error;
+					 } else if( !empty( $label ) ){
+						echo '<div class="alert alert-danger">';
+                        echo $label;
                     	echo '</div>';
-					} ?>
+					 } ?>?>
+
 
 
 					<div class="form-group row">

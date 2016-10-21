@@ -87,14 +87,14 @@ Class Muon{
 
     public static function list_books($select_all = 0, $posts_per_age = 10, $current_page = 1, $search = 0, $type ='1', $keyword = '') {
 		global $conn;
-		$sql =" SELECT * FROM muon m LEFT JOIN dausach ds ON m.isbn = ds.isbn ";
+		$sql =" SELECT * FROM muon m LEFT JOIN dausach ds ON m.ma_cuonsach = ds.isbn ";
 		$sql .= " WHERE ";
 		$and = '';
 		if($search && !empty($keyword) ){
 			 if($type == '2') {
 				$sql .=" m.ma_cuonsach = '{$keyword}' ";
 			} else if ($type == '3'){
-				$sql .=" m.isbn = '{$keyword}' ";
+				$sql .=" m.ma_cuonsach = '{$keyword}' ";
 			}  else {
 				$sql .=" m.ma_docgia = '{$keyword}' ";
 			}

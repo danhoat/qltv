@@ -7,7 +7,7 @@
 
 	if( $act == 'kiemtradocgia' ){
 		$ma_docgia 	= $_POST['ma_docgia'];
-		$nguoilon 	= NguoiLon::getInstance();
+		$nguoilon 	= DocGia::getInstance();
 		$record 	= $nguoilon->getThongTinDocGia($ma_docgia);
 
 		if($record){

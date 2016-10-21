@@ -25,7 +25,7 @@
 								$total = DauSach::listDauSach($select_all = 1);
 								if( !empty($total) ){
 
-									$url           = 'act=list_dau_sach&';
+									$url           = 'act=dausach_list&';
 									$total_record = $total->num_rows;
 								    $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
 
@@ -40,14 +40,17 @@
 									$result = DauSach::listDauSach($select_all = 0, $posts_per_page, $current_page );
 									?>
 	                                <table class="table table-striped table-bordered table-hover">
-	                                    <thead>
-	                                        <tr>
-	                                            <th>#</th>
-	                                            <th>First Name</th>
-	                                            <th>Last Name</th>
-	                                            <th>Username</th>
-	                                        </tr>
-	                                    </thead>
+										<thead>
+										<tr>
+											<th><label for="selectall"> <input class ="checkbox selectall" id= "selectall" type="checkbox" /></label></th>
+											<th> ISBN</th>
+											<th> Tựa sách </th>
+											<th> Ngôn ngữ </th>
+											<th> Số cuốn</th>
+											<th> Tình trạng </td>
+											<th> Tác vụ </th>
+										</tr>
+										</thead>
 	                                    <tbody>
 										<?php
 											while( $row = $result->fetch_assoc() ) {
@@ -59,41 +62,27 @@
 												<tr>
 													<td><input class="checkbox" id="checkbox" type="checkbox" /></td>
 													<td><?php echo $isbn; ?></td>
-													<td><a class="text-inline" href="index.php?act=chi_tiet_dau_sach&id=<?php echo $isbn?>"><?php echo $row['bia']; ?></a></td>
+													<td><a class="text-inline" href="?act=chi_tiet_dau_sach&id=<?php echo $isbn?>"><?php echo $row['bia']; ?></a></td>
 													<td><?php echo get_ngon_ngu($ngonngu); ?></td>
 													<td><?php echo demSoLuongDauSach($isbn); ?></td>
 													<td><?php echo $trangthai; ?></td>
 													<td>
-														<a class="btn btn-primary btn-circle" href=""><i class="fa fa-list"></i></a>
+														<a class="btn btn-primary btn-circle" href="?act=dausach_frm_add&id=<?php echo $isbn; ?>">
+														<i class="fa fa-plus"></i></a>
+														<a class="btn btn-danger btn-circle" href="<?php echo $url;?>page=<?php echo $current_page;?>&del=<?php echo $isbn;?>"><i class="fa fa-times"></i></a>
 													</td>
 												</tr>
 												<?php
-
-											    echo "<td><a  class='action'  href='index.php?act=frm_add_dau_sach&id=".$isbn."'>Cập nhật</a> &nbsp; <a href='index.php?{$url}page={$current_page}&del={$isbn}' onclick ='return remove_tua_sach()'> Xóa</a>  ";
-											    echo '</tr>';
 											}
 										?>
 	                                    </tbody>
 	                                </table>
 									<?php
-
-								    echo '<table class= "table table-bordered ">';
-								    echo '<th class="col-md-8"> Số lượng đầu sách hiện có :'.$total_record .'</th>';
-								    echo '<th class= "col-md-2"><a href="index.php?act=frm_add_dau_sach" class="btn-default btn btn-link1"> Thêm mới đầu sách </a></th>';
-
-								    echo '<table>';
-								    echo '<table class="table table-bordered">';
-									echo '<thead><tr><th><label for="selectall"> <input class ="checkbox selectall" id= "selectall" type="checkbox" /></label> </th><th> ISBN</th> <th> Tựa sách </th><th> Ngôn ngữ </th><th> Số cuốn</th><th> Tình trạng </td> <th> Tác vụ </th> </tr></thead>';
-									echo ' <tbody>';
-
-								    echo '</tbody>';
-								    echo '</table>';
-
-								    echo paginate( $posts_per_page, $current_page, $total_record,  $max_page, $url = 'index.php?act=list_dau_sach');
+								    echo paginate( $posts_per_page, $current_page, $total_record,  $max_page, $url = '?act=dausach_list');
 								} else {
 								    echo 'Chưa có đầu sách nào trong hệ thống';
 								    ?>
-								    <a href="index.php?act=frm_add_dau_sach"> Thêm mới một đầu sách</a>
+								    <a href="?act=dausach_frm_add"> Thêm mới một đầu sách</a>
 								    <?php
 								}
 								?>

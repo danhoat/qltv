@@ -13,7 +13,7 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="/"><i class="fa fa-dashboard fa-fw"></i> Trang Chủ</a>
+                            <a href="/qltv"><i class="fa fa-dashboard fa-fw"></i> Trang Chủ</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-book"></i> Quản lý Sách<span class="fa arrow"></span></a>
@@ -22,7 +22,13 @@
                                     <a href="?act=tuasach_list">QL Tựa Sách</a>
                                 </li>
                                 <li>
+                                    <a href="?act=tuasach_frm_add">Thêm Tựa Sách</a>
+                                </li>
+                                <li>
                                     <a href="?act=dausach_list">QL Đầu Sách</a>
+                                </li>
+                                <li>
+                                    <a href="?act=dausach_frm_add">Thêm Đầu Sách</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -32,7 +38,7 @@
                             <a href="#"><i class="fa fa-user"></i> Thẻ Thư Viện<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="?act=list_docgia">Danh Sách Thẻ</a>
+                                    <a href="?act=docgia_list">Danh Sách Thẻ</a>
                                 </li>
                                 <li>
                                     <a href="?act=form-insert-user">Thêm Thẻ Mới</a>

@@ -35,7 +35,7 @@ Class DocGia{
 		// INSERT INTO `docgia` (`ma_docgia`, `hoten`, `ngaysinh`, `massv`, `diachi`, `han_sd`, `dienthoai`, `ngay_dk`) VALUES (NULL, '666', '2016-10-21', '6666', '6666', '2016-10-21', '6666', '2016-10-14');
 
 		$sql = "INSERT INTO `{$this->table}` (`ma_docgia`, `hoten`, `ngaysinh`, `massv`, `diachi`, `han_sd`, `dienthoai`, `ngay_dk`) VALUES (NULL, '{$hoten}', '{$ngaysinh}', '{$massv}', '{$diachi}', '{$han_sd}', '{$dienthoai}', '{$ngay_dk}')";
-		echo $sql;
+		//echo $sql;
 		if($this->conn->query($sql)){
 			return $this->conn->insert_id;
 		}

@@ -24,6 +24,19 @@ if(isset($_POST['submit'])){
 	if(empty($hoten) ) {
 		$error .= 'Vui lòng nhập họ tên <br />';
 	}
+	if(!empty($ngay_dk)){
+		$ngay_dk 		= date_create($ngay_dk);
+		$ngay_dk 	= date_format($ngay_dk,"Y-m-d H:i:s");
+	} else {
+		$ngay_dk 	= date("Y-m-d");
+	}
+	if( !empty($han_sd) ){
+		$han_sd 	=date_create($han_sd);
+		$han_sd 	= date_format($han_sd,"Y-m-d H:i:s");
+	} else {
+		$han_sd 	= date("Y-m-d");
+
+	}
 	if ( empty($ngaysinh) ){
 		$error .= 'Vui lòng nhập ngày sinh <br />';
 	} else {

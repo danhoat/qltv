@@ -75,16 +75,6 @@ if(isset($_POST['submit'])){
 					   <input class="form-control datepicker" data-format="yyyy-MM-dd hh:mm:ss" type="date" name="ngaysinh" id="ngaysinh" value="2016-12-16 00:00:00" >
 					  </div>
 					</div>
-					<!-- <div class="form-group row">
-					  <label for="example-tel-input" class="col-xs-2 col-form-label">Loại độc giả </label>
-					  <div class="col-xs-10">
-					    	<label for = "nguoilon" ><input class="loai-docgia" id = "nguoilon" type="radio" value="1" <?php if($loai_docgia != '2') echo 'checked';?> name="loai_docgia" > Người lớn </label>
-					    	<label for = "treem" >
-					    	<input <?php if($loai_docgia == '2') echo 'checked';?>  class = "loai-docgia" id = "treem" type="radio" value="2"  name="loai_docgia" >Trẻ em</label>
-					  </div>
-					</div> -->
-
-
 					<div class="row-default">
 						<div class ="nguoilon <?php echo $frm_nguoilon;?>">
 							<div class="form-group row">

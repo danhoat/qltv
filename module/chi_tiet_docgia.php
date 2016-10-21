@@ -1,3 +1,4 @@
+<div id="page-wrapper">
 <?php
 $ma_docgia = isset($_GET['id']) ? $_GET['id'] : 0;
 $dociga 		= DocGia::getInstance();
@@ -95,3 +96,4 @@ $han_sd_text  	= ($con_hsd  == '1') ? 'Còn hạn sử dụng' :'<span class="er
 	}
 
 ?>
+</div>

@@ -57,7 +57,7 @@ if( !empty($total) ){
                         		<tr>
                                     <td> <?php echo $ma_docgia;?>  </td>
                                     <td> <a class='' href= '<?php echo "index.php?act=chi_tiet_docgia&id=".$ma_docgia;?>'> <?php echo $hoten ;?></a> </td>
-                                    <td><?php echo $tinhtrang; ?></td>";
+                                    <td><?php echo $tinhtrang; ?></td>
                                     <td>
                                         <a class="btn btn-primary btn-circle" href="?act=docgia_frm_add&id=<?php echo $ma_docgia; ?>">
                                             <i class="fa fa-plus"></i></a>

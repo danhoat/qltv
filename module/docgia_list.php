@@ -41,27 +41,26 @@ if( !empty($total) ){
                         <tr>
                             <th> Mã</th>
                             <th> Tên độc giả </th>
-                            <th> Tình trạng </td>
+                            <th>Mã Sinh Viên </th>
+                            <th>Ngày Đăng Ký</th>
+                            <th>Hạn Sử Dụng</th>
                             <th> Tác vụ </th>
                         </tr>
                         </thead>
                         <tbody>
                         <?php
                         	while( $row = $result->fetch_assoc() ) {
-                        		$ma_docgia 	= $row['ma_docgia'];
-                                $hoten      = $row['hoten'];
-                                //$tenlot     = $row['tenlot'];
-                                //$ten        = $row['ten'];
-                        		$tinhtrang 	= '';
                                 ?>
                         		<tr>
-                                    <td> <?php echo $ma_docgia;?>  </td>
-                                    <td> <a class='' href= '<?php echo "index.php?act=chi_tiet_docgia&id=".$ma_docgia;?>'> <?php echo $hoten ;?></a> </td>
-                                    <td><?php echo $tinhtrang; ?></td>
+                                    <td><?php echo $row["ma_docgia"]; ?></td>
+                                    <td><a href='?act=docgia_chitiet&id=<?php echo $row["ma_docgia"]?>'><?php echo $row["hoten"]; ?></a> </td>
+                                    <td><?php echo $row["massv"]; ?></td>
+                                    <td><?php echo date('d-m-Y',strtotime($row["ngay_dk"])); ?></td>
+                                    <td><?php echo date('d-m-Y',strtotime($row["han_sd"])); ?></td>
                                     <td>
-                                        <a class="btn btn-primary btn-circle" href="?act=docgia_frm_add&id=<?php echo $ma_docgia; ?>">
-                                            <i class="fa fa-plus"></i></a>
-                                        <a class="btn btn-danger btn-circle" href="<?php echo "{$url}page={$current_page}&del={$ma_docgia}"; ?>">
+                                        <a class="btn btn-primary btn-circle" href="?act=docgia_frm_add&id=<?php echo $row["ma_docgia"]; ?>">
+                                            <i class="fa fa-pencil"></i></a>
+                                        <a class="btn btn-danger btn-circle" href="<?php echo "{$url}page={$current_page}&del={$row["ma_docgia"]}"; ?>">
                                             <i class="fa fa-times"></i></a>
                                     </td>
                                 </tr>

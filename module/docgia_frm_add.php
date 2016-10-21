@@ -16,7 +16,6 @@ if(isset($_POST['submit'])){
 	$diachi 		= isset($_POST['diachi']) ? $_POST['diachi'] : '';
 	$han_sd 		= isset($_POST['han_sd']) ? $_POST['han_sd'] : '';
 	$dienthoai 		= isset($_POST['dienthoai']) ? $_POST['dienthoai'] : '';
-	$ngay_dk 		= isset($_POST['ngay_dk']) ? $_POST['ngay_dk'] : '';
 
 	if( empty($massv) ){
 		$error .= 'Vui lòng nhập mã sinh viên <br />';
@@ -47,7 +46,7 @@ if(isset($_POST['submit'])){
 	if( empty( $error) ){
 
 
-		$ma_docgia 		= $docgia->themDocGia($hoten,$ngaysinh,$massv, $diachi,$han_sd,$dienthoai,$ngay_dk);
+		$ma_docgia 		= $docgia->themDocGia($hoten,$ngaysinh,$massv, $diachi,$han_sd,$dienthoai);
 		if($ma_docgia){
 			$label = 'Thêm độc giả thành công';
 		} else {

@@ -1,0 +1,109 @@
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Quản lý đầu sách</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Danh sách đầu sách
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                            <?php
+								$isbn = isset($_GET['del']) ? $_GET['del'] : '';
+								$dausach   = DauSach::getInstance();
+								if( !empty($isbn)){
+								    $dausach->xoaDauSach($isbn);
+								}
+
+								$total = DauSach::listDauSach($select_all = 1);
+								if( !empty($total) ){
+
+									$url           = 'act=list_dau_sach&';
+									$total_record = $total->num_rows;
+								    $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
+
+								    if(! is_numeric($current_page) || $current_page < 1){
+								    	$current_page = 1;
+								    }
+								    $posts_per_page = 10;
+								    $max_page = ceil($total_record/$posts_per_page);
+								    if($current_page > $max_page){
+								    	$current_page = $max_page;
+								    }
+									$result = DauSach::listDauSach($select_all = 0, $posts_per_page, $current_page );
+									?>
+	                                <table class="table table-striped table-bordered table-hover">
+	                                    <thead>
+	                                        <tr>
+	                                            <th>#</th>
+	                                            <th>First Name</th>
+	                                            <th>Last Name</th>
+	                                            <th>Username</th>
+	                                        </tr>
+	                                    </thead>
+	                                    <tbody>
+										<?php
+											while( $row = $result->fetch_assoc() ) {
+												$isbn 		= $row['isbn'];
+												$ma_tuasach = $row['ma_tuasach'];
+											    $ngonngu    = $row['ngonngu'];
+												$trangthai 	= ($row['trangthai'] == 1)  ?  'Có sẵn' :'Hết';
+												?>
+												<tr>
+													<td><input class="checkbox" id="checkbox" type="checkbox" /></td>
+													<td><?php echo $isbn; ?></td>
+													<td><a class="text-inline" href="index.php?act=chi_tiet_dau_sach&id=<?php echo $isbn?>"><?php echo $row['bia']; ?></a></td>
+													<td><?php echo get_ngon_ngu($ngonngu); ?></td>
+													<td><?php echo demSoLuongDauSach($isbn); ?></td>
+													<td><?php echo $trangthai; ?></td>
+													<td>
+														<a class="btn btn-primary btn-circle" href=""><i class="fa fa-list"></i></a>
+													</td>
+												</tr>
+												<?php
+
+											    echo "<td><a  class='action'  href='index.php?act=frm_add_dau_sach&id=".$isbn."'>Cập nhật</a> &nbsp; <a href='index.php?{$url}page={$current_page}&del={$isbn}' onclick ='return remove_tua_sach()'> Xóa</a>  ";
+											    echo '</tr>';
+											}
+										?>
+	                                    </tbody>
+	                                </table>
+									<?php
+
+								    echo '<table class= "table table-bordered ">';
+								    echo '<th class="col-md-8"> Số lượng đầu sách hiện có :'.$total_record .'</th>';
+								    echo '<th class= "col-md-2"><a href="index.php?act=frm_add_dau_sach" class="btn-default btn btn-link1"> Thêm mới đầu sách </a></th>';
+
+								    echo '<table>';
+								    echo '<table class="table table-bordered">';
+									echo '<thead><tr><th><label for="selectall"> <input class ="checkbox selectall" id= "selectall" type="checkbox" /></label> </th><th> ISBN</th> <th> Tựa sách </th><th> Ngôn ngữ </th><th> Số cuốn</th><th> Tình trạng </td> <th> Tác vụ </th> </tr></thead>';
+									echo ' <tbody>';
+
+								    echo '</tbody>';
+								    echo '</table>';
+
+								    echo paginate( $posts_per_page, $current_page, $total_record,  $max_page, $url = 'index.php?act=list_dau_sach');
+								} else {
+								    echo 'Chưa có đầu sách nào trong hệ thống';
+								    ?>
+								    <a href="index.php?act=frm_add_dau_sach"> Thêm mới một đầu sách</a>
+								    <?php
+								}
+								?>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+            </div>
+        </div>
+        <!-- /#page-wrapper -->

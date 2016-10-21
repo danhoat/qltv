@@ -31,14 +31,14 @@ Class Muon{
     	if( isCustomError( $checkdausach ) ){
     		return $checkdausach;
     	}
-    	$ngay_muon 	= date('Y-m-d H:i:s', time() );
-    	$ngay_hh 	= date("Y-m-d H:i:s", time()+ 14*24*60*60);
+    	$ngaygio_muon 	= date('Y-m-d H:i:s', time() );
+    	$ngay_hethan 	= date("Y-m-d H:i:s", time()+ 14*24*60*60);
     	if($checkdocgia == 1 && $checkdausach == 1){
-    		//INSERT INTO `muon` (`isbn`, `ma_cuonsach`, `ma_docgia`, `ngaygio_muon`, `ngay_hethan`) VALUES ('555', '55', '555', '2016-10-15 00:00:00', '2016-10-22 00:00:00');
-    		$sql = "INSERT INTO `muon` (`isbn`, `ma_cuonsach`, `ma_docgia`, `ngaygio_muon`, `ngay_hethan`) VALUES ('{$isbn}', '{$ma_cuonsach}', '{$ma_docgia}', '{$ngay_muon}', '$ngay_hh');";
+
+    		// INSERT INTO `muon` (`ma_cuonsach`, `ma_docgia`, `ngaygio_muon`, `ngay_hethan`, `ma_muon`) VALUES ('1', '3', '2016-10-06 00:00:00', '2016-10-29 00:00:00', NULL);
+    		$sql = "INSERT INTO `muon` (`ma_cuonsach`, `ma_docgia`, `ngaygio_muon`, `ngay_hethan`, `ma_muon`) VALUES ('{$ma_cuonsach}', '{$ma_docgia}', '{$ngaygio_muon}', '{$ngay_hethan}', NULL)";
+
 			if($this->conn->query($sql)){
-				// update trạng thái cuốn sách và đầu sách
-				$cuonsach->capNhatCuonSach($ma_cuonsach, 0);
 				// Cập nhật trạng thái đầu sách
 				return $this->conn->insert_id;
 			}
@@ -186,7 +186,7 @@ Class Muon{
     	if(!$docgia){
     		return new HandleError('docgia','no_exist');
     	}
-	    
+
 	    if($docgia['con_hsd'] == 0) {
 	    		return new HandleError('docgia','hethan');
     	}

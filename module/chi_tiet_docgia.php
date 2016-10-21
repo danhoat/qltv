@@ -1,18 +1,7 @@
 <?php
 $ma_docgia = isset($_GET['id']) ? $_GET['id'] : 0;
-$docgia = TreEm::getInstance();
-$ma_docgia_nguoilon = $ma_docgia;
-$loaidocgia = 'Người lớn';
-$is_tre_em =  $docgia->isDocGiaTreEm($ma_docgia) ;
-if( $is_tre_em ) {
-
-	$loaidocgia = 'Trẻ em';
-	$treem 		= $docgia->getThongTinDocGia($ma_docgia);
-	$ma_docgia_nguoilon 	= $docgia->maDocGiaNguoiLon($ma_docgia);
-}
-
-$nguoilon 		= NguoiLon::getInstance();
-$record 		= $nguoilon->getThongTinDocGia($ma_docgia_nguoilon);
+$dociga 		= DocGia::getInstance();
+$record 		= $dociga->getThongTinDocGia($ma_docgia);
 
 $diachi 		= !empty($record['diachi']) ? $record['diachi'] : 'Chưa có địa chỉ';
 $hoten 			= !empty($record['hoten']) ? $record['hoten'] : 'Chưa nhập họ tên';
@@ -28,42 +17,6 @@ $han_sd_text  	= ($con_hsd  == '1') ? 'Còn hạn sử dụng' :'<span class="er
   		<h3> Thông tin độc giả </h3>
   	</div>
 </div>
-
-<div class="form-group row">
-  	<label for="example-tel-input" class="col-xs-4 col-form-label">Loại độc giả</label>
-  	<div class="col-xs-6">
-  		<?php echo $loaidocgia;?>
-  	</div>
-</div>
-<?php
-if($is_tre_em){ ?>
-	<div class="form-group row">
-	  	<label for="example-tel-input" class="col-xs-4 col-form-label">Họ tên </label>
-	  	<div class="col-xs-6">
-	  		<?php echo $treem['hoten'];?>
-	  	</div>
-	</div>
-	<div class="form-group row">
-	  	<label for="example-tel-input" class="col-xs-4 col-form-label">Ngày sinh</label>
-	  	<div class="col-xs-6">
-	  		<?php echo $treem['ngaysinh'];?>
-	  	</div>
-	</div>
-	<div class="form-group row">
-	  	<label for="example-tel-input" class="col-xs-4 col-form-label">Số sách đang mượn</label>
-	  	<div class="col-xs-6">
-	  		<?php echo soSachDangMuon($ma_docgia);?>
-	  	</div>
-	</div>
-
-	<div class="form-group row">
-	  	<label for="example-tel-input" class="col-xs-12 col-form-label">Thông tin độc giả người lớn bảo hộ:</label>
-	</div>
-
-	<?php
-}
-?>
-
 
 <div class="form-group row">
   	<label for="example-tel-input" class="col-xs-4 col-form-label">Tên độc giả</label>
@@ -111,7 +64,7 @@ if($is_tre_em){ ?>
 <div class="form-group row">
   	<label for="example-tel-input" class="col-xs-4 col-form-label">Số sách đang mượn</label>
   	<div class="col-xs-6">
-  		<?php echo soSachDangMuon($ma_docgia_nguoilon);?>
+  		<?php echo soSachDangMuon($ma_docgia);?>
   	</div>
 </div>
 <style type="text/css">

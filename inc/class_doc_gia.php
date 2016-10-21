@@ -20,6 +20,8 @@ Class DocGia{
 		if ($result && $result->num_rows > 0)
 			while( $row = $result->fetch_assoc() ) {
 				$row['so_sachdangmuon'] = soSachDangMuon($ma_docgia);
+				$han_sd 			= $row['han_sd'] ;
+				$row['con_hsd'] 	= ($han_sd < date("Y-m-d")) ? 0 : 1;
 				return $row;
 			}
 		return 0;

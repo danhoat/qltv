@@ -17,7 +17,7 @@ if(isset($_POST['submit'])){
 	$han_sd 		= isset($_POST['han_sd']) ? $_POST['han_sd'] : '';
 	$dienthoai 		= isset($_POST['dienthoai']) ? $_POST['dienthoai'] : '';
 	$ngay_dk 		= isset($_POST['ngay_dk']) ? $_POST['ngay_dk'] : '';
-	var_dump($massv);
+
 	if( empty($massv) ){
 		$error .= 'Vui lòng nhập mã sinh viên <br />';
 	}
@@ -25,7 +25,7 @@ if(isset($_POST['submit'])){
 		$error .= 'Vui lòng nhập họ tên <br />';
 	}
 	if(!empty($ngay_dk)){
-		$ngay_dk 		= date_create($ngay_dk);
+		$ngay_dk 	= date_create($ngay_dk);
 		$ngay_dk 	= date_format($ngay_dk,"Y-m-d H:i:s");
 	} else {
 		$ngay_dk 	= date("Y-m-d");

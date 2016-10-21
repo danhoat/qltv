@@ -49,16 +49,15 @@ if( !empty($total) ){
                         <?php
                         	while( $row = $result->fetch_assoc() ) {
                         		$ma_docgia 	= $row['ma_docgia'];
-                                $ho         = $row['ho'];
                                 $hoten      = $row['hoten'];
-                                $tenlot     = $row['tenlot'];
-                                $ten        = $row['ten'];
+                                //$tenlot     = $row['tenlot'];
+                                //$ten        = $row['ten'];
                         		$tinhtrang 	= '';
                                 ?>
                         		<tr>
-                                    <td> " . $ma_docgia. " </td>
-                                    <td> <a class='' href= '?act=chi_tiet_docgia&id=".$ma_docgia."'> " . $hoten. "</a> </td>
-                                    <td>". $tinhtrang. "</td>";
+                                    <td> <?php echo $ma_docgia;?>  </td>
+                                    <td> <a class='' href= '<?php echo "index.php?act=chi_tiet_docgia&id=".$ma_docgia;?>'> <?php echo $hoten ;?></a> </td>
+                                    <td><?php echo $tinhtrang; ?></td>";
                                     <td>
                                         <a class="btn btn-primary btn-circle" href="?act=docgia_frm_add&id=<?php echo $ma_docgia; ?>">
                                             <i class="fa fa-plus"></i></a>

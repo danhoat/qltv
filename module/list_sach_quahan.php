@@ -1,3 +1,4 @@
+<div id="page-wrapper">
 <?php
     $search     = isset($_GET['search']) ? $_GET['search'] : 0;
     $keyword    = isset( $_GET['keyword'] ) ? $_GET['keyword'] : '';
@@ -12,27 +13,29 @@
         $total_record = $total->num_rows;
     }
     ?>
-    <form action="index.php?act=list_sachdangmuon" method="GET" class="form-horizontal">
-        <div class="form-group row">
-        <h3 for="example-tel-input" class="col-xs-12 col-form-label heading"> Tìm kiếm</h3>
-          <label for="example-tel-input" class="col-xs-2 col-form-label"> Nhập mã </label>
-          <div class="col-xs-4">
-            <input type="text" class="form-control required" placeholder = "Mã tìm kiếm" name="keyword" value="<?php echo $keyword;?>" >
-          </div>
-          <div class="col-xs-3">
-             <select name="type" class="form-control selectpicker" >
-                <option value="1" <?php add_selected(1, $type);?>> Mã độc giả </option>
-                <option value="2" <?php add_selected(2, $type);?>> Mã cuốn sách </option>
-                <option value="3" <?php add_selected(3, $type);?>> Mã đầu sách(isbn) </option>
-            </select>
-          </div>
-          <div class="col-xs-3">
-           <button class="btn btn-default" type="submit">Tìm Kiếm</button>
-          </div>
-        </div>
-        <input type="hidden" name="search" value="1" >
-        <input type="hidden" name="act" value="list_sach_quahan" >
-    </form>
+    <div class="row">
+        <form action="index.php?act=list_sachdangmuon" method="GET" class="form-horizontal">
+            <div class="form-group row">
+            <h3 for="example-tel-input" class="col-xs-12 col-form-label heading"> Tìm kiếm</h3>
+              <label for="example-tel-input" class="col-xs-2 col-form-label"> Nhập mã </label>
+              <div class="col-xs-4">
+                <input type="text" class="form-control required" placeholder = "Mã tìm kiếm" name="keyword" value="<?php echo $keyword;?>" >
+              </div>
+              <div class="col-xs-3">
+                 <select name="type" class="form-control selectpicker" >
+                    <option value="1" <?php add_selected(1, $type);?>> Mã độc giả </option>
+                    <option value="2" <?php add_selected(2, $type);?>> Mã cuốn sách </option>
+                    <option value="3" <?php add_selected(3, $type);?>> Mã đầu sách(isbn) </option>
+                </select>
+              </div>
+              <div class="col-xs-3">
+               <button class="btn btn-default" type="submit">Tìm Kiếm</button>
+              </div>
+            </div>
+            <input type="hidden" name="search" value="1" >
+            <input type="hidden" name="act" value="list_sach_quahan" >
+        </form>
+    </div>
 <?php
     echo '<div class="row result">';
     if(!$search){
@@ -41,7 +44,7 @@
         echo "Tìm thấy {$total_record} cuốn sách quá hạn";
     }
     echo '</div>';
-
+    echo '<div class="row">';
     if( !empty($total) ){
 
         $url = 'index.php?act=list_sach_quahan&';
@@ -82,3 +85,6 @@
     } else {
         echo ' Danh sách rỗng';
     }
+    echo '</div>';
+?>
+</div>

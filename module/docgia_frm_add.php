@@ -60,7 +60,7 @@ if(isset($_POST['submit'])){
 						echo '<div class="alert alert-danger">';
                         echo $label;
                     	echo '</div>';
-					 } ?>?>
+					 } ?>
 
 
 

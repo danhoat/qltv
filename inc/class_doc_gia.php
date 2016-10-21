@@ -31,10 +31,10 @@ Class DocGia{
         self::$instance = new DocGia();
         return self::$instance;
     }
-	function themDocGia($hoten,$ngaysinh,$msv, $diachi,$han_sd,$dienthoai,$ngay_dk ){
+	function themDocGia($hoten,$ngaysinh,$massv, $diachi,$han_sd,$dienthoai,$ngay_dk ){
 		// INSERT INTO `docgia` (`ma_docgia`, `hoten`, `ngaysinh`, `massv`, `diachi`, `han_sd`, `dienthoai`, `ngay_dk`) VALUES (NULL, '666', '2016-10-21', '6666', '6666', '2016-10-21', '6666', '2016-10-14');
 
-		$sql = "NSERT INTO `{$this->table}` (`ma_docgia`, `hoten`, `ngaysinh`, `massv`, `diachi`, `han_sd`, `dienthoai`, `ngay_dk`) VALUES (NULL, '{$hoten}', '{$ngaysinh}', '{$massv}', '{$diachi}', '{$han_sd}', '{$dienthoai}', '{$ngay_dk}')";
+		$sql = "INSERT INTO `{$this->table}` (`ma_docgia`, `hoten`, `ngaysinh`, `massv`, `diachi`, `han_sd`, `dienthoai`, `ngay_dk`) VALUES (NULL, '{$hoten}', '{$ngaysinh}', '{$massv}', '{$diachi}', '{$han_sd}', '{$dienthoai}', '{$ngay_dk}')";
 		echo $sql;
 		if($this->conn->query($sql)){
 			return $this->conn->insert_id;

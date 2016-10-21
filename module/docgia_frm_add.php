@@ -12,6 +12,15 @@ if(isset($_POST['submit'])){
 	$docgia 		= DocGia::getInstance();
 	$hoten 			= isset($_POST['hoten']) ? $_POST['hoten'] : '';
 	$ngaysinh 		= isset($_POST['ngaysinh']) ? $_POST['ngaysinh'] : '';
+	$massv 			= isset($_POST['massv']) ? $_POST['massv'] : '';
+	$diachi 		= isset($_POST['diachi']) ? $_POST['diachi'] : '';
+	$han_sd 		= isset($_POST['han_sd']) ? $_POST['han_sd'] : '';
+	$dienthoai 		= isset($_POST['dienthoai']) ? $_POST['dienthoai'] : '';
+	$ngay_dk 		= isset($_POST['ngay_dk']) ? $_POST['ngay_dk'] : '';
+	var_dump($massv);
+	if( empty($massv) ){
+		$error .= 'Vui lòng nhập mã sinh viên <br />';
+	}
 	if(empty($hoten) ) {
 		$error .= 'Vui lòng nhập họ tên <br />';
 	}
@@ -25,7 +34,7 @@ if(isset($_POST['submit'])){
 	if( empty( $error) ){
 
 
-		$ma_docgia 		= $docgia->themDocGia($hoten, $ngaysinh);
+		$ma_docgia 		= $docgia->themDocGia($hoten,$ngaysinh,$massv, $diachi,$han_sd,$dienthoai,$ngay_dk);
 		if($ma_docgia){
 			$label = 'Thêm độc giả thành công';
 		} else {
@@ -73,7 +82,7 @@ if(isset($_POST['submit'])){
 					<div class="form-group row">
 					  <label for="example-text-input" class="col-xs-2 col-form-label">Mã sinh viên</label>
 					  <div class="col-xs-10">
-					    <input class="form-control required" type="text" required name="masv" value="" placeholder="Nhập mã sinh viên" id="example-text-input">
+					    <input class="form-control required" type="text" required name="massv" value="" placeholder="Nhập mã sinh viên" id="example-text-input">
 					  </div>
 					</div>
 
@@ -114,7 +123,7 @@ if(isset($_POST['submit'])){
 					  </div>
 					  <div class="col-xs-2 col-right">
 					  		<input type="hidden" name="submit" value="1">
-					    	<button type="submit" class="btn btn-primary pull-right"> Thêm mới</button>
+					    	<button type="submit" value="1" class="btn btn-primary pull-right"> Thêm mới</button>
 					  </div>
 					</div>
 

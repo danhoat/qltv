@@ -24,8 +24,9 @@ if(isset($_POST['submit'])){
 
 	if( empty( $error) ){
 
-		if( $ma_docgia){
-			$ma_docgia 		= $docgia->themDocGia($hoten, $ngaysinh);
+
+		$ma_docgia 		= $docgia->themDocGia($hoten, $ngaysinh);
+		if($ma_docgia){
 			$label = 'Thêm độc giả thành công';
 		} else {
 			$error .= 'Thêm độc giả lỗi <br />';

@@ -1,3 +1,4 @@
+
 <?php
     $search     = isset($_GET['search']) ? $_GET['search'] : 0;
     $keyword    = isset( $_GET['keyword'] ) ? $_GET['keyword'] : '';
@@ -11,27 +12,56 @@
         $total_record = $total->num_rows;
     }
     ?>
-    <form action="index.php?act=list_sachdangmuon" method="GET" class="form-horizontal">
-        <div class="form-group row">
-        <h3 for="example-tel-input" class="col-xs-12 col-form-label heading"> Tìm kiếm</h3>
-          <label for="example-tel-input" class="col-xs-2 col-form-label"> Nhập mã </label>
-          <div class="col-xs-4">
-            <input type="text" class="form-control required" placeholder = "Mã tìm kiếm" name="keyword" value="<?php echo $keyword;?>" >
-          </div>
-          <div class="col-xs-3">
-             <select name="type" class="form-control selectpicker" >
-                <option value="1" <?php add_selected(1, $type);?>> Mã độc giả </option>
-                <option value="2" <?php add_selected(2, $type);?>> Mã cuốn sách </option>
-                <option value="3" <?php add_selected(3, $type);?>> Mã đầu sách(isbn) </option>
-            </select>
-          </div>
-          <div class="col-xs-3">
-           <button class="btn btn-default" type="submit">Tìm Kiếm</button>
-          </div>
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Quản lý tựa sách</h1>
         </div>
-        <input type="hidden" name="search" value="1" >
-        <input type="hidden" name="act" value="list_sach_dangmuon" >
-    </form>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Tìm Kiếm</h3>
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <form action="index.php?act=list_sachdangmuon" method="GET" class="form-horizontal">
+                        <div class="form-group row">
+                          <label for="example-tel-input" class="col-xs-2 col-form-label"> Nhập mã </label>
+                          <div class="col-xs-4">
+                            <input type="text" class="form-control required" placeholder = "Mã tìm kiếm" name="keyword" value="<?php echo $keyword;?>" >
+                          </div>
+                          <div class="col-xs-3">
+                             <select name="type" class="form-control selectpicker" >
+                                <option value="1" <?php add_selected(1, $type);?>> Mã độc giả </option>
+                                <option value="2" <?php add_selected(2, $type);?>> Mã cuốn sách </option>
+                                <option value="3" <?php add_selected(3, $type);?>> Mã đầu sách(isbn) </option>
+                            </select>
+                          </div>
+                          <div class="col-xs-3">
+                           <button class="btn btn-default" type="submit">Tìm Kiếm</button>
+                          </div>
+                        </div>
+                        <input type="hidden" name="search" value="1" >
+                        <input type="hidden" name="act" value="list_sach_dangmuon" >
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Tìm Kiếm</h3>
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+
+
 <?php
     echo '<div class="row result">';
     if(!$search){
@@ -87,3 +117,9 @@
     } else {
         echo ' Danh sách rỗng';
     }
+    ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,3 +1,25 @@
+<?php
+$del_id = isset($_GET['del']) ? $_GET['del'] : '';
+$tua_sach = TuaSach::getInstance();
+if( !empty($del_id)){
+    $tua_sach->delete_tua_sach($del_id);
+}
+$total = TuaSach::list_tua_sach($select_all = 1);
+if( !empty($total) ){
+
+	$url = '?act=tuasach_list&';
+	$total_record = $total->num_rows;
+    $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
+    if(! is_numeric($current_page) || $current_page < 1){
+    	$current_page = 1;
+    }
+    $posts_per_page = 10;
+    $max_page = ceil($total_record/$posts_per_page);
+    if($current_page > $max_page){
+    	$current_page = $max_page;
+    }
+	$result = TuaSach::list_tua_sach($select_all = 0, $posts_per_page, $current_page );
+	?>
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
@@ -10,33 +32,10 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Danh Sách Tựa Sách</h3>
+                    <h3 class="panel-title">Danh Sách Tựa Sách: có <?php echo $total_record;?> Tựa Sách</h3>
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
-
-				<?php
-				$del_id = isset($_GET['del']) ? $_GET['del'] : '';
-				$tua_sach = TuaSach::getInstance();
-				if( !empty($del_id)){
-				    $tua_sach->delete_tua_sach($del_id);
-				}
-				$total = TuaSach::list_tua_sach($select_all = 1);
-				if( !empty($total) ){
-
-					$url = '?act=tuasach_list&';
-					$total_record = $total->num_rows;
-				    $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
-				    if(! is_numeric($current_page) || $current_page < 1){
-				    	$current_page = 1;
-				    }
-				    $posts_per_page = 10;
-				    $max_page = ceil($total_record/$posts_per_page);
-				    if($current_page > $max_page){
-				    	$current_page = $max_page;
-				    }
-					$result = TuaSach::list_tua_sach($select_all = 0, $posts_per_page, $current_page );
-					?>
 					<table class="table table-striped table-bordered table-hover">
 						<thead>
 						<tr>

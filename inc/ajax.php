@@ -7,11 +7,6 @@
 
 	if( $act == 'kiemtradocgia' ){
 		$ma_docgia 	= $_POST['ma_docgia'];
-		$docgia 	= TreEm::getInstance();
-		$is_tre_em 	=  $docgia->isDocGiaTreEm($ma_docgia) ;
-		if($is_tre_em){
-			$ma_docgia = $docgia->maDocGiaNguoiLon($ma_docgia);
-		}
 		$nguoilon 	= NguoiLon::getInstance();
 		$record 	= $nguoilon->getThongTinDocGia($ma_docgia);
 

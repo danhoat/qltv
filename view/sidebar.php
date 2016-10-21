@@ -41,7 +41,7 @@
                                     <a href="?act=docgia_list">Danh Sách Thẻ</a>
                                 </li>
                                 <li>
-                                    <a href="?act=form-insert-user">Thêm Thẻ Mới</a>
+                                    <a href="?act=docgia_frm_add">Thêm Thẻ Mới</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

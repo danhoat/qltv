@@ -186,18 +186,11 @@ Class Muon{
     	if(!$docgia){
     		return new HandleError('docgia','no_exist');
     	}
-    	$docgia 	= TreEm::getInstance();
-
-		$is_tre_em =  $docgia->isDocGiaTreEm($ma_docgia) ;
-		if( $is_tre_em ) {
-			$ma_docgia = $docgia->maDocGiaNguoiLon($ma_docgia);
-			$docgia 	= $docgia->getThongTinDocGia($ma_docgia);
-		} else {
-			$nguoilon 	= NguoiLon::getInstance();
-			$docgia 	= $nguoilon->getThongTinDocGia($ma_docgia);
-	    	if($docgia['con_hsd'] == 0)
+	    
+	    if($docgia['con_hsd'] == 0) {
 	    		return new HandleError('docgia','hethan');
     	}
+
     	if($docgia['so_sachdangmuon'] > 4)
 	    	return new HandleError('muon','quasoluong');
     	return 1;

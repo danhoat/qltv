@@ -15,65 +15,84 @@ if(isset($_POST['submit'])){
 	}
 }
 ?>
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Mượn Sách</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Mượn Sách</h3>
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+					<form class="form-horizontal" action="" method="POST">
+						<?php if(!empty($error)) { ?>
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="email"> &nbsp; </label>
+							<div class="col-sm-8">
+								<?php echo $error;?>
+							</div>
+						</div>
+						<?php }  else if( !empty($label)) { ?>
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="email"> &nbsp; </label>
+							<div class="col-sm-8">
+								<?php echo $label;?>
+								Xem chi tiết mượn của cuốn sách <a target="blank" href="index.php?act=chi_tiet_muon&mcs=<?php echo $ma_cuonsach;?>">Chi tiết </a>
+							</div>
+						</div>
+						<?php } ?>
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="email">Mã độc giả</label>
+							<div class="col-sm-8">
+						  		<input type="text" class="form-control selectpicker" id="ma_docgia" required name="ma_docgia" data-live-search="true" value="<?php echo $ma_docgia;?>">
+							</div>
+							<div class="col-sm-2 txt-right">
+							<button class="btn btn-full" type="button" id="kiemTraDocGia">Kiểm tra</button>
+							</div>
+						</div>
 
-<form class="form-horizontal" action="" method="POST">
-	<h3 class="heading"> Nhập thông tin mượn sách </h3>
-	<?php if(!empty($error)) { ?>
-	<div class="form-group">
-		<label class="control-label col-sm-2" for="email"> &nbsp; </label>
-		<div class="col-sm-8">
-			<?php echo $error;?>
-		</div>
-	</div>
-	<?php }  else if( !empty($label)) { ?>
-	<div class="form-group">
-		<label class="control-label col-sm-2" for="email"> &nbsp; </label>
-		<div class="col-sm-8">
-			<?php echo $label;?>
-			Xem chi tiết mượn của cuốn sách <a target="blank" href="index.php?act=chi_tiet_muon&mcs=<?php echo $ma_cuonsach;?>">Chi tiết </a>
-		</div>
-	</div>
-	<?php } ?>
-	<div class="form-group">
-		<label class="control-label col-sm-2" for="email">Mã độc giả</label>
-		<div class="col-sm-8">
-	  		<input type="text" class="form-control selectpicker" id="ma_docgia" required name="ma_docgia" data-live-search="true" value="<?php echo $ma_docgia;?>">
-		</div>
-		<div class="col-sm-2 txt-right">
-		<button class="btn btn-full" type="button" id="kiemTraDocGia">Kiểm tra</button>
-		</div>
-	</div>
-
-	<div class="form-group">
-		<label class="control-label col-sm-2" for="email">Mã cuốn sách</label>
-		<div class="col-sm-8">
-	  		<input class="form-control selectpicker" required id="ma_cuonsach" name="ma_cuonsach" data-live-search="true" value="<?php echo $ma_cuonsach;?>">
-		</div>
-		<div class="col-sm-2 txt-right">
-		<button class='btn btn-full' id="kiemTraSach" type="button">Kiểm tra</button>
-		</div>
-	</div>
-	<div class="form-group">
-		<label class="control-label col-sm-2" for="email">&nbsp;</label>
-		<div class="col-sm-10">
-			<div id="result">
-			</div>
-			<div id="result_sach">
-			</div>
-		</div>
-	</div>
-	<div class="form-group">
-		<div class="col-sm-9">
-		&nbsp;
-		</div>
-	    <div class="col-sm-3 col-right">
-	    	<button type="submit" name="submit" class="btn btn-default btn-info btn-sm pull-right">Lưu mượn sách </button>
-	    </div>
-	</div>
-</form>
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="email">Mã cuốn sách</label>
+							<div class="col-sm-8">
+						  		<input class="form-control selectpicker" required id="ma_cuonsach" name="ma_cuonsach" data-live-search="true" value="<?php echo $ma_cuonsach;?>">
+							</div>
+							<div class="col-sm-2 txt-right">
+							<button class='btn btn-full' id="kiemTraSach" type="button">Kiểm tra</button>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="email">&nbsp;</label>
+							<div class="col-sm-10">
+								<div id="result">
+								</div>
+								<div id="result_sach">
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-9">
+							&nbsp;
+							</div>
+						    <div class="col-sm-3 col-right">
+						    	<button type="submit" name="submit" class="btn btn-default btn-primary pull-right">Lưu mượn sách </button>
+						    </div>
+						</div>
+					</form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <script type="text/javascript">
 
-	$(function() {
+	$(document).ready(function() {
 		$("#kiemTraDocGia").click(function(event){
 		 	var ma_docgia= $("#ma_docgia").val();
 		 	if(ma_docgia == ''){
@@ -99,7 +118,7 @@ if(isset($_POST['submit'])){
 
 		      	},
 		      	error:function(){
-		          $("#result").html('Không tồn tại khách hàng này');
+		          $("#result").html('Không tồn tại mã độc giả ' + ma_docgia);
 
 		      	}
 		    });
@@ -134,5 +153,4 @@ if(isset($_POST['submit'])){
 		    });
 		})
 	});
-
 </script>

@@ -33,6 +33,8 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <!-- jQuery -->
+    <script src="vendor/jquery/jquery-3.1.1.min.js"></script>
 </head>
 
 <body>
